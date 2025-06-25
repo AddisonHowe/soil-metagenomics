@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1                     # Number of tasks 
 #SBATCH --cpus-per-task=4              # Number of CPU cores per task
 #SBATCH --mem=32G                       # Total memory
-#SBATCH --time=08:00:00                # Time limit (hh:mm:ss)
+#SBATCH --time=30:00:00                # Time limit (hh:mm:ss)
 
 
 DIR='/projects/p32818/metagenomic_data'

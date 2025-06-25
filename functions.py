@@ -1,11 +1,5 @@
-
-''''
-Goal: produce data for the scatter plot, where the x axis is the native pH where a cluster ID is most enriched, y axis the perturbed pH where it is most enriched.
-We fix the soil sample as the one where that cluster ID is most enriched at T0. 
-No inputs. 
-'''
-
 import numpy as np
+import matplotlib.pyplot as plt
 import pandas as pd
 
 DATDIR = '/projects/p32818/metagenomic_data/data'
@@ -130,59 +124,3 @@ def enriched_native_pH(CID, data, cluster_IDs):
     CIDX = cluster_IDs.index(CID)
     soil_idx = np.argmax(data[CIDX])
     return soils[soil_idx]
-
-
-def main():
-    
-    cluster_IDs = pd.read_csv('out/cluster_ids.tsv', sep='\t', header=None)
-    clustered_data = pd.read_csv('out/clustered_data_nar.tsv', sep='\t', header=None)
-    cluster_IDs = cluster_IDs.values
-    cluster_IDs = [item[0] for item in cluster_IDs]
-    clustered_data = clustered_data.values
-
-    #soils perturbed: 3, 5, 6, 9, 11, 12, 14, 15, 16, 17
-    selected = [2, 4, 5, 8, 10, 11, 13, 14, 15, 16]
-    filtered_data = clustered_data[:, selected]
-
-    data = np.zeros((len(cluster_IDs), 2))  #for each cluster ID, we want to specificfy a native pH and a perturbed pH where it is most enriched
-
-
-    for i, CID in enumerate(cluster_IDs):
-        print(i)
-        soil = enriched_native_pH(CID, filtered_data, cluster_IDs)
-        data[i, 0] = native_pH(soil)
-        #ORFs = find_orfs(get_filepath(soil, 'annotation'), 'K00370') #ORFs for the specified protein
-        ORFs = find_orfs_from_cluster(CID) #ORFs for the specified cluster
-
-        #Unique_IDs is the array, defined earlier, containing the list of cluster IDs
-
-        sample_list = samples_from_soils(soil)
-
-        metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep = '\t')
-        metadata = metadata.set_index('sample')
-
-        chunk_size = 100000
-
-        abundance = np.zeros(11) #for a given CID the specified soil, there are 11 perturbed samples
-
-        for chunk in pd.read_csv(get_filepath(soil, 'abundance'), sep='\s+', header=None,  chunksize = chunk_size):
-            filtered_chunk = chunk[chunk.iloc[:, 1].isin(ORFs)]
-            for i in range(len(filtered_chunk)):
-                sample_id = filtered_chunk.iloc[i, 0]
-                if sample_id in sample_list:
-                    orf = filtered_chunk.iloc[i, 1]
-                    rel_abundance = filtered_chunk.iloc[i, 2]
-                    spikein = metadata.loc[sample_id, 'spikein_sum']
-                    idx = sample_list.index(sample_id)
-                    abundance[idx] += rel_abundance/spikein
-                    
-        
-        pHs = perturbed_pHs(soil)
-        data[i, 1] = pHs[np.argmax(abundance)]
-    
-    print(data)    
-    np.savetxt(f"out/native_versus_perturbed_enchriment.tsv", data, delimiter = '\t', fmt = '%0.6f')
-        
-        
-if __name__ == "__main__":
-    main()
