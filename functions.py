@@ -77,11 +77,12 @@ def perturbed_pHs(soil):
     metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     
+    soil_ = soil + '_'
     for sample in metadata.index:
-        if 'None' in sample and 'T9' in sample and soil in sample and 'Nitrate' not in sample:
+        if 'None' in sample and 'T9' in sample and soil_ in sample and 'Nitrate' not in sample:
             pHs.append(metadata.loc[sample, 'pH'])
     
-    return pHs
+    return sorted(pHs)
 
 """
 samples_from_soils
@@ -93,8 +94,9 @@ def samples_from_soils(soil):
     metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     
+    soil_ = soil + '_'
     for sample in metadata.index:
-        if 'None' in sample and 'T9' in sample and soil in sample and 'Nitrate' not in sample:
+        if 'None' in sample and 'T9' in sample and soil_ in sample and 'Nitrate' not in sample:
             sample_IDs.append(sample)
     
     return sample_IDs
@@ -108,7 +110,8 @@ def native_pH(soil):
     metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     for sample in metadata.index:
-        if 'T0' in sample and soil in sample:
+        soil_= soil + '_'
+        if 'T0' in sample and soil_ in sample:
             pH = metadata.loc[sample, 'pH']
             
     return pH

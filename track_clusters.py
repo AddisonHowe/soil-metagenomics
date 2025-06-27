@@ -36,7 +36,7 @@ def main():
         
     print(cluster_tracker)
     
-    np.savetxt("track_clusters.tsv", cluster_tracker, delimiter = '\t', fmt = '%0.6f')
+    np.savetxt("out/track_clusters.tsv", cluster_tracker, delimiter = '\t', fmt = '%0.6f')
     
     
 if __name__ == "__main__":
