@@ -10,7 +10,7 @@ input: prefix (sample), file_type (abundance .bed or annotation .tsv)
 output: a filepath string
 """
 def get_filepath(prefix, file_type):
-    base_path = '/projects/p32818/metagenomic_data/data'
+    base_path = '/projects/p32818/metagenomic_data/data/raw_data'
     if file_type == 'annotation':
         filename = f"{prefix}.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv"
     elif file_type == 'abundance':
