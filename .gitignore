@@ -1,4 +1,6 @@
 data/raw_data
+jobs/
+logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

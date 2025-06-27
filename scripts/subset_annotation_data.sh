@@ -1,5 +1,9 @@
 #!/bin/bash
 
+rawdatapath=data/raw_data
+koval=K00370
+outdir=data/subset_${koval}
+
 filelist=(
     T0.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
     Soil3.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
@@ -14,11 +18,14 @@ filelist=(
     Soil17.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
 )
 
-suffix=.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
+oldsuffix=.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
+newsuffix=.coassembly_annotations_${koval}.tsv
 
 for f in ${filelist[@]}; do 
     echo $f
-    cat data/shared_data/${f} | awk -F'\t' '$4 == "K00370" { 
+    cat ${rawdatapath}/${f} | awk -F'\t' -v koval="$koval" \
+        '$4 == koval { 
             print $1, $2, $3, $4, $5
-        }' OFS='\t' > data/subset_K00370/${f/${suffix}/.coassembly_annotations_K00370}.tsv
+        }' \
+        OFS='\t' > ${outdir}/${f/${oldsuffix}/${newsuffix}}
 done
