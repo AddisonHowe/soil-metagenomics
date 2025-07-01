@@ -102,6 +102,17 @@ def samples_from_soils(soil):
     return sample_IDs
 
 """
+perturbed_PH_sample
+given a sample ID
+output: the perturbed pH
+"""
+
+def perturbed_pH_sample(sample):
+    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = metadata.set_index('sample')
+    return metadata.loc[sample, 'pH']
+
+"""
 native_pH
 input: any soil id 
 output: the native pH of that soil
@@ -127,3 +138,32 @@ def enriched_native_pH(CID, data, cluster_IDs):
     CIDX = cluster_IDs.index(CID)
     soil_idx = np.argmax(data[CIDX])
     return soils[soil_idx]
+
+'''
+plot_native_perturbed
+inputs: an array with 11 rows (perturbed pHs) and 10 columns (native pHs)
+produces plot
+'''
+
+def plot(data, title):
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    native = np.zeros(len(soils))
+    for i, soil in enumerate(soils):
+        native[i] = native_pH(soil)
+ 
+    plt.imshow(data, aspect='auto', cmap='Blues', origin='lower')
+    plt.colorbar()
+
+    plt.xlabel('Native pH')
+    plt.ylabel('Perturbed pH (approximate)')
+
+    y = np.linspace(3.8, 8.4, 11)
+    plt.yticks(ticks=np.linspace(0, 10, 11), labels=[f"{val:.1f}" for val in y], rotation=45)
+    plt.xticks(ticks=np.linspace(0, 9, 10), labels=[f"{val:.1f}" for val in native], rotation=45)
+
+
+    plt.title(label=title)
+
+
+    plt.tight_layout()
+    plt.show()

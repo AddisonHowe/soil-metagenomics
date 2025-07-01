@@ -4,7 +4,7 @@
 #SBATCH --job-name=mmseq               # Job name
 #SBATCH --ntasks=1                     # Number of tasks 
 #SBATCH --cpus-per-task=16             # Number of CPU cores per task
-#SBATCH --mem=250G                     # Total memory
+#SBATCH --mem=400G                     # Total memory
 #SBATCH --time=24:00:00                # Time limit (hh:mm:ss)
 
 
