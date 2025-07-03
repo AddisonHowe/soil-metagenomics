@@ -154,12 +154,12 @@ def plot(data, title):
     plt.imshow(data, aspect='auto', cmap='Blues', origin='lower')
     plt.colorbar()
 
-    plt.xlabel('Native pH')
-    plt.ylabel('Perturbed pH (approximate)')
+    plt.xlabel('Perturbed pH (approximate)')
+    plt.ylabel('Native pH')
 
-    y = np.linspace(3.8, 8.4, 11)
-    plt.yticks(ticks=np.linspace(0, 10, 11), labels=[f"{val:.1f}" for val in y], rotation=45)
-    plt.xticks(ticks=np.linspace(0, 9, 10), labels=[f"{val:.1f}" for val in native], rotation=45)
+    x = np.linspace(3.8, 8.4, 11)
+    plt.xticks(ticks=np.linspace(0, 10, 11), labels=[f"{val:.1f}" for val in x], rotation=45)
+    plt.yticks(ticks=np.linspace(0, 9, 10), labels=[f"{val:.1f}" for val in native], rotation=45)
 
 
     plt.title(label=title)

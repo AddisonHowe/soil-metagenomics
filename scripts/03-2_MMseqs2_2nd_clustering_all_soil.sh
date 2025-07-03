@@ -22,7 +22,7 @@ echo "**************************************"
 input_faa="../data/raw_data/all.coassembly_proteins_1st_ClusterDB_repseq.fasta"
 echo "Processing file: $input_faa"
 output_dir="../data/raw_data"
-tmp_dir="${output_dir}/tmp_mmseqs"
+tmp_dir="/scratch/aie7773/tmp_mmseqs"
 
 # Create output and temp directories if they don't exist
 mkdir -p "$output_dir"
@@ -43,7 +43,7 @@ mmseqs createdb "$input_faa" "$db_name"
 # 2) Perform clustering
 echo "********************* Clustering sequences... *****************************"
 mmseqs cluster "$db_name" "$cluster_db" "$tmp_dir" \
-       --min-seq-id 0.8 -c 0.7 --split-memory-limit 80G --remove-tmp-files
+       --min-seq-id 0.8 -c 0.7 --split-memory-limit 80G --remove-tmp-files --cluster-mode 2
 
 # 3) cluster result1
 #echo "********************* Get cluster result in a fasta-like format... **************************"
