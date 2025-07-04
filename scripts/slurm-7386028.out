@@ -641,10 +641,10 @@ Converting sequences
 ===================================================================================================	624 Mio. sequences processed
 ===================================================================================================	625 Mio. sequences processed
 ===============================================================================
-Time for merging to all.coassembly_proteins_1st_ClusterDB_repseq_DB_h: 0h 1m 29s 126ms
-Time for merging to all.coassembly_proteins_1st_ClusterDB_repseq_DB: 0h 1m 40s 421ms
+Time for merging to all.coassembly_proteins_1st_ClusterDB_repseq_DB_h: 0h 1m 30s 263ms
+Time for merging to all.coassembly_proteins_1st_ClusterDB_repseq_DB: 0h 1m 40s 287ms
 Database type: Aminoacid
-Time for processing: 0h 24m 17s 358ms
+Time for processing: 0h 24m 41s 710ms
 ********************* Clustering sequences... *****************************
 cluster /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_2ndClusterDB /scratch/aie7773/tmp_mmseqs --min-seq-id 0.8 -c 0.7 --split-memory-limit 80G --remove-tmp-files --cluster-mode 2 
 
@@ -724,142 +724,142 @@ Skip repeating k-mers               	false
 
 Set cluster sensitivity to -s 1.000000
 Set cluster iterations to 1
-linclust /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/clu_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' -a 0 --alignment-mode 3 --alignment-output-mode 0 --wrapped-scoring 0 -e 0.001 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --alt-ali 0 -c 0.7 --cov-mode 0 --max-seq-len 65535 --comp-bias-corr 0 --comp-bias-corr-scale 1 --max-rejected 2147483647 --max-accept 2147483647 --add-self-matches 0 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --score-bias 0 --realign 0 --realign-score-bias -0.2 --realign-max-seqs 2147483647 --corr-score-weight 0 --gap-open aa:11,nucl:5 --gap-extend aa:1,nucl:2 --zdrop 40 --alph-size aa:13,nucl:5 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 -k 0 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --rescore-mode 0 --filter-hits 0 --sort-results 0 --remove-tmp-files 1 --force-reuse 0 
+linclust /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/clu_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' -a 0 --alignment-mode 3 --alignment-output-mode 0 --wrapped-scoring 0 -e 0.001 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --alt-ali 0 -c 0.7 --cov-mode 0 --max-seq-len 65535 --comp-bias-corr 0 --comp-bias-corr-scale 1 --max-rejected 2147483647 --max-accept 2147483647 --add-self-matches 0 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --score-bias 0 --realign 0 --realign-score-bias -0.2 --realign-max-seqs 2147483647 --corr-score-weight 0 --gap-open aa:11,nucl:5 --gap-extend aa:1,nucl:2 --zdrop 40 --alph-size aa:13,nucl:5 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 -k 0 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --rescore-mode 0 --filter-hits 0 --sort-results 0 --remove-tmp-files 1 --force-reuse 0 
 
-kmermatcher /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --alph-size aa:13,nucl:5 --min-seq-id 0.8 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 --cov-mode 0 -k 0 -c 0.7 --max-seq-len 65535 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
+kmermatcher /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --alph-size aa:13,nucl:5 --min-seq-id 0.8 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 --cov-mode 0 -k 0 -c 0.7 --max-seq-len 65535 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
 
-kmermatcher /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --alph-size aa:13,nucl:5 --min-seq-id 0.8 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 --cov-mode 0 -k 0 -c 0.7 --max-seq-len 65535 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
+kmermatcher /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --alph-size aa:13,nucl:5 --min-seq-id 0.8 --kmer-per-seq 21 --spaced-kmer-mode 1 --kmer-per-seq-scale aa:0.000,nucl:0.200 --adjust-kmer-len 0 --mask 0 --mask-prob 0.9 --mask-lower-case 0 --cov-mode 0 -k 0 -c 0.7 --max-seq-len 65535 --hash-shift 67 --split-memory-limit 80G --include-only-extendable 0 --ignore-multi-kmer 0 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
 
 Database size: 625799366 type: Aminoacid
 Reduced amino acid alphabet: (A S T) (C) (D B N) (E Q Z) (F Y) (G) (H) (I V) (K R) (L J M) (P) (W) (X) 
 
 Not enough memory to process at once need to split
-[=================================================================] 625.80M 6m 32s 734ms
+[=================================================================] 625.80M 7m 3s 187ms
 Process file into 4 parts
 Generate k-mers list for 1 split
-[=================================================================] 625.80M 2m 48s 857ms
-Sort kmer 0h 0m 49s 114ms
-Sort by rep. sequence 0h 0m 11s 88ms
+[=================================================================] 625.80M 2m 35s 489ms
+Sort kmer 0h 0m 44s 681ms
+Sort by rep. sequence 0h 0m 11s 42ms
 Generate k-mers list for 2 split
-[=================================================================] 625.80M 2m 33s 793ms
-Sort kmer 0h 0m 45s 502ms
-Sort by rep. sequence 0h 0m 12s 351ms
+[=================================================================] 625.80M 2m 35s 587ms
+Sort kmer 0h 0m 44s 882ms
+Sort by rep. sequence 0h 0m 12s 757ms
 Generate k-mers list for 3 split
-[=================================================================] 625.80M 2m 33s 208ms
-Sort kmer 0h 0m 42s 944ms
-Sort by rep. sequence 0h 0m 13s 950ms
+[=================================================================] 625.80M 2m 35s 174ms
+Sort kmer 0h 0m 44s 529ms
+Sort by rep. sequence 0h 0m 14s 609ms
 Generate k-mers list for 4 split
-[=================================================================] 625.80M 2m 32s 21ms
-Sort kmer 0h 0m 26s 612ms
-Sort by rep. sequence 0h 0m 7s 981ms
-Merge splits ... Time for fill: 0h 10m 34s 781ms
+[=================================================================] 625.80M 2m 33s 939ms
+Sort kmer 0h 0m 26s 626ms
+Sort by rep. sequence 0h 0m 7s 809ms
+Merge splits ... Time for fill: 0h 10m 31s 999ms
 Time for merging to pref: 0h 0m 0s 0ms
-Time for processing: 0h 36m 5s 747ms
-rescorediagonal /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore1 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --rescore-mode 0 --wrapped-scoring 0 --filter-hits 0 -e 0.001 -c 0.7 -a 0 --cov-mode 0 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --add-self-matches 0 --sort-results 0 --db-load-mode 0 --threads 128 --compressed 0 -v 3 
+Time for processing: 0h 36m 2s 845ms
+rescorediagonal /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore1 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --rescore-mode 0 --wrapped-scoring 0 --filter-hits 0 -e 0.001 -c 0.7 -a 0 --cov-mode 0 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --add-self-matches 0 --sort-results 0 --db-load-mode 0 --threads 128 --compressed 0 -v 3 
 
-[=================================================================] 625.80M 21m 42s 664ms
-Time for merging to pref_rescore1: 0h 3m 34s 135ms
-Time for processing: 0h 28m 1s 909ms
-clust /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore1 /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pre_clust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
+[=================================================================] 625.80M 23m 28s 390ms
+Time for merging to pref_rescore1: 0h 4m 59s 296ms
+Time for processing: 0h 30m 59s 38ms
+clust /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore1 /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pre_clust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
 
 Clustering mode: Greedy
-Total time: 0h 30m 8s 281ms
+Total time: 0h 26m 15s 826ms
 
 Size of the sequence database: 625799366
 Size of the alignment database: 625799366
 Number of clusters: 368446783
 
-Writing results 0h 0m 46s 419ms
+Writing results 0h 0m 42s 612ms
 Time for merging to pre_clust: 0h 0m 0s 0ms
-Time for processing: 0h 32m 18s 152ms
-createsubdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/order_redundancy /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy -v 3 --subdb-mode 1 
+Time for processing: 0h 28m 7s 563ms
+createsubdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/order_redundancy /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy -v 3 --subdb-mode 1 
 
 Time for merging to input_step_redundancy: 0h 0m 0s 0ms
-Time for processing: 0h 2m 17s 373ms
-createsubdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/order_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter1 -v 3 --subdb-mode 1 
+Time for processing: 0h 2m 17s 414ms
+createsubdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/order_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter1 -v 3 --subdb-mode 1 
 
 Time for merging to pref_filter1: 0h 0m 0s 0ms
-Time for processing: 0h 3m 42s 552ms
-filterdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter1 /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter2 --filter-file /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/order_redundancy --threads 128 --compressed 0 -v 3 
+Time for processing: 0h 3m 44s 538ms
+filterdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter1 /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter2 --filter-file /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/order_redundancy --threads 128 --compressed 0 -v 3 
 
 Filtering using file(s)
-[=================================================================] 368.45M 1m 16s 17ms
-Time for merging to pref_filter2: 0h 2m 2s 931ms
-Time for processing: 0h 5m 7s 786ms
-rescorediagonal /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter2 /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore2 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --rescore-mode 1 --wrapped-scoring 0 --filter-hits 1 -e 0.001 -c 0.7 -a 0 --cov-mode 0 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --add-self-matches 0 --sort-results 0 --db-load-mode 0 --threads 128 --compressed 0 -v 3 
+[=================================================================] 368.45M 6m 0s 485ms
+Time for merging to pref_filter2: 0h 2m 2s 268ms
+Time for processing: 0h 9m 49s 669ms
+rescorediagonal /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter2 /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore2 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --rescore-mode 1 --wrapped-scoring 0 --filter-hits 1 -e 0.001 -c 0.7 -a 0 --cov-mode 0 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --add-self-matches 0 --sort-results 0 --db-load-mode 0 --threads 128 --compressed 0 -v 3 
 
-[=================================================================] 368.45M 9m 48s 997ms
-Time for merging to pref_rescore2: 0h 2m 0s 591ms
-Time for processing: 0h 12m 54s 353ms
-align /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore2 /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/aln --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' -a 0 --alignment-mode 3 --alignment-output-mode 0 --wrapped-scoring 0 -e 0.001 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --alt-ali 0 -c 0.7 --cov-mode 0 --max-seq-len 65535 --comp-bias-corr 0 --comp-bias-corr-scale 1 --max-rejected 2147483647 --max-accept 2147483647 --add-self-matches 0 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --score-bias 0 --realign 0 --realign-score-bias -0.2 --realign-max-seqs 2147483647 --corr-score-weight 0 --gap-open aa:11,nucl:5 --gap-extend aa:1,nucl:2 --zdrop 40 --threads 128 --compressed 0 -v 3 
+[=================================================================] 368.45M 10m 38s 664ms
+Time for merging to pref_rescore2: 0h 2m 0s 751ms
+Time for processing: 0h 13m 45s 743ms
+align /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore2 /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/aln --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' -a 0 --alignment-mode 3 --alignment-output-mode 0 --wrapped-scoring 0 -e 0.001 --min-seq-id 0.8 --min-aln-len 0 --seq-id-mode 0 --alt-ali 0 -c 0.7 --cov-mode 0 --max-seq-len 65535 --comp-bias-corr 0 --comp-bias-corr-scale 1 --max-rejected 2147483647 --max-accept 2147483647 --add-self-matches 0 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --score-bias 0 --realign 0 --realign-score-bias -0.2 --realign-max-seqs 2147483647 --corr-score-weight 0 --gap-open aa:11,nucl:5 --gap-extend aa:1,nucl:2 --zdrop 40 --threads 128 --compressed 0 -v 3 
 
 Compute score, coverage and sequence identity
 Query database size: 368446783 type: Aminoacid
 Target database size: 368446783 type: Aminoacid
 Calculation of alignments
-[=================================================================] 368.45M 16m 58s 123ms
-Time for merging to aln: 0h 2m 6s 49ms
+[=================================================================] 368.45M 18m 6s 944ms
+Time for merging to aln: 0h 2m 5s 720ms
 646666548 alignments calculated
 386913285 sequence pairs passed the thresholds (0.598320 of overall calculated)
 1.050120 hits per query sequence
-Time for processing: 0h 20m 13s 71ms
-clust /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/aln /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/clust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
+Time for processing: 0h 21m 18s 32ms
+clust /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/aln /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/clust --cluster-mode 2 --max-iterations 1000 --similarity-type 2 --threads 128 --compressed 0 -v 3 --cluster-weight-threshold 0.9 
 
 Clustering mode: Greedy
-Total time: 0h 7m 40s 566ms
+Total time: 0h 8m 9s 71ms
 
 Size of the sequence database: 368446783
 Size of the alignment database: 368446783
 Number of clusters: 353759745
 
-Writing results 0h 0m 37s 80ms
+Writing results 0h 0m 37s 99ms
 Time for merging to clust: 0h 0m 0s 0ms
-Time for processing: 0h 9m 2s 922ms
-mergeclusters /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/clu_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pre_clust /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/clust --threads 128 --compressed 0 -v 3 
+Time for processing: 0h 9m 26s 742ms
+mergeclusters /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/clu_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pre_clust /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/clust --threads 128 --compressed 0 -v 3 
 
 Clustering step 1
-[=================================================================] 368.45M 1m 22s 744ms
+[=================================================================] 368.45M 1m 6s 290ms
 Clustering step 2
-[=================================================================] 353.76M 2m 13s 844ms
+[=================================================================] 353.76M 1m 59s 131ms
 Write merged clustering
-[=================================================================] 625.80M 2m 58s 486ms
-Time for merging to clu_redundancy: 0h 2m 17s 40ms
-Time for processing: 0h 6m 27s 834ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter1 -v 3 
+[=================================================================] 625.80M 2m 37s 256ms
+Time for merging to clu_redundancy: 0h 2m 16s 29ms
+Time for processing: 0h 5m 56s 328ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter1 -v 3 
 
-Time for processing: 0h 0m 0s 1ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref -v 3 
+Time for processing: 0h 0m 0s 509ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref -v 3 
 
-Time for processing: 0h 0m 3s 649ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore1 -v 3 
+Time for processing: 0h 0m 0s 3ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore1 -v 3 
 
-Time for processing: 0h 0m 1s 2ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pre_clust -v 3 
+Time for processing: 0h 0m 1s 711ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pre_clust -v 3 
 
-Time for processing: 0h 0m 0s 894ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy -v 3 
+Time for processing: 0h 0m 0s 982ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy -v 3 
 
-Time for processing: 0h 0m 0s 536ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/input_step_redundancy_h -v 3 
+Time for processing: 0h 0m 0s 603ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/input_step_redundancy_h -v 3 
 
 Time for processing: 0h 0m 0s 2ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_filter2 -v 3 
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_filter2 -v 3 
 
-Time for processing: 0h 0m 1s 323ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/pref_rescore2 -v 3 
+Time for processing: 0h 0m 0s 629ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/pref_rescore2 -v 3 
 
-Time for processing: 0h 0m 1s 195ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/aln -v 3 
+Time for processing: 0h 0m 1s 217ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/aln -v 3 
 
-Time for processing: 0h 0m 2s 13ms
-rmdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/linclust/18258936369452679043/clust -v 3 
+Time for processing: 0h 0m 2s 334ms
+rmdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/linclust/15452879357623476260/clust -v 3 
 
-Time for processing: 0h 0m 0s 900ms
-createsubdb /scratch/aie7773/tmp_mmseqs/7709663621598725039/clu_redundancy /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/7709663621598725039/input_step_redundancy -v 3 --subdb-mode 1 
+Time for processing: 0h 0m 0s 870ms
+createsubdb /scratch/aie7773/tmp_mmseqs/8374853022929808556/clu_redundancy /scratch/aie7773/tmp_mmseqs/all.coassembly_proteins_1st_ClusterDB_repseq_DB /scratch/aie7773/tmp_mmseqs/8374853022929808556/input_step_redundancy -v 3 --subdb-mode 1 
 
 Time for merging to input_step_redundancy: 0h 0m 0s 0ms
-Time for processing: 0h 2m 15s 944ms
-prefilter /scratch/aie7773/tmp_mmseqs/7709663621598725039/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/input_step_redundancy /scratch/aie7773/tmp_mmseqs/7709663621598725039/pref_step0 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --seed-sub-mat 'aa:VTML80.out,nucl:nucleotide.out' -s 1 -k 0 --target-search-mode 0 --k-score seq:2147483647,prof:2147483647 --alph-size aa:21,nucl:5 --max-seq-len 65535 --max-seqs 20 --split 0 --split-mode 2 --split-memory-limit 80G -c 0.7 --cov-mode 0 --comp-bias-corr 0 --comp-bias-corr-scale 1 --diag-score 0 --exact-kmer-matching 0 --mask 1 --mask-prob 0.9 --mask-lower-case 0 --min-ungapped-score 0 --add-self-matches 0 --spaced-kmer-mode 1 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --threads 128 --compressed 0 -v 3 
+Time for processing: 0h 2m 23s 537ms
+prefilter /scratch/aie7773/tmp_mmseqs/8374853022929808556/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/input_step_redundancy /scratch/aie7773/tmp_mmseqs/8374853022929808556/pref_step0 --sub-mat 'aa:blosum62.out,nucl:nucleotide.out' --seed-sub-mat 'aa:VTML80.out,nucl:nucleotide.out' -s 1 -k 0 --target-search-mode 0 --k-score seq:2147483647,prof:2147483647 --alph-size aa:21,nucl:5 --max-seq-len 65535 --max-seqs 20 --split 0 --split-mode 2 --split-memory-limit 80G -c 0.7 --cov-mode 0 --comp-bias-corr 0 --comp-bias-corr-scale 1 --diag-score 0 --exact-kmer-matching 0 --mask 1 --mask-prob 0.9 --mask-lower-case 0 --min-ungapped-score 0 --add-self-matches 0 --spaced-kmer-mode 1 --db-load-mode 0 --pca substitution:1.100,context:1.400 --pcb substitution:4.100,context:5.800 --threads 128 --compressed 0 -v 3 
 
 Query database size: 353759745 type: Aminoacid
 Target split mode. Searching through 66 splits
@@ -869,10 +869,10 @@ Process prefiltering step 1 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.20M 6s 98ms
+[=================================================================] 5.20M 4s 415ms
 Index table: Masked residues: 9762520
 Index table: fill
-[=================================================================] 5.20M 4s 762ms
+[=================================================================] 5.20M 5s 80ms
 Index statistics
 Entries:          462834811
 DB size:          12413 MB
@@ -888,29 +888,29 @@ Top 10 k-mers
     GPGGKLV	1393
     SDYLGLY	1302
     PDVLDMP	1087
-Time for index table init: 0h 0m 18s 460ms
+Time for index table init: 0h 0m 16s 732ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 1 of 66)
 Query db start 1 to 353759745
 Target db start 1 to 5202012
-[=================================================================] 353.76M 43m 24s 971ms
-
+[================================================================] 353.76M 41m 20s 52ms
+=
 5.083750 k-mers per position
 912 DB matches per sequence
 0 overflows
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38248999 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_0: 0h 2m 0s 439ms
-Time for merging to pref_step0_tmp_0_tmp: 0h 1m 19s 270ms
+Time for merging to pref_step0_tmp_0: 0h 2m 2s 102ms
+Time for merging to pref_step0_tmp_0_tmp: 0h 1m 19s 503ms
 Process prefiltering step 2 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.16M 4s 441ms
+[=================================================================] 5.16M 4s 495ms
 Index table: Masked residues: 9898090
 Index table: fill
-[=================================================================] 5.16M 4s 682ms
+[=================================================================] 5.16M 4s 860ms
 Index statistics
 Entries:          466457568
 DB size:          12434 MB
@@ -926,12 +926,12 @@ Top 10 k-mers
     GPGGKLV	1256
     SDYLGLY	1155
     YPESGRQ	1031
-Time for index table init: 0h 0m 19s 334ms
+Time for index table init: 0h 0m 18s 967ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 2 of 66)
 Query db start 1 to 353759745
 Target db start 5202013 to 10361335
-[=================================================================] 353.76M 36m 28s 413ms
+[=================================================================] 353.76M 43m 24s 440ms
 
 5.083750 k-mers per position
 879 DB matches per sequence
@@ -939,16 +939,16 @@ Target db start 5202013 to 10361335
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38541623 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_1: 0h 2m 30s 686ms
-Time for merging to pref_step0_tmp_1_tmp: 0h 1m 19s 251ms
+Time for merging to pref_step0_tmp_1: 0h 2m 14s 663ms
+Time for merging to pref_step0_tmp_1_tmp: 0h 1m 23s 861ms
 Process prefiltering step 3 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.27M 4s 459ms
+[=================================================================] 5.27M 5s 15ms
 Index table: Masked residues: 9426304
 Index table: fill
-[=================================================================] 5.27M 4s 540ms
+[=================================================================] 5.27M 5s 850ms
 Index statistics
 Entries:          463453839
 DB size:          12417 MB
@@ -964,12 +964,12 @@ Top 10 k-mers
     GPGGKLV	1329
     SDYLGLY	1196
     PALGGQR	1130
-Time for index table init: 0h 0m 18s 870ms
+Time for index table init: 0h 0m 24s 260ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 3 of 66)
 Query db start 1 to 353759745
 Target db start 10361336 to 15630046
-[=================================================================] 353.76M 36m 16s 797ms
+[=================================================================] 353.76M 46m 3s 559ms
 
 5.083750 k-mers per position
 913 DB matches per sequence
@@ -977,16 +977,16 @@ Target db start 10361336 to 15630046
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38214454 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_2: 0h 2m 1s 381ms
-Time for merging to pref_step0_tmp_2_tmp: 0h 1m 19s 689ms
+Time for merging to pref_step0_tmp_2: 0h 2m 59s 739ms
+Time for merging to pref_step0_tmp_2_tmp: 0h 1m 24s 965ms
 Process prefiltering step 4 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.22M 4s 489ms
+[=================================================================] 5.22M 5s 368ms
 Index table: Masked residues: 10033044
 Index table: fill
-[=================================================================] 5.22M 4s 687ms
+[=================================================================] 5.22M 6s 360ms
 Index statistics
 Entries:          463519881
 DB size:          12417 MB
@@ -1002,12 +1002,12 @@ Top 10 k-mers
     FLNSHRT	1526
     GPGGKLV	1338
     SDYLGLY	1281
-Time for index table init: 0h 0m 19s 97ms
+Time for index table init: 0h 0m 24s 257ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 4 of 66)
 Query db start 1 to 353759745
 Target db start 15630047 to 20849816
-[=================================================================] 353.76M 36m 13s 891ms
+[=================================================================] 353.76M 47m 59s 464ms
 
 5.083750 k-mers per position
 903 DB matches per sequence
@@ -1015,16 +1015,16 @@ Target db start 15630047 to 20849816
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38581241 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_3: 0h 2m 0s 531ms
-Time for merging to pref_step0_tmp_3_tmp: 0h 1m 18s 779ms
+Time for merging to pref_step0_tmp_3: 0h 2m 20s 279ms
+Time for merging to pref_step0_tmp_3_tmp: 0h 1m 23s 926ms
 Process prefiltering step 5 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.21M 4s 488ms
+[=================================================================] 5.21M 5s 252ms
 Index table: Masked residues: 9579534
 Index table: fill
-[=================================================================] 5.21M 4s 659ms
+[=================================================================] 5.21M 6s 554ms
 Index statistics
 Entries:          466435865
 DB size:          12434 MB
@@ -1040,12 +1040,12 @@ Top 10 k-mers
     GPGGKLV	1309
     SDYLGLY	1164
     PALGGQR	1077
-Time for index table init: 0h 0m 18s 923ms
+Time for index table init: 0h 0m 24s 416ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 5 of 66)
 Query db start 1 to 353759745
 Target db start 20849817 to 26060493
-[=================================================================] 353.76M 36m 58s 963ms
+[=================================================================] 353.76M 42m 26s 717ms
 
 5.083750 k-mers per position
 888 DB matches per sequence
@@ -1053,16 +1053,16 @@ Target db start 20849817 to 26060493
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38984319 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_4: 0h 2m 0s 697ms
-Time for merging to pref_step0_tmp_4_tmp: 0h 1m 19s 473ms
+Time for merging to pref_step0_tmp_4: 0h 2m 6s 378ms
+Time for merging to pref_step0_tmp_4_tmp: 0h 1m 21s 107ms
 Process prefiltering step 6 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.28M 4s 403ms
+[=================================================================] 5.28M 4s 627ms
 Index table: Masked residues: 9919707
 Index table: fill
-[=================================================================] 5.28M 4s 537ms
+[=================================================================] 5.28M 5s 119ms
 Index statistics
 Entries:          461514999
 DB size:          12406 MB
@@ -1078,12 +1078,12 @@ Top 10 k-mers
     GPGGKLV	1442
     SDYLGLY	1391
     VGPYMEQ	1075
-Time for index table init: 0h 0m 18s 994ms
+Time for index table init: 0h 0m 20s 140ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 6 of 66)
 Query db start 1 to 353759745
 Target db start 26060494 to 31337313
-[=================================================================] 353.76M 39m 14s 94ms
+[=================================================================] 353.76M 44m 2s 554ms
 
 5.083750 k-mers per position
 918 DB matches per sequence
@@ -1091,16 +1091,16 @@ Target db start 26060494 to 31337313
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38639746 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_5: 0h 2m 4s 374ms
-Time for merging to pref_step0_tmp_5_tmp: 0h 1m 20s 673ms
+Time for merging to pref_step0_tmp_5: 0h 2m 15s 491ms
+Time for merging to pref_step0_tmp_5_tmp: 0h 1m 22s 736ms
 Process prefiltering step 7 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.24M 4s 466ms
+[=================================================================] 5.24M 5s 155ms
 Index table: Masked residues: 9785472
 Index table: fill
-[=================================================================] 5.24M 4s 698ms
+[=================================================================] 5.24M 5s 621ms
 Index statistics
 Entries:          466754326
 DB size:          12436 MB
@@ -1116,12 +1116,12 @@ Top 10 k-mers
     FLNSHRT	1444
     GPGGKLV	1269
     SDYLGLY	1146
-Time for index table init: 0h 0m 19s 540ms
+Time for index table init: 0h 0m 22s 514ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 7 of 66)
 Query db start 1 to 353759745
 Target db start 31337314 to 36576295
-[=================================================================] 353.76M 38m 42s 516ms
+[=================================================================] 353.76M 45m 7s 431ms
 
 5.083750 k-mers per position
 881 DB matches per sequence
@@ -1129,16 +1129,16 @@ Target db start 31337314 to 36576295
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38926201 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_6: 0h 2m 1s 604ms
-Time for merging to pref_step0_tmp_6_tmp: 0h 1m 19s 142ms
+Time for merging to pref_step0_tmp_6: 0h 2m 10s 629ms
+Time for merging to pref_step0_tmp_6_tmp: 0h 1m 21s 423ms
 Process prefiltering step 8 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.25M 4s 492ms
+[=================================================================] 5.25M 5s 119ms
 Index table: Masked residues: 9896350
 Index table: fill
-[=================================================================] 5.25M 4s 702ms
+[=================================================================] 5.25M 5s 840ms
 Index statistics
 Entries:          462321087
 DB size:          12411 MB
@@ -1154,12 +1154,12 @@ Top 10 k-mers
     FLNSHRT	1603
     SDYLGLY	1395
     YPESGRQ	1051
-Time for index table init: 0h 0m 19s 446ms
+Time for index table init: 0h 0m 21s 892ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 8 of 66)
 Query db start 1 to 353759745
 Target db start 36576296 to 41830821
-[=================================================================] 353.76M 38m 41s 663ms
+[=================================================================] 353.76M 44m 38s 399ms
 
 5.083750 k-mers per position
 916 DB matches per sequence
@@ -1167,16 +1167,16 @@ Target db start 36576296 to 41830821
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38440310 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_7: 0h 2m 1s 523ms
-Time for merging to pref_step0_tmp_7_tmp: 0h 1m 23s 279ms
+Time for merging to pref_step0_tmp_7: 0h 2m 8s 182ms
+Time for merging to pref_step0_tmp_7_tmp: 0h 1m 18s 287ms
 Process prefiltering step 9 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.22M 4s 531ms
+[=================================================================] 5.22M 4s 394ms
 Index table: Masked residues: 10045654
 Index table: fill
-[=================================================================] 5.22M 4s 811ms
+[=================================================================] 5.22M 4s 948ms
 Index statistics
 Entries:          466136324
 DB size:          12432 MB
@@ -1192,12 +1192,12 @@ Top 10 k-mers
     FLNSHRT	1486
     GPGGKLV	1242
     SDYLGLY	1189
-Time for index table init: 0h 0m 19s 509ms
+Time for index table init: 0h 0m 19s 375ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 9 of 66)
 Query db start 1 to 353759745
 Target db start 41830822 to 47046618
-[=================================================================] 353.76M 38m 32s 977ms
+[=================================================================] 353.76M 41m 8s 789ms
 
 5.083750 k-mers per position
 882 DB matches per sequence
@@ -1205,16 +1205,16 @@ Target db start 41830822 to 47046618
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38704925 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_8: 0h 2m 5s 439ms
-Time for merging to pref_step0_tmp_8_tmp: 0h 1m 19s 759ms
+Time for merging to pref_step0_tmp_8: 0h 2m 2s 982ms
+Time for merging to pref_step0_tmp_8_tmp: 0h 1m 20s 41ms
 Process prefiltering step 10 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.32M 4s 532ms
+[=================================================================] 5.32M 4s 874ms
 Index table: Masked residues: 9649754
 Index table: fill
-[=================================================================] 5.32M 4s 770ms
+[=================================================================] 5.32M 5s 897ms
 Index statistics
 Entries:          462599424
 DB size:          12412 MB
@@ -1230,12 +1230,12 @@ Top 10 k-mers
     GPGGKLV	1324
     SDYLGLY	1292
     PDVLDLP	1053
-Time for index table init: 0h 0m 19s 777ms
+Time for index table init: 0h 0m 21s 52ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 10 of 66)
 Query db start 1 to 353759745
 Target db start 47046619 to 52362499
-[=================================================================] 353.76M 38m 33s 371ms
+[=================================================================] 353.76M 41m 27s 476ms
 
 5.083750 k-mers per position
 919 DB matches per sequence
@@ -1243,16 +1243,16 @@ Target db start 47046619 to 52362499
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38357393 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_9: 0h 2m 9s 760ms
-Time for merging to pref_step0_tmp_9_tmp: 0h 1m 19s 987ms
+Time for merging to pref_step0_tmp_9: 0h 2m 36s 672ms
+Time for merging to pref_step0_tmp_9_tmp: 0h 1m 22s 274ms
 Process prefiltering step 11 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.24M 4s 503ms
+[=================================================================] 5.24M 4s 891ms
 Index table: Masked residues: 10138200
 Index table: fill
-[=================================================================] 5.24M 4s 794ms
+[=================================================================] 5.24M 5s 937ms
 Index statistics
 Entries:          464595977
 DB size:          12424 MB
@@ -1268,12 +1268,12 @@ Top 10 k-mers
     GPGGKLV	1331
     SDYLGLY	1253
     PALGGQR	1087
-Time for index table init: 0h 0m 19s 642ms
+Time for index table init: 0h 0m 21s 423ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 11 of 66)
 Query db start 1 to 353759745
 Target db start 52362500 to 57602488
-[=================================================================] 353.76M 39m 0s 865ms
+[=================================================================] 353.76M 41m 42s 514ms
 
 5.083750 k-mers per position
 892 DB matches per sequence
@@ -1281,16 +1281,16 @@ Target db start 52362500 to 57602488
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38623686 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_10: 0h 2m 12s 472ms
-Time for merging to pref_step0_tmp_10_tmp: 0h 1m 23s 686ms
+Time for merging to pref_step0_tmp_10: 0h 2m 36s 951ms
+Time for merging to pref_step0_tmp_10_tmp: 0h 1m 20s 225ms
 Process prefiltering step 12 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.31M 4s 597ms
+[=================================================================] 5.31M 4s 912ms
 Index table: Masked residues: 9612751
 Index table: fill
-[=================================================================] 5.31M 5s 356ms
+[=================================================================] 5.31M 5s 798ms
 Index statistics
 Entries:          463976854
 DB size:          12420 MB
@@ -1306,12 +1306,12 @@ Top 10 k-mers
     GPGGKLV	1350
     SDYLGLY	1228
     VGSCGTL	1193
-Time for index table init: 0h 0m 21s 935ms
+Time for index table init: 0h 0m 21s 30ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 12 of 66)
 Query db start 1 to 353759745
 Target db start 57602489 to 62914781
-[=================================================================] 353.76M 37m 0s 487ms
+[=================================================================] 353.76M 41m 27s 567ms
 
 5.083750 k-mers per position
 909 DB matches per sequence
@@ -1319,16 +1319,16 @@ Target db start 57602489 to 62914781
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38618674 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_11: 0h 2m 1s 0ms
-Time for merging to pref_step0_tmp_11_tmp: 0h 1m 19s 54ms
+Time for merging to pref_step0_tmp_11: 0h 2m 26s 687ms
+Time for merging to pref_step0_tmp_11_tmp: 0h 1m 19s 650ms
 Process prefiltering step 13 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.28M 4s 470ms
+[=================================================================] 5.28M 4s 847ms
 Index table: Masked residues: 10069465
 Index table: fill
-[=================================================================] 5.28M 5s 11ms
+[=================================================================] 5.28M 5s 726ms
 Index statistics
 Entries:          462590351
 DB size:          12412 MB
@@ -1344,12 +1344,12 @@ Top 10 k-mers
     SDYLGLY	1411
     GGGGLSR	1097
     GGRRLAR	1067
-Time for index table init: 0h 0m 20s 167ms
+Time for index table init: 0h 0m 20s 803ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 13 of 66)
 Query db start 1 to 353759745
 Target db start 62914782 to 68195654
-[=================================================================] 353.76M 38m 17s 928ms
+[=================================================================] 353.76M 41m 9s 274ms
 
 5.083750 k-mers per position
 911 DB matches per sequence
@@ -1357,16 +1357,16 @@ Target db start 62914782 to 68195654
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38774217 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_12: 0h 1m 59s 988ms
-Time for merging to pref_step0_tmp_12_tmp: 0h 1m 19s 418ms
+Time for merging to pref_step0_tmp_12: 0h 2m 2s 908ms
+Time for merging to pref_step0_tmp_12_tmp: 0h 1m 19s 726ms
 Process prefiltering step 14 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.28M 4s 451ms
+[=================================================================] 5.28M 4s 856ms
 Index table: Masked residues: 9748555
 Index table: fill
-[=================================================================] 5.28M 4s 586ms
+[=================================================================] 5.28M 5s 655ms
 Index statistics
 Entries:          466026030
 DB size:          12432 MB
@@ -1382,12 +1382,12 @@ Top 10 k-mers
     TLGGGKT	1356
     GPGGKLV	1313
     SDYLGLY	1139
-Time for index table init: 0h 0m 21s 87ms
+Time for index table init: 0h 0m 20s 756ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 14 of 66)
 Query db start 1 to 353759745
 Target db start 68195655 to 73477069
-[=================================================================] 353.76M 37m 23s 475ms
+[=================================================================] 353.76M 40m 50s 189ms
 
 5.083750 k-mers per position
 891 DB matches per sequence
@@ -1395,16 +1395,16 @@ Target db start 68195655 to 73477069
 1 sequences passed prefiltering per query sequence
 2 median result list length
 39190559 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_13: 0h 2m 6s 749ms
-Time for merging to pref_step0_tmp_13_tmp: 0h 1m 19s 648ms
+Time for merging to pref_step0_tmp_13: 0h 2m 11s 508ms
+Time for merging to pref_step0_tmp_13_tmp: 0h 1m 20s 1ms
 Process prefiltering step 15 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.32M 4s 486ms
+[=================================================================] 5.32M 4s 830ms
 Index table: Masked residues: 9994106
 Index table: fill
-[=================================================================] 5.32M 4s 476ms
+[=================================================================] 5.32M 5s 618ms
 Index statistics
 Entries:          461294376
 DB size:          12405 MB
@@ -1420,12 +1420,12 @@ Top 10 k-mers
     GPGGKLV	1438
     SDYLGLY	1374
     HHRDGYP	1088
-Time for index table init: 0h 0m 18s 814ms
+Time for index table init: 0h 0m 20s 660ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 15 of 66)
 Query db start 1 to 353759745
 Target db start 73477070 to 78794663
-[=================================================================] 353.76M 37m 38s 279ms
+[=================================================================] 353.76M 41m 3s 973ms
 
 5.083750 k-mers per position
 921 DB matches per sequence
@@ -1433,16 +1433,16 @@ Target db start 73477070 to 78794663
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38862733 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_14: 0h 2m 0s 331ms
-Time for merging to pref_step0_tmp_14_tmp: 0h 1m 19s 974ms
+Time for merging to pref_step0_tmp_14: 0h 2m 6s 803ms
+Time for merging to pref_step0_tmp_14_tmp: 0h 1m 20s 23ms
 Process prefiltering step 16 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.29M 4s 475ms
+[=================================================================] 5.29M 4s 842ms
 Index table: Masked residues: 9883691
 Index table: fill
-[=================================================================] 5.29M 4s 531ms
+[=================================================================] 5.29M 5s 584ms
 Index statistics
 Entries:          466474280
 DB size:          12434 MB
@@ -1458,12 +1458,12 @@ Top 10 k-mers
     FLNSHRT	1519
     GPGGKLV	1218
     SDYLGLY	1169
-Time for index table init: 0h 0m 19s 775ms
+Time for index table init: 0h 0m 20s 606ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 16 of 66)
 Query db start 1 to 353759745
 Target db start 78794664 to 84082150
-[=================================================================] 353.76M 37m 13s 214ms
+[=================================================================] 353.76M 40m 42s 861ms
 
 5.083750 k-mers per position
 886 DB matches per sequence
@@ -1471,16 +1471,16 @@ Target db start 78794664 to 84082150
 1 sequences passed prefiltering per query sequence
 2 median result list length
 39326827 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_15: 0h 2m 0s 494ms
-Time for merging to pref_step0_tmp_15_tmp: 0h 1m 19s 921ms
+Time for merging to pref_step0_tmp_15: 0h 2m 15s 674ms
+Time for merging to pref_step0_tmp_15_tmp: 0h 1m 20s 272ms
 Process prefiltering step 17 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.33M 4s 337ms
+[=================================================================] 5.33M 4s 840ms
 Index table: Masked residues: 9983929
 Index table: fill
-[=================================================================] 5.33M 4s 429ms
+[=================================================================] 5.33M 5s 721ms
 Index statistics
 Entries:          461341764
 DB size:          12405 MB
@@ -1496,12 +1496,12 @@ Top 10 k-mers
     FLNSHRT	1533
     SDYLGLY	1396
     YPESGRQ	1068
-Time for index table init: 0h 0m 18s 634ms
+Time for index table init: 0h 0m 20s 689ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 17 of 66)
 Query db start 1 to 353759745
 Target db start 84082151 to 89407286
-[=================================================================] 353.76M 37m 32s 686ms
+[=================================================================] 353.76M 41m 4s 957ms
 
 5.083750 k-mers per position
 922 DB matches per sequence
@@ -1509,16 +1509,16 @@ Target db start 84082151 to 89407286
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38712625 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_16: 0h 2m 0s 368ms
-Time for merging to pref_step0_tmp_16_tmp: 0h 1m 19s 529ms
+Time for merging to pref_step0_tmp_16: 0h 2m 2s 694ms
+Time for merging to pref_step0_tmp_16_tmp: 0h 1m 20s 250ms
 Process prefiltering step 18 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.31M 4s 403ms
+[=================================================================] 5.31M 4s 853ms
 Index table: Masked residues: 9978189
 Index table: fill
-[=================================================================] 5.31M 4s 451ms
+[=================================================================] 5.31M 5s 642ms
 Index statistics
 Entries:          465876787
 DB size:          12431 MB
@@ -1534,12 +1534,12 @@ Top 10 k-mers
     GPGGKLV	1306
     SDYLGLY	1165
     GGRRLAR	1015
-Time for index table init: 0h 0m 18s 816ms
+Time for index table init: 0h 0m 21s 14ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 18 of 66)
 Query db start 1 to 353759745
 Target db start 89407287 to 94719041
-[=================================================================] 353.76M 37m 18s 259ms
+[=================================================================] 353.76M 41m 5s 997ms
 
 5.083750 k-mers per position
 889 DB matches per sequence
@@ -1547,16 +1547,16 @@ Target db start 89407287 to 94719041
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38925149 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_17: 0h 2m 3s 745ms
-Time for merging to pref_step0_tmp_17_tmp: 0h 1m 20s 177ms
+Time for merging to pref_step0_tmp_17: 0h 2m 2s 94ms
+Time for merging to pref_step0_tmp_17_tmp: 0h 1m 19s 661ms
 Process prefiltering step 19 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.32M 4s 375ms
+[=================================================================] 5.32M 4s 877ms
 Index table: Masked residues: 9949256
 Index table: fill
-[=================================================================] 5.32M 4s 440ms
+[=================================================================] 5.32M 5s 302ms
 Index statistics
 Entries:          462004560
 DB size:          12409 MB
@@ -1572,12 +1572,12 @@ Top 10 k-mers
     FLNSHRT	1666
     GPGGKLV	1442
     SDYLGLY	1393
-Time for index table init: 0h 0m 18s 523ms
+Time for index table init: 0h 0m 20s 856ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 19 of 66)
 Query db start 1 to 353759745
 Target db start 94719042 to 100039516
-[=================================================================] 353.76M 37m 37s 131ms
+[=================================================================] 353.76M 41m 26s 640ms
 
 5.083750 k-mers per position
 923 DB matches per sequence
@@ -1585,16 +1585,16 @@ Target db start 94719042 to 100039516
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38646021 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_18: 0h 2m 0s 671ms
-Time for merging to pref_step0_tmp_18_tmp: 0h 1m 19s 992ms
+Time for merging to pref_step0_tmp_18: 0h 2m 2s 747ms
+Time for merging to pref_step0_tmp_18_tmp: 0h 1m 20s 149ms
 Process prefiltering step 20 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.29M 4s 538ms
+[=================================================================] 5.29M 4s 873ms
 Index table: Masked residues: 10158059
 Index table: fill
-[=================================================================] 5.29M 4s 417ms
+[=================================================================] 5.29M 5s 637ms
 Index statistics
 Entries:          465529013
 DB size:          12429 MB
@@ -1610,12 +1610,12 @@ Top 10 k-mers
     GPGGKLV	1278
     SDYLGLY	1214
     PALGGQR	1049
-Time for index table init: 0h 0m 20s 867ms
+Time for index table init: 0h 0m 20s 719ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 20 of 66)
 Query db start 1 to 353759745
 Target db start 100039517 to 105327922
-[=================================================================] 353.76M 37m 17s 983ms
+[=================================================================] 353.76M 41m 4s 894ms
 
 5.083750 k-mers per position
 887 DB matches per sequence
@@ -1623,16 +1623,16 @@ Target db start 100039517 to 105327922
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38882950 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_19: 0h 2m 0s 279ms
-Time for merging to pref_step0_tmp_19_tmp: 0h 1m 19s 760ms
+Time for merging to pref_step0_tmp_19: 0h 2m 12s 83ms
+Time for merging to pref_step0_tmp_19_tmp: 0h 1m 20s 239ms
 Process prefiltering step 21 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.37M 4s 374ms
+[=================================================================] 5.37M 4s 760ms
 Index table: Masked residues: 9778644
 Index table: fill
-[=================================================================] 5.37M 4s 425ms
+[=================================================================] 5.37M 5s 310ms
 Index statistics
 Entries:          461977579
 DB size:          12409 MB
@@ -1648,12 +1648,12 @@ Top 10 k-mers
     FLNSHRT	1662
     GPGGKLV	1407
     SDYLGLY	1338
-Time for index table init: 0h 0m 18s 762ms
+Time for index table init: 0h 0m 20s 19ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 21 of 66)
 Query db start 1 to 353759745
 Target db start 105327923 to 110694043
-[=================================================================] 353.76M 37m 33s 925ms
+[=================================================================] 353.76M 41m 24s 805ms
 
 5.083750 k-mers per position
 925 DB matches per sequence
@@ -1661,16 +1661,16 @@ Target db start 105327923 to 110694043
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38589479 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_20: 0h 2m 0s 248ms
-Time for merging to pref_step0_tmp_20_tmp: 0h 1m 20s 126ms
+Time for merging to pref_step0_tmp_20: 0h 2m 2s 901ms
+Time for merging to pref_step0_tmp_20_tmp: 0h 1m 20s 95ms
 Process prefiltering step 22 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.29M 4s 402ms
+[=================================================================] 5.29M 4s 869ms
 Index table: Masked residues: 10206250
 Index table: fill
-[=================================================================] 5.29M 4s 375ms
+[=================================================================] 5.29M 5s 675ms
 Index statistics
 Entries:          465052177
 DB size:          12426 MB
@@ -1686,12 +1686,12 @@ Top 10 k-mers
     GPGGKLV	1296
     SDYLGLY	1212
     PHFGGQR	1061
-Time for index table init: 0h 0m 18s 692ms
+Time for index table init: 0h 0m 20s 751ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 22 of 66)
 Query db start 1 to 353759745
 Target db start 110694044 to 115984884
-[=================================================================] 353.76M 37m 18s 436ms
+[=================================================================] 353.76M 41m 2s 313ms
 
 5.083750 k-mers per position
 890 DB matches per sequence
@@ -1699,16 +1699,16 @@ Target db start 110694044 to 115984884
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38852785 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_21: 0h 2m 5s 10ms
-Time for merging to pref_step0_tmp_21_tmp: 0h 1m 20s 28ms
+Time for merging to pref_step0_tmp_21: 0h 2m 8s 823ms
+Time for merging to pref_step0_tmp_21_tmp: 0h 1m 19s 929ms
 Process prefiltering step 23 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.39M 4s 344ms
+[=================================================================] 5.39M 4s 974ms
 Index table: Masked residues: 9732474
 Index table: fill
-[=================================================================] 5.39M 4s 424ms
+[=================================================================] 5.39M 5s 701ms
 Index statistics
 Entries:          462196117
 DB size:          12410 MB
@@ -1724,12 +1724,12 @@ Top 10 k-mers
     FLNSHRT	1679
     SDYLGLY	1329
     GGGGLSR	1105
-Time for index table init: 0h 0m 18s 485ms
+Time for index table init: 0h 0m 20s 957ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 23 of 66)
 Query db start 1 to 353759745
 Target db start 115984885 to 121374701
-[=================================================================] 353.76M 36m 25s 371ms
+[=================================================================] 353.76M 41m 25s 969ms
 
 5.083750 k-mers per position
 925 DB matches per sequence
@@ -1737,16 +1737,16 @@ Target db start 115984885 to 121374701
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38575315 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_22: 0h 1m 56s 85ms
-Time for merging to pref_step0_tmp_22_tmp: 0h 1m 18s 614ms
+Time for merging to pref_step0_tmp_22: 0h 2m 2s 355ms
+Time for merging to pref_step0_tmp_22_tmp: 0h 1m 19s 618ms
 Process prefiltering step 24 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.30M 4s 393ms
+[=================================================================] 5.30M 4s 829ms
 Index table: Masked residues: 10277927
 Index table: fill
-[=================================================================] 5.30M 4s 546ms
+[=================================================================] 5.30M 5s 568ms
 Index statistics
 Entries:          464567141
 DB size:          12423 MB
@@ -1762,12 +1762,12 @@ Top 10 k-mers
     FLNSHRT	1568
     GPGGKLV	1339
     SDYLGLY	1316
-Time for index table init: 0h 0m 19s 120ms
+Time for index table init: 0h 0m 20s 502ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 24 of 66)
 Query db start 1 to 353759745
 Target db start 121374702 to 126670128
-[=================================================================] 353.76M 35m 45s 635ms
+[=================================================================] 353.76M 40m 46s 996ms
 
 5.083750 k-mers per position
 894 DB matches per sequence
@@ -1775,16 +1775,16 @@ Target db start 121374702 to 126670128
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38853402 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_23: 0h 1m 58s 609ms
-Time for merging to pref_step0_tmp_23_tmp: 0h 1m 19s 12ms
+Time for merging to pref_step0_tmp_23: 0h 2m 2s 536ms
+Time for merging to pref_step0_tmp_23_tmp: 0h 1m 20s 348ms
 Process prefiltering step 25 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.40M 4s 377ms
+[=================================================================] 5.40M 4s 782ms
 Index table: Masked residues: 9759200
 Index table: fill
-[=================================================================] 5.40M 4s 383ms
+[=================================================================] 5.40M 5s 519ms
 Index statistics
 Entries:          462444703
 DB size:          12411 MB
@@ -1800,12 +1800,12 @@ Top 10 k-mers
     GPGGKLV	1421
     SDYLGLY	1315
     PHFGGQR	1124
-Time for index table init: 0h 0m 18s 784ms
+Time for index table init: 0h 0m 20s 933ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 25 of 66)
 Query db start 1 to 353759745
 Target db start 126670129 to 132072778
-[=================================================================] 353.76M 36m 5s 729ms
+[=================================================================] 353.76M 41m 0s 355ms
 
 5.083750 k-mers per position
 922 DB matches per sequence
@@ -1813,16 +1813,16 @@ Target db start 126670129 to 132072778
 1 sequences passed prefiltering per query sequence
 2 median result list length
 38663876 sequences with 0 size result lists
-Time for merging to pref_step0_tmp_24: 0h 1m 57s 107ms
-Time for merging to pref_step0_tmp_24_tmp: 0h 1m 19s 134ms
+Time for merging to pref_step0_tmp_24: 0h 2m 2s 46ms
+Time for merging to pref_step0_tmp_24_tmp: 0h 1m 19s 588ms
 Process prefiltering step 26 of 66
 
 Index table k-mer threshold: 174 at k-mer size 7 
 Index table: counting k-mers
-[=================================================================] 5.31M 4s 382ms
+[=================================================================] 5.31M 4s 813ms
 Index table: Masked residues: 10287977
 Index table: fill
-[=================================================================] 5.31M 4s 374ms
+[=================================================================] 5.31M 5s 543ms
 Index statistics
 Entries:          463784165
 DB size:          12419 MB
@@ -1838,9 +1838,47 @@ Top 10 k-mers
     SDYLGLY	1367
     PHFGGQR	1143
     PALGGQR	1133
-Time for index table init: 0h 0m 18s 803ms
+Time for index table init: 0h 0m 20s 478ms
 k-mer similarity threshold: 174
 Starting prefiltering scores calculation (step 26 of 66)
 Query db start 1 to 353759745
 Target db start 132072779 to 137380258
-[=================================================================slurmstepd: error: *** JOB 7275072 ON qnode3006 CANCELLED AT 2025-07-03T12:13:06 DUE TO TIME LIMIT ***
+[=================================================================] 353.76M 40m 27s 220ms
+
+5.083750 k-mers per position
+901 DB matches per sequence
+0 overflows
+1 sequences passed prefiltering per query sequence
+2 median result list length
+38862944 sequences with 0 size result lists
+Time for merging to pref_step0_tmp_25: 0h 2m 10s 896ms
+Time for merging to pref_step0_tmp_25_tmp: 0h 1m 20s 18ms
+Process prefiltering step 27 of 66
+
+Index table k-mer threshold: 174 at k-mer size 7 
+Index table: counting k-mers
+[=================================================================] 5.40M 4s 825ms
+Index table: Masked residues: 9760750
+Index table: fill
+[=================================================================] 5.40M 5s 378ms
+Index statistics
+Entries:          463195767
+DB size:          12416 MB
+Avg k-mer size:   0.361872
+Top 10 k-mers
+    GPGGKLL	5735
+    YTGTGKG	4647
+    GPGGKTL	2543
+    GGQRVAR	2491
+    GLGNGKT	2248
+    LLGPGKT	1932
+    FLNSHRT	1676
+    GPGGKLV	1322
+    SDYLGLY	1225
+    PSCKTLR	1103
+Time for index table init: 0h 0m 20s 405ms
+k-mer similarity threshold: 174
+Starting prefiltering scores calculation (step 27 of 66)
+Query db start 1 to 353759745
+Target db start 137380259 to 142777233
+[=========================

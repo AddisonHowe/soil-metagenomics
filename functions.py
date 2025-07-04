@@ -141,7 +141,7 @@ def enriched_native_pH(CID, data, cluster_IDs):
 
 '''
 plot_native_perturbed
-inputs: an array with 11 rows (perturbed pHs) and 10 columns (native pHs)
+inputs: an array with 10 rows (native pHs) and 11 columns (perturbed pHs)
 produces plot
 '''
 
@@ -167,3 +167,145 @@ def plot(data, title):
 
     plt.tight_layout()
     plt.show()
+    
+'''
+information_1D
+input: 1 array with with 10 rows (native pHs) and 11 columns (perturbed pHs)
+output: 2 1D arrays one for mutual information across native pH, one mutual information across perturbed pH
+'''
+def information_1D(array):
+    
+    from sklearn.feature_selection import mutual_info_regression
+
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+
+    native = np.zeros(len(soils))
+    for i, soil in enumerate(soils):
+        native[i] = native_pH(soil)
+        
+    perturbed = np.linspace(3.8, 8.4, 11)
+    
+    #first, MI between native pH and array
+    
+    x = native.reshape(-1, 1)
+    MI_native_and_array = np.zeros(11)
+    Y = array
+    for i in range(len(MI_native_and_array)):
+        
+        
+        mi = mutual_info_regression(x, Y[:, i], random_state=0) 
+        
+        MI_native_and_array[i] = mi 
+    
+    x = np.array(perturbed).reshape(-1,1)
+    MI_perturbed_and_array = np.zeros(10)
+    for i in range(len(MI_perturbed_and_array)):
+        
+
+        mi = mutual_info_regression(x, Y[i], random_state=0) 
+        
+        MI_perturbed_and_array[i] = mi 
+        
+    return MI_native_and_array, MI_perturbed_and_array
+
+'''
+information_1D_2
+input: 2 arrays with with 10 rows (native pHs) and 11 columns (perturbed pHs)
+output: 2 1D arrays one for mutual information across native pH, one mutual information across perturbed pH
+'''
+def information_1D_2(array1, array2):
+    
+    from sklearn.feature_selection import mutual_info_regression
+
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+
+    native = np.zeros(len(soils))
+    for i, soil in enumerate(soils):
+        native[i] = native_pH(soil)
+        
+    perturbed = np.linspace(3.8, 8.4, 11)
+    
+    MI_vs_perturbed = np.zeros(11)
+    MI_vs_native = np.zeros(10)
+    
+    for i in range(len(MI_vs_native)):
+        
+        X = array1[i].reshape(-1, 1)
+        Y = array2[i]
+        
+        mi = mutual_info_regression(X, Y, random_state=0) 
+        
+        MI_vs_native[i] = mi
+        
+    for i in range(len(MI_vs_perturbed)):
+        
+        X = array1[:,i].reshape(-1, 1)
+        Y = array2[:,i]
+        
+        mi = mutual_info_regression(X, Y, random_state=0)
+        
+        MI_vs_perturbed[i] = mi
+        
+    return MI_vs_perturbed, MI_vs_native
+
+        
+
+'''
+information_2D
+input: 2 arrays with with 10 rows (native pHs) and 11 columns (perturbed pHs)
+output: a new array with the approximate mutual information at each point. 
+Using a binning approach
+'''
+
+def information_2D(array1, array2):
+    from sklearn.feature_selection import mutual_info_regression
+    data = np.zeros((10, 11))
+    for i in range(10):
+        for j in range(11):
+            
+            #if in corner, average mi from only 4 points
+            if (i == 0 and j == 0):
+                X = [array1[0][0], array1[1][0], array1[1][1], array1[0][1]]
+                Y = [array2[0][0], array2[1][0], array2[1][1], array2[0][1]]
+                
+            elif (i == 9 and j == 0):
+                X = [array1[9][0], array1[8][0], array1[8][1], array1[9][1]]
+                Y = [array2[9][0], array2[8][0], array2[8][1], array2[9][1]]
+                
+            elif (i == 9 and j == 10):
+                X = [array1[9][9], array1[8][9], array1[8][10], array1[9][10]]
+                Y = [array2[9][9], array2[8][9], array2[8][10], array2[9][10]]
+                
+            elif (i == 0 and j == 10):
+                X = [array1[0][9], array1[1][9], array1[1][10], array1[0][10]]
+                Y = [array2[0][9], array2[1][9], array2[1][10], array2[0][10]]
+                
+            #if on a side, average 6 points
+            elif (i == 0):
+                X = [array1[0][j], array1[0][j+1], array1[0][j-1], array1[1][j], array1[1][j+1], array1[1][j-1]]
+                Y = [array2[0][j], array2[0][j+1], array2[0][j-1], array2[1][j], array2[1][j+1], array2[1][j-1]]
+                
+            elif (i == 9):
+                X = [array1[9][j], array1[9][j+1], array1[9][j-1], array1[8][j], array1[8][j+1], array1[8][j-1]]
+                Y = [array2[9][j], array2[9][j+1], array2[9][j-1], array2[8][j], array2[8][j+1], array2[8][j-1]]
+                
+            elif (j == 0):
+                X = [array1[i][0], array1[i-1][0], array1[i+1][0], array1[i][1], array1[i-1][1], array1[i+1][1]]
+                Y = [array2[i][0], array2[i-1][0], array2[i+1][0], array2[i][1], array2[i-1][1], array2[i+1][1]]
+                
+            elif (j == 10):
+                X = [array1[i][10], array1[i-1][10], array1[i+1][10], array1[i][9], array1[i-1][9], array1[i+1][9]]
+                Y = [array2[i][10], array2[i-1][10], array2[i+1][10], array2[i][9], array2[i-1][9], array2[i+1][9]]
+                
+            #if in the middle, average 9 points
+            else:
+                X = [array1[i][j], array1[i + 1][j], array1[i - 1][j], array1[i][j+1], array1[i][j-1], array1[i+1][j+1], array1[i+1][j-1], array1[i-1][j+1], array1[i-1][j-1]]
+                Y = [array2[i][j], array2[i + 1][j], array2[i - 1][j], array2[i][j+1], array2[i][j-1], array2[i+1][j+1], array2[i+1][j-1], array2[i-1][j+1], array2[i-1][j-1]]
+                
+                
+            X = np.array(X).reshape(-1, 1)
+            Y = np.array(Y)
+            
+            mi = mutual_info_regression(X, Y)
+            data[i][j] = mi
+    return data 
