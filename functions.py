@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.feature_selection import mutual_info_regression
+from npeet_plus import mi
+from scipy.spatial import KDTree
+
 
 DATDIR = '/projects/p32818/metagenomic_data/data'
 
@@ -118,7 +122,7 @@ input: any soil id
 output: the native pH of that soil
 """
 def native_pH(soil):
-    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = pd.read_csv(f'data/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     for sample in metadata.index:
         soil_= soil + '_'
@@ -145,13 +149,13 @@ inputs: an array with 10 rows (native pHs) and 11 columns (perturbed pHs)
 produces plot
 '''
 
-def plot(data, title):
+def plot(data, title, cmap = 'Blues', vmin = None, vmax = None):
     soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     native = np.zeros(len(soils))
     for i, soil in enumerate(soils):
         native[i] = native_pH(soil)
  
-    plt.imshow(data, aspect='auto', cmap='Blues', origin='lower')
+    plt.imshow(data, aspect='auto', cmap=cmap, origin='lower', vmin = vmin, vmax = vmax)
     plt.colorbar()
 
     plt.xlabel('Perturbed pH (approximate)')
@@ -174,8 +178,6 @@ input: 1 array with with 10 rows (native pHs) and 11 columns (perturbed pHs)
 output: 2 1D arrays one for mutual information across native pH, one mutual information across perturbed pH
 '''
 def information_1D(array):
-    
-    from sklearn.feature_selection import mutual_info_regression
 
     soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
 
@@ -215,7 +217,6 @@ output: 2 1D arrays one for mutual information across native pH, one mutual info
 '''
 def information_1D_2(array1, array2):
     
-    from sklearn.feature_selection import mutual_info_regression
 
     soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
 
@@ -249,63 +250,154 @@ def information_1D_2(array1, array2):
     return MI_vs_perturbed, MI_vs_native
 
         
+import numpy as np
+from sklearn.feature_selection import mutual_info_regression
 
-'''
-information_2D
-input: 2 arrays with with 10 rows (native pHs) and 11 columns (perturbed pHs)
-output: a new array with the approximate mutual information at each point. 
-Using a binning approach
-'''
+def bootstrap_mi(X, Y, k=3, n_bootstrap=1000, confidence=0.95):
+    """
+    Compute bootstrapped mutual information using KSG estimator.
+    
+    Parameters:
+    - X, Y: 1D arrays of shape (n_samples,) with your data.
+    - k: k for kNN-based MI estimation (default=3).
+    - n_bootstrap: Number of bootstrap resamples (default=1000).
+    - confidence: Confidence interval width (default=0.95 for 95% CI).
+    
+    Returns:
+    - mi_mean: Mean MI across bootstraps.
+    - ci_low, ci_high: Confidence interval bounds.
+    """
+    X = np.array(X).reshape(-1, 1)  # Ensure X is 2D for sklearn
+    Y = np.array(Y).reshape(-1, 1)
+    n_samples = X.shape[0]
+    mi_boot = np.zeros(n_bootstrap)
+    
+    for i in range(n_bootstrap):
+        # Resample with replacement
+        idx = np.random.choice(n_samples, n_samples, replace=True)
+        X_resampled = X[idx]
+        Y_resampled = Y[idx]
+        
+        # Compute MI for this resample
+        mi_boot[i] = mi(X_resampled, Y_resampled, k=k)
+    
+    # Compute summary statistics
+    mi_mean = np.mean(mi_boot)
+    ci_low = np.percentile(mi_boot, 100 * (1 - confidence) / 2)
+    ci_high = np.percentile(mi_boot, 100 * (1 + confidence) / 2)
+    
+    return mi_mean, ci_low, ci_high
 
-def information_2D(array1, array2):
-    from sklearn.feature_selection import mutual_info_regression
-    data = np.zeros((10, 11))
-    for i in range(10):
-        for j in range(11):
+
+def information_2D(array1, array2, neighborhood_size=20, k=3):
+    """
+    Compute 2D mutual information map using KDTree for neighborhoods and NPEET for MI.
+    
+    Parameters:
+    - array1, array2: 2D arrays (10x11) with your data
+    - neighborhood_size: Target number of points to use for each MI estimate
+    - k: k for kNN-based MI estimation
+    
+    Returns:
+    - data: MI estimate at each point
+    - data_low: Lower CI bound at each point
+    - data_high: Upper CI bound at each point
+    """
+    height, width = array1.shape
+    data = np.zeros((height, width))
+    data_low = np.zeros((height, width))
+    data_high = np.zeros((height, width))
+    
+    # Create coordinates and flatten arrays
+    coords = np.array([[i, j] for i in range(height) for j in range(width)])
+    values1 = array1.reshape(-1, 1)  # NPEET expects 2D arrays
+    values2 = array2.reshape(-1, 1)
+    
+    # Build KDTree for fast neighborhood queries
+    tree = KDTree(coords)
+    
+    for i in range(height):
+        for j in range(width):
+            # Find nearest neighbors (including self)
+            _, neighbor_indices = tree.query(
+                [[i, j]], 
+                k=neighborhood_size
+            )
             
-            #if in corner, average mi from only 4 points
-            if (i == 0 and j == 0):
-                X = [array1[0][0], array1[1][0], array1[1][1], array1[0][1]]
-                Y = [array2[0][0], array2[1][0], array2[1][1], array2[0][1]]
-                
-            elif (i == 9 and j == 0):
-                X = [array1[9][0], array1[8][0], array1[8][1], array1[9][1]]
-                Y = [array2[9][0], array2[8][0], array2[8][1], array2[9][1]]
-                
-            elif (i == 9 and j == 10):
-                X = [array1[9][9], array1[8][9], array1[8][10], array1[9][10]]
-                Y = [array2[9][9], array2[8][9], array2[8][10], array2[9][10]]
-                
-            elif (i == 0 and j == 10):
-                X = [array1[0][9], array1[1][9], array1[1][10], array1[0][10]]
-                Y = [array2[0][9], array2[1][9], array2[1][10], array2[0][10]]
-                
-            #if on a side, average 6 points
-            elif (i == 0):
-                X = [array1[0][j], array1[0][j+1], array1[0][j-1], array1[1][j], array1[1][j+1], array1[1][j-1]]
-                Y = [array2[0][j], array2[0][j+1], array2[0][j-1], array2[1][j], array2[1][j+1], array2[1][j-1]]
-                
-            elif (i == 9):
-                X = [array1[9][j], array1[9][j+1], array1[9][j-1], array1[8][j], array1[8][j+1], array1[8][j-1]]
-                Y = [array2[9][j], array2[9][j+1], array2[9][j-1], array2[8][j], array2[8][j+1], array2[8][j-1]]
-                
-            elif (j == 0):
-                X = [array1[i][0], array1[i-1][0], array1[i+1][0], array1[i][1], array1[i-1][1], array1[i+1][1]]
-                Y = [array2[i][0], array2[i-1][0], array2[i+1][0], array2[i][1], array2[i-1][1], array2[i+1][1]]
-                
-            elif (j == 10):
-                X = [array1[i][10], array1[i-1][10], array1[i+1][10], array1[i][9], array1[i-1][9], array1[i+1][9]]
-                Y = [array2[i][10], array2[i-1][10], array2[i+1][10], array2[i][9], array2[i-1][9], array2[i+1][9]]
-                
-            #if in the middle, average 9 points
-            else:
-                X = [array1[i][j], array1[i + 1][j], array1[i - 1][j], array1[i][j+1], array1[i][j-1], array1[i+1][j+1], array1[i+1][j-1], array1[i-1][j+1], array1[i-1][j-1]]
-                Y = [array2[i][j], array2[i + 1][j], array2[i - 1][j], array2[i][j+1], array2[i][j-1], array2[i+1][j+1], array2[i+1][j-1], array2[i-1][j+1], array2[i-1][j-1]]
-                
-                
-            X = np.array(X).reshape(-1, 1)
-            Y = np.array(Y)
+            # Extract local samples
+            X_local = values1[neighbor_indices[0]]
+            Y_local = values2[neighbor_indices[0]]
             
-            mi = mutual_info_regression(X, Y)
-            data[i][j] = mi
-    return data 
+            # Compute MI with bootstrap CIs
+            info, ci_low, ci_high = bootstrap_mi(X_local, Y_local, k=k)
+            
+            data[i][j] = info
+            data_low[i][j] = ci_low
+            data_high[i][j] = ci_high
+            
+    return data, data_low, data_high
+
+    """
+    Compute pairwise MI and CMI for 2D grids X, Y, Z using local neighborhoods.
+    
+    Args:
+        X, Y, Z: 2D numpy arrays of shape (height, width) with continuous values.
+        neighborhood_size: Number of nearest points to include in local estimation.
+        k_neighbors: k for KSG estimation (n_neighbors).
+        
+    Returns:
+        Dict containing MI and CMI grids (each a 2D array of same shape as X).
+    """
+
+def pairwise_cmi_analysis(X, Y, Z, neighborhood_size=50, k_neighbors=4):
+    assert X.shape == Y.shape == Z.shape, "All input matrices must have the same shape"
+    height, width = X.shape
+    total_points = height * width
+    
+    # Flatten grids and get coordinates for spatial neighborhoods
+    coords = np.array([[i, j] for i in range(height) for j in range(width)])
+    values_X = X.reshape(-1)
+    values_Y = Y.reshape(-1)
+    values_Z = Z.reshape(-1)
+    
+    # Build KDTree for fast neighborhood queries
+    tree = KDTree(coords)
+    
+    # Initialize output grids
+    mi_xy_grid = np.zeros((height, width))
+    mi_xz_grid = np.zeros_like(mi_xy_grid)
+    mi_yz_grid = np.zeros_like(mi_xy_grid)
+    cmi_xy_z_grid = np.zeros_like(mi_xy_grid)
+    cmi_xz_y_grid = np.zeros_like(mi_xy_grid)
+    cmi_yz_x_grid = np.zeros_like(mi_xy_grid)
+    
+    for idx in range(total_points):
+        i, j = coords[idx]
+        
+        # Find nearest neighbors (including self)
+        distances, neighbor_indices = tree.query(
+            [i, j], 
+            k=neighborhood_size
+        )
+        
+        # Extract local samples
+        x_local = values_X[neighbor_indices].reshape(-1, 1)
+        y_local = values_Y[neighbor_indices]
+        z_local = values_Z[neighbor_indices]
+        
+        # Compute MI and CMI (using NPEET)
+        mi_xy_grid[i, j] = mi(x_local, y_local, k=k_neighbors)
+        mi_xz_grid[i, j] = mi(x_local, z_local, k=k_neighbors)
+        mi_yz_grid[i, j] = mi(y_local, z_local, k=k_neighbors)
+        cmi_xy_z_grid[i, j] = mi(x_local, y_local, z = z_local, k=k_neighbors)
+        cmi_xz_y_grid[i, j] = mi(x_local, z_local, z = y_local, k=k_neighbors)
+        cmi_yz_x_grid[i, j] = mi(y_local, z_local, z = x_local, k=k_neighbors)
+    
+    return {
+        'mi_xy': mi_xy_grid,
+        'mi_xz': mi_xz_grid,
+        'mi_yz': mi_yz_grid,
+        'cmi_xy_z': cmi_xy_z_grid,
+        'cmi_xz_y': cmi_xz_y_grid,
+        'cmi_yz_x': cmi_yz_x_grid
+    }
