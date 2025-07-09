@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.feature_selection import mutual_info_regression
-from npeet_plus import mi
+from npeet_plus import mi, cmi
 from scipy.spatial import KDTree
 
 
@@ -267,7 +267,7 @@ def bootstrap_mi(X, Y, k=3, n_bootstrap=1000, confidence=0.95):
     - mi_mean: Mean MI across bootstraps.
     - ci_low, ci_high: Confidence interval bounds.
     """
-    X = np.array(X).reshape(-1, 1)  # Ensure X is 2D for sklearn
+    X = np.array(X).reshape(-1, 1)  
     Y = np.array(Y).reshape(-1, 1)
     n_samples = X.shape[0]
     mi_boot = np.zeros(n_bootstrap)
@@ -310,7 +310,7 @@ def information_2D(array1, array2, neighborhood_size=20, k=3):
     
     # Create coordinates and flatten arrays
     coords = np.array([[i, j] for i in range(height) for j in range(width)])
-    values1 = array1.reshape(-1, 1)  # NPEET expects 2D arrays
+    values1 = array1.reshape(-1, 1)  
     values2 = array2.reshape(-1, 1)
     
     # Build KDTree for fast neighborhood queries
@@ -401,3 +401,69 @@ def pairwise_cmi_analysis(X, Y, Z, neighborhood_size=50, k_neighbors=4):
         'cmi_xz_y': cmi_xz_y_grid,
         'cmi_yz_x': cmi_yz_x_grid
     }
+
+'''
+get_info
+input: two 2D arrays
+output: (1) the mutual information between the two variables
+        (2) 95% confidence error bar width from bootstrapping
+        (3) a p value 
+'''
+def get_info(X, Y, permute = 1000, k = 6):
+    X_flat = X.reshape(-1, 1)
+    Y_flat = Y.reshape(-1, 1)
+    info = mi(X_flat, Y_flat)
+    mi_mean, ci_low, ci_high = bootstrap_mi(X_flat, Y_flat, k = k)
+    error = (ci_high - ci_low)/2
+    p = 0
+    for i in range(permute):
+        Y_shuffle = np.random.permutation(Y_flat)
+        test_info = mi(X_flat, Y_shuffle)
+        if test_info > info:
+            p += 1
+    p = (p + 1)/(permute + 1)
+    return info, error, p 
+
+'''
+shuffle_Y_within_X_strata
+used to perform shuffling within X bins within function get_info_control
+'''
+def shuffle_Y_within_X_strata(Y, X, n_bins=10):
+    """Shuffle 2D Y within bins of 2D X."""
+    # Flatten X and Y for binning
+    X_flat = X.ravel()
+    Y_flat = Y.ravel()
+    
+    # Bin X into quantiles (use 2D binning if spatial correlation matters)
+    bins = np.quantile(X_flat, np.linspace(0, 1, n_bins + 1))
+    X_binned = np.digitize(X_flat, bins[:-1])
+    
+    # Shuffle Y within each X-bin
+    Y_shuffled_flat = Y_flat.copy()
+    for bin_id in np.unique(X_binned):
+        mask = (X_binned == bin_id)
+        Y_shuffled_flat[mask] = np.random.permutation(Y_shuffled_flat[mask])
+    
+    # Reshape back to 2D
+    return Y_shuffled_flat.reshape(Y.shape)
+
+'''
+get_info_control
+inputs: X, Y, Z 
+output: I(X ; Y | Z), error, p 
+'''
+def get_info_control(X, Y, Z, permute = 1000, k = 6):
+    X_flat = X.reshape(-1, 1)
+    Y_flat = Y.reshape(-1, 1)
+    Z_flat = Z.reshape(-1, 1)
+    info = cmi(X_flat, Y_flat, Z_flat)
+    mi_mean, ci_low, ci_high = bootstrap_mi(X_flat, Y_flat, k = k)
+    error = (ci_high - ci_low)/2
+    p = 0
+    for i in range(permute):
+        Y_shuffle = shuffle_Y_within_X_strata(Y, Z)
+        test_info = cmi(X_flat, Y_shuffle.reshape(-1, 1), z = Z_flat)
+        if test_info > info:
+            p += 1
+    p = (p + 1)/(permute + 1)
+    return info, error, p 
