@@ -10,10 +10,10 @@ from functions import find_cluster_from_orf, get_filepath, find_orfs, samples_fr
 
 def main():
     
-    #soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
-    soils = ['Soil5', 'Soil6', 'Soil9', 'Soil12', 'Soil15', 'Soil16', 'Soil17']
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    #soils = ['Soil5', 'Soil6', 'Soil9', 'Soil12', 'Soil15', 'Soil16', 'Soil17']
     
-    cluster_IDs = pd.read_csv('out/cluster_ids.tsv', sep='\t', header=None)
+    cluster_IDs = pd.read_csv('../out/cluster_ids_nap.tsv', sep='\t', header=None)
     cluster_IDs = cluster_IDs.values
     cluster_IDs = [item[0] for item in cluster_IDs]
     
@@ -23,7 +23,9 @@ def main():
     for soil in soils: 
         print(soil)
 
-        ORFs = find_orfs(get_filepath(soil, 'annotation'), 'K00370')
+        #narG: K00370
+        #napA: K02567
+        ORFs = find_orfs(get_filepath(soil, 'annotation'), 'K02567')
 
         #Unique_IDs is the array, defined earlier, containing the list of cluster IDs
 
@@ -50,7 +52,7 @@ def main():
             
         
         print(data)
-        np.savetxt(f"out/{soil}data.tsv", data, delimiter = '\t', fmt = '%0.6f')
+        np.savetxt(f"../out/{soil}data_nap.tsv", data, delimiter = '\t', fmt = '%0.6f')
         
         
 if __name__ == "__main__":

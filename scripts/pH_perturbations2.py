@@ -134,8 +134,8 @@ def enriched_native_pH(CID, data, cluster_IDs):
 
 def main():
     
-    cluster_IDs = pd.read_csv('out/cluster_ids.tsv', sep='\t', header=None)
-    clustered_data = pd.read_csv('out/clustered_data_nar.tsv', sep='\t', header=None)
+    cluster_IDs = pd.read_csv('../out/cluster_ids_nap.tsv', sep='\t', header=None)
+    clustered_data = pd.read_csv('../out/clustered_data_nap.tsv', sep='\t', header=None)
     cluster_IDs = cluster_IDs.values
     cluster_IDs = [item[0] for item in cluster_IDs]
     clustered_data = clustered_data.values
@@ -181,7 +181,7 @@ def main():
         data[i, 1] = pHs[np.argmax(abundance)]
     
     print(data)    
-    np.savetxt(f"out/native_versus_perturbed_enchriment.tsv", data, delimiter = '\t', fmt = '%0.6f')
+    np.savetxt(f"../out/native_versus_perturbed_enchriment_nap.tsv", data, delimiter = '\t', fmt = '%0.6f')
         
         
 if __name__ == "__main__":

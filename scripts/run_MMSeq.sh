@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1                     # Number of tasks 
 #SBATCH --cpus-per-task=32             # Number of CPU cores per task
 #SBATCH --mem=300G                     # Total memory
-#SBATCH --time=120:00:00                # Time limit (hh:mm:ss)
+#SBATCH --time=160:00:00                # Time limit (hh:mm:ss)
 
 
 #Load MMseq

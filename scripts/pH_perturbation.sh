@@ -8,7 +8,7 @@
 #SBATCH --time=10:00:00                # Time limit (hh:mm:ss)
 
 
-DIR='/projects/p32818/metagenomic_data'
+DIR='/projects/p32818/metagenomic_data/scripts'
 
 cd $DIR
 

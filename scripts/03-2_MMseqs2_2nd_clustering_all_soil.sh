@@ -43,7 +43,7 @@ mmseqs createdb "$input_faa" "$db_name"
 # 2) Perform clustering
 echo "********************* Clustering sequences... *****************************"
 mmseqs cluster "$db_name" "$cluster_db" "$tmp_dir" \
-       --min-seq-id 0.8 -c 0.7 --split-memory-limit 80G --remove-tmp-files --cluster-mode 2
+       --min-seq-id 0.8 -c 0.7 --split-memory-limit 80G --cluster-mode 2
 
 # 3) cluster result1
 #echo "********************* Get cluster result in a fasta-like format... **************************"
