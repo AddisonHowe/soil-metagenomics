@@ -6,7 +6,7 @@ from npeet_plus import mi, cmi
 from scipy.spatial import KDTree
 
 
-DATDIR = '/projects/p32818/metagenomic_data/data'
+DATDIR = 'data'
 
 """
 get_filepath
