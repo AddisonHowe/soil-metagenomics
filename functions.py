@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.feature_selection import mutual_info_regression
-from npeet_plus import mi, cmi
+#from npeet_plus import mi, cmi
 from scipy.spatial import KDTree
 
 
