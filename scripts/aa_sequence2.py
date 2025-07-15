@@ -12,10 +12,10 @@ for orf in cluster_IDs:
     if orf in seq_index:
         sequence = str(seq_index[orf].seq)
         orf_sequence_pairs.append({'orf': orf, 'aa_sequence': sequence})
-        print(orf, 'found')
+        print(orf, 'found', sequence)
 
 seq_index.close()  # Important to free resources
 
 # Save to TSV
 df = pd.DataFrame(orf_sequence_pairs)
-df.to_csv('out/orf_sequences.tsv', sep='\t', index=False)
+df.to_csv('../out/orf_sequences2.tsv', sep='\t', index=False)

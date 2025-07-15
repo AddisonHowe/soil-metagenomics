@@ -12,8 +12,8 @@ with open("../data/raw_data/all.coassembly_proteins_1st_ClusterDB_repseq.fasta",
     for record in SeqIO.parse(fasta_file, "fasta"):
         if record.id in cluster_IDs:
             orf_sequence_pairs.append({'orf': record.id, 'aa_sequence': str(record.seq)})
-            print(record.id, 'sequence found')
+            print(record.id, 'sequence found', record.seq)
 
 # Save to TSV
 df = pd.DataFrame(orf_sequence_pairs)
-df.to_csv('out/orf_sequences.tsv', sep='\t', index=False)
+df.to_csv('../out/orf_sequences1.tsv', sep='\t', index=False)
