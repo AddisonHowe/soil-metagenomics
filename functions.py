@@ -14,11 +14,15 @@ input: prefix (sample), file_type (abundance .bed or annotation .tsv)
 output: a filepath string
 """
 def get_filepath(prefix, file_type):
-    base_path = '/projects/p32818/metagenomic_data/data/raw_data'
+    base_path = 'data'
     if file_type == 'annotation':
-        filename = f"{prefix}.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv"
+        filename = f"raw_data/{prefix}.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv"
     elif file_type == 'abundance':
-        filename = f"{prefix}_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed"
+        filename = f"raw_data/{prefix}_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed"
+    elif file_type == 'annotation_K00370':
+        filename = f"subset_K00370/{prefix}.coassembly_annotations_K00370.tsv"
+    elif file_type == 'abundance_K00370':
+        filename = f"subset_K00370/{prefix}_all_samples_K00370.bed"
     else:
         raise ValueError("file_type must be either 'annotation' or 'abundance'")
     
@@ -53,7 +57,7 @@ def find_orfs_from_cluster(cluster):
     prefixes = ['T0', 'Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     orfs = []
     for prefix in prefixes: 
-        FPATH = get_filepath(prefix, 'annotation')
+        FPATH = get_filepath(prefix, 'annotation_K00370')
         df = pd.read_csv(FPATH, sep='\t', header=None)
         temp = df[df[2] == cluster][0].tolist()
         orfs.extend(temp)
@@ -66,7 +70,7 @@ output: all corresponding ORFs
 """
 def find_cluster_from_orf(orf):
     prefix = orf.split('.')[0]
-    FPATH = get_filepath(prefix, 'annotation')
+    FPATH = get_filepath(prefix, 'annotation_K00370')
     df = pd.read_csv(FPATH, sep='\t', header=None)
     cluster = df[df[0] == orf][2].tolist()
     return cluster[0]
@@ -95,7 +99,7 @@ output: an array containing the sample IDs for that soil after perturbation
 """
 def samples_from_soils(soil):
     sample_IDs = []
-    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = pd.read_csv(f'../data/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     
     soil_ = soil + '_'

@@ -1,0 +1,61 @@
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import sys
+
+DATDIR = '../data'
+
+from functions import find_cluster_from_orf, get_filepath, find_orfs, samples_from_soils 
+
+def main():
+    
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    
+    cluster_IDs = pd.read_csv('../out/complete_ids.tsv', sep='\t', header=None)
+    cluster_IDs = cluster_IDs.values
+    cluster_IDs = [item[0] for item in cluster_IDs]
+    
+    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep = '\t')
+    metadata = metadata.set_index('sample')
+    
+    samples = pd.read_csv(f'{DATDIR}/T0_sampleIDs.tsv', header=None)[0]
+    sample_list = list(samples)
+    
+    def find_cluster(orf):
+        prefix = orf.split('.')[0]
+        FPATH = f"../data/subset_K00370/T0.coassembly_annotations_K00370.tsv"
+        df = pd.read_csv(FPATH, sep='\t', header=None)
+        cluster = df[df[0] == orf][2].tolist()
+        return cluster[0]
+    
+    
+
+    #narG: K00370
+    #napA: K02567
+    ORFs = find_orfs(f"../data/subset_K00370/T0.coassembly_annotations_K00370.tsv", 'K00370')
+
+
+    data = np.zeros((len(cluster_IDs), 20)) #data for plot stored here, each row is a dinstinct cluster
+
+    abundance_data = pd.read_csv(f"../data/subset_K00370/T0_all_samples_K00370.bed", sep='\s+', header=None)
+    filtered_data = abundance_data[abundance_data.iloc[:, 1].isin(ORFs)]
+    for i in range(len(filtered_data)):
+        sample_id = filtered_data.iloc[i, 0]
+        if sample_id in sample_list:
+            orf = filtered_data.iloc[i, 1]
+            rel_abundance = filtered_data.iloc[i, 2]
+            spikein = metadata.loc[sample_id, 'spikein_sum']
+            cluster = find_cluster(orf)
+            if cluster in cluster_IDs:
+                row_idx = cluster_IDs.index(cluster)
+                col_idx = sample_list.index(sample_id)
+                data[row_idx, col_idx] += rel_abundance/spikein
+        
+    
+    print(data)
+    np.savetxt(f"../out/T0data_508_nar.tsv", data, delimiter = '\t', fmt = '%0.6f')
+    
+        
+if __name__ == "__main__":
+    main()
