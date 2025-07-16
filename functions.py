@@ -99,7 +99,7 @@ output: an array containing the sample IDs for that soil after perturbation
 """
 def samples_from_soils(soil):
     sample_IDs = []
-    metadata = pd.read_csv(f'../data/metadata.tsv', sep='\t')
+    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     
     soil_ = soil + '_'
