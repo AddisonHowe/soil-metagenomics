@@ -1,0 +1,2 @@
+[console_scripts]
+mgsa = mgsa.__main__:main
