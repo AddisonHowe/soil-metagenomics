@@ -21,9 +21,10 @@ def main():
     parser.add_argument('--ko', required=True, help='KO identifier (e.g. K00370)')
     args = parser.parse_args()
     
-    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    #soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] no soil6 for nap?
+    soils = ['Soil3', 'Soil5', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     
-    cluster_IDs = pd.read_csv('../out/complete_ids.tsv', sep='\t', header=None)
+    cluster_IDs = pd.read_csv('../out/cluster_ids_09_nap.tsv', sep='\t', header=None)
     cluster_IDs = cluster_IDs.values
     cluster_IDs = [item[0] for item in cluster_IDs]
     

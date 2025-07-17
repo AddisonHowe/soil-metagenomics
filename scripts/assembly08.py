@@ -21,9 +21,10 @@ def main():
     parser.add_argument('--ko', required=True, help='KO identifier (e.g. K00370)')
     args = parser.parse_args()
     
-    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    #soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    soils = ['Soil3', 'Soil5', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] #no soil6 for nap?
     
-    cluster_IDs = pd.read_csv('../out/cluster_ids_271_nar.tsv', sep='\t', header=None)
+    cluster_IDs = pd.read_csv('../out/cluster_ids_08_nap.tsv', sep='\t', header=None)
     cluster_IDs = cluster_IDs.values
     cluster_IDs = [item[0] for item in cluster_IDs]
     
@@ -35,7 +36,7 @@ def main():
     
     def find_cluster(orf):
         prefix = orf.split('.')[0]
-        df = pd.read_csv('../out/cluster08map_nar.tsv', sep ='\t', header=None)
+        df = pd.read_csv('../out/cluster08map_nap.tsv', sep ='\t', header=None)
         cluster = df[df[0] == orf][2].tolist()
         return cluster[0]
     

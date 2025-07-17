@@ -68,9 +68,9 @@ find_cluster_from_orf
 input: a cluster ID
 output: all corresponding ORFs 
 """
-def find_cluster_from_orf(orf):
+def find_cluster_from_orf(orf, KO = 'K00370'):
     prefix = orf.split('.')[0]
-    FPATH = get_filepath(prefix, 'annotation_K00370')
+    FPATH = get_filepath(prefix, 'annotation', KO)
     df = pd.read_csv(FPATH, sep='\t', header=None)
     cluster = df[df[0] == orf][2].tolist()
     return cluster[0]
