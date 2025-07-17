@@ -116,7 +116,7 @@ output: the perturbed pH
 """
 
 def perturbed_pH_sample(sample):
-    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = pd.read_csv(f'../data/metadata.tsv', sep='\t')
     metadata = metadata.set_index('sample')
     return metadata.loc[sample, 'pH']
 
