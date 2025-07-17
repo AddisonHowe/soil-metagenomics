@@ -16,13 +16,15 @@ from functions import find_orfs, get_filepath
 soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
 
 
+#K00370 narG
+#K02567 napP
 
 def main():
     
     prefixes = ['T0', 'Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     file_path_list = []
     for prefix in prefixes:
-        file_path_list.append(get_filepath(prefix, 'annotation_K00370'))
+        file_path_list.append(get_filepath(prefix, 'annotation', 'K02567'))
 
     #Want to produce "map" with 1336 rows corresponding to K00370 ORFs
     
@@ -39,7 +41,7 @@ def main():
 
     orf_1_list = []
     for i in range(len(prefixes)):
-        ORF_list = find_orfs(file_path_list[i], 'K00370')
+        ORF_list = find_orfs(file_path_list[i], 'K02567')
         for orf in ORF_list:
             orf_1 = find_1st_orf(orf, file_path_list[i])
             map.append([orf, orf_1, 'blank'])
@@ -86,7 +88,7 @@ def main():
         entry[2] = find_2nd_orf(entry[1], lookup_dict)
         print(entry[2])
     
-    np.savetxt("..out/new_cluster_map.tsv", map, delimiter = '\t', fmt = '%s')
+    np.savetxt("..out/cluster08map_nap.tsv", map, delimiter = '\t', fmt = '%s')
         
 if __name__ == "__main__":
     main()

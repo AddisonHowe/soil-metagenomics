@@ -13,16 +13,16 @@ get_filepath
 input: prefix (sample), file_type (abundance .bed or annotation .tsv)
 output: a filepath string
 """
-def get_filepath(prefix, file_type):
+def get_filepath(prefix, file_type, KO = None):
     base_path = 'data'
-    if file_type == 'annotation':
+    if file_type == 'annotation' and KO is None:
         filename = f"raw_data/{prefix}.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv"
-    elif file_type == 'abundance':
+    elif file_type == 'abundance' and KO is None:
         filename = f"raw_data/{prefix}_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed"
-    elif file_type == 'annotation_K00370':
-        filename = f"subset_K00370/{prefix}.coassembly_annotations_K00370.tsv"
-    elif file_type == 'abundance_K00370':
-        filename = f"subset_K00370/{prefix}_all_samples_K00370.bed"
+    elif file_type == 'annotation':
+        filename = f"subset_{KO}/{prefix}.coassembly_annotations_{KO}.tsv"
+    elif file_type == f'abundance':
+        filename = f"subset_{KO}/{prefix}_all_samples_{KO}.bed"
     else:
         raise ValueError("file_type must be either 'annotation' or 'abundance'")
     
