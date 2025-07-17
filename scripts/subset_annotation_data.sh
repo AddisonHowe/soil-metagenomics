@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rawdatapath=data/raw_data
-koval=K00370
-outdir=data/subset_${koval}
+rawdatapath=../data/raw_data
+koval=K02567
+outdir=../data/subset_${koval}
 
 filelist=(
     T0.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
