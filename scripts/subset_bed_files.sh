@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rawdatapath=data/raw_data
-koval=K00370
-outdir=data/subset_${koval}
+rawdatapath=../data/raw_data
+koval=K02567
+outdir=../data/subset_${koval}
 
 filelist=(
     T0_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed
