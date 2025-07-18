@@ -38,7 +38,7 @@ def main():
     if args.map == '08':
         def find_cluster(orf, prefix = None):
             prefix = orf.split('.')[0]
-            df = pd.read_csv('../out/cluster_maps/clustermap_nar.tsv', sep ='\t', header=None)
+            df = pd.read_csv('../out/cluster_maps/cluster08map_nar.tsv', sep ='\t', header=None)
             cluster = df[df[0] == orf][2].tolist()
             return cluster[0]
     if args.map == '09':
@@ -74,7 +74,7 @@ def main():
         
     
     print(data)
-    np.savetxt(f"../out/{args.ko}abundances/test/T0data_{args.map}_{args.drug}_{args.ko}.tsv", data, delimiter = '\t', fmt = '%0.6f')
+    np.savetxt(f"../out/{args.ko}abundances/T0data_{args.map}_{args.drug}_{args.ko}.tsv", data, delimiter = '\t', fmt = '%0.6f')
     
     
     for soil in soils: 
@@ -107,7 +107,7 @@ def main():
             
         
         print(data)
-        np.savetxt(f"../out/{args.ko}abundances/test/{soil}data_{args.map}_{args.drug}_{args.ko}.tsv", data, delimiter = '\t', fmt = '%0.6f')
+        np.savetxt(f"../out/{args.ko}abundances/{soil}data_{args.map}_{args.drug}_{args.ko}.tsv", data, delimiter = '\t', fmt = '%0.6f')
         
         
 if __name__ == "__main__":
