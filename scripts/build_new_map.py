@@ -88,7 +88,7 @@ def main():
         entry[2] = find_2nd_orf(entry[1], lookup_dict)
         print(entry[2])
     
-    np.savetxt("../out/cluster08map_nap.tsv", map, delimiter = '\t', fmt = '%s')
+    np.savetxt("../out/cluster_maps/cluster08map_nap.tsv", map, delimiter = '\t', fmt = '%s')
         
 if __name__ == "__main__":
     main()
