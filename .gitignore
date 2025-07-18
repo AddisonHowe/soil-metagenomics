@@ -1,6 +1,7 @@
 data/raw_data
 jobs/
 logs/
+out/alphafold2/
 
 **/.DS_Store
 
