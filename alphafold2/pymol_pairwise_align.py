@@ -20,6 +20,8 @@ import argparse
 import pymol
 from pymol import cmd
 
+from pymol_helpers import Item, load_pymol_item
+
 
 def parse_args(args):
     parser = argparse.ArgumentParser()
@@ -34,7 +36,7 @@ def parse_args(args):
 
 def run_pymol_align_pairwise(item_list):
     nitems = len(item_list)
-    alignments = [[None for _ in range(nitems)] for _ in range(nitems)]
+    alignments = {}
     
     pymol.finish_launching(["pymol", "-cq"])  # quiet + no GUI
 
@@ -46,28 +48,13 @@ def run_pymol_align_pairwise(item_list):
             item2 = item_list[j]
 
             alignment = pymol_align_structures(item1, item2)
-            alignments[i][j] = alignment
+            alignments[(item1.value, item2.value)] = alignment
 
     # Finish PyMOL session
     cmd.quit()
     
     return alignments
 
-
-class Item:
-
-    def __init__(self, value, kind):
-        self.value = value
-        self.kind = kind
-
-
-def load_pymol_item(ref, item):
-    if item.kind == "file":
-        return cmd.load(item.value, ref)
-    elif item.kind == "id":
-        return cmd.fetch(item.value, ref)
-    else:
-        raise RuntimeError(f"Unknown kind {item.kind}")
 
 
 def pymol_align_structures(
@@ -100,16 +87,18 @@ def pymol_align_structures(
     return rmsd
 
 
-def save_alignments(alignments, outdir):
+def save_alignment_data(alignments, outdir):
     print(f"Saving alignment results to {outdir}")
-    # TODO: save outputs
+    with open(f"{outdir}/pairwise_alignments.tsv", "w") as f:
+        for pair, alignment in alignments.items():
+            f.write(f"{pair[0]}\t{pair[1]}\t{alignment}\n")   
     return
 
 
 def main(args):
     print(f"Handled args: {args}")
-    pdb_files = args.pdb_files
-    pdb_ids = args.pdb_ids
+    pdb_files = args.pdb_files if args.pdb_files else []
+    pdb_ids = args.pdb_ids if args.pdb_ids else []
     outdir = args.outdir
 
     print("Loading files:", pdb_files)
@@ -130,7 +119,7 @@ def main(args):
 
     # Save alignments
     os.makedirs(outdir, exist_ok=True)
-    save_alignments(alignments, outdir=outdir)
+    save_alignment_data(alignments, outdir=outdir)
 
     return
 
@@ -138,16 +127,3 @@ def main(args):
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     main(args)
-
-
-# Load arguments
-# load $1, protein1
-# load $2, protein2
-# # Align protein2 to protein1
-# align protein2, protein1
-
-# # Get alignment score (RMSD)
-# set rmsd = cmd.align("protein2", "protein1")[0]
-
-# # Print to terminal
-# print("RMSD: ", rmsd)
