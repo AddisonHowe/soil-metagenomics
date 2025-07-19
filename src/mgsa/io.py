@@ -25,7 +25,7 @@ def get_filepath(prefix, file_type, KO = None, DATDIR = '../data'):
     return f'{DATDIR}/{filename}'
 
 
-def pH_sample(sample, DATDIR  = '../data'):
+def pH_sample(sample, DATDIR = '../data'):
     """
     pH_sample
     input: sample ID
@@ -52,7 +52,7 @@ def samples_from_soils(soil, drug = 'None', DATDIR = '../data'):
     for sample in metadata.index:
         if drug in sample and 'T9' in sample and soil_ in sample and 'Nitrate' not in sample:
             sample_IDs.append(sample)
-            pHs.append(pH_sample(sample))
+            pHs.append(pH_sample(sample, DATDIR))
             
     #make sure the samples are organized by increaing perturbed pH
     pHs = np.array(pHs)
@@ -103,3 +103,20 @@ def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data'):
     df = pd.read_csv(FPATH, sep='\t', header=None)
     cluster = df[df[0] == orf][2].tolist()
     return cluster[0]
+
+def perturbed_pHs(soil, DATDIR = '../data'):
+    """
+    perturbed_pHs
+    given a soil id in the list Soil3, 5, 6, 9, 11, 12, 14, 15, 16, 17
+    output: an array containing the perturbed pHs from that soil
+    """
+    pHs = []
+    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = metadata.set_index('sample')
+    
+    soil_ = soil + '_'
+    for sample in metadata.index:
+        if 'None' in sample and 'T9' in sample and soil_ in sample and 'Nitrate' not in sample:
+            pHs.append(metadata.loc[sample, 'pH'])
+    
+    return sorted(pHs)
