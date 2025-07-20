@@ -1,0 +1,11 @@
+Soil14.scaffold_111947747_c1_15
+Soil15.scaffold_991210343_c1_3
+Soil15.scaffold_1131791871_c1_2
+Soil16.scaffold_833218104_c1_9
+Soil16.scaffold_48033301_c1_9
+Soil3.scaffold_374008697_c1_11
+Soil5.scaffold_42391532_c1_4
+Soil5.scaffold_243654554_c1_4
+Soil9.scaffold_399115430_c1_5
+Soil9.scaffold_226354075_c1_6
+T0.scaffold_785029462_c1_5
