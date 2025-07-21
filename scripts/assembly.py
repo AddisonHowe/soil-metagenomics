@@ -21,7 +21,7 @@ def main():
     parser.add_argument('--map', required=True, help='which cluster map? 08 or 09')
     args = parser.parse_args()
     
-    soils = ['Soil3', 'Soil5', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     #soils = ['Soil3', 'Soil5', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] #no soil6 for nap?
     
     cluster_IDs = pd.read_csv(f'../out/orf_ids/cluster_ids_{args.map}_nap.tsv', sep='\t', header=None)
