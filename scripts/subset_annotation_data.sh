@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rawdatapath=../data/raw_data
-koval=K02567
+koval=K00371
 outdir=../data/subset_${koval}
 
 filelist=(

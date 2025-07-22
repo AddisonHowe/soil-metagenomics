@@ -136,3 +136,38 @@ def load_pdb_structure(fpath, id):
     parser = PDBParser()
     structure = parser.get_structure(id, fpath)
     return structure
+
+def get_data(orf, DATDIR = '../out', KO = 'K00370', drug = 'None', map = '09', ):
+    """
+    Args:
+        orf (string): an orf
+        DATDIR = path to out directory
+        KO = KO number (eg 'K00370')
+        drug = 'None' or 'CHL'
+        map = '09' or '08'
+    Returns:
+        (1) a 20-length array with T0 data
+        (2) a 10-row, 11-column array with T9 data 
+    """
+    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] 
+    id_list = pd.read_csv(f'{DATDIR}/orf_ids/cluster_ids_{map}_{KO}.tsv', sep = '\t', header = None)
+    id_list = id_list.values
+    id_list = [id[0] for id in id_list]
+
+    idx = id_list.index(orf)
+
+    T0data_all = pd.read_csv(f"{DATDIR}/{KO}abundances/T0data_{map}_{drug}_{KO}.tsv", sep='\t', header=None)
+    T0data_all = T0data_all.values
+    T0data = T0data_all[idx]
+
+    T9data = []
+    for soil in soils: 
+        data_all = pd.read_csv(f"{DATDIR}/{KO}abundances/{soil}data_{map}_{drug}_{KO}.tsv", sep='\t', header=None)
+        data_all = data_all.values
+        T9data.append(data_all[idx])
+        
+    return T0data, T9data
+        
+
+
+    
