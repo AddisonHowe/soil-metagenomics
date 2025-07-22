@@ -1,4 +1,4 @@
-""" pymol image generation script
+"""Pymol image generation script
 
 Usage: 
     python pymol_generate_images.py [-f <pdb_file1.pdb> <pdb_file2.pdb> ...] 

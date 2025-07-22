@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 #=============================================================================
 #
-# FILE: run_structure_analysis.sh
+# FILE: run_generate_images.sh
 #
-# USAGE: run_structure_analysis.sh pdbdir outdir outfname
+# USAGE: run_generate_images.sh pdbdir outdir alignto
 #
-# DESCRIPTION: Run structure_analysis.py script on all pdb files in a directory.
+# DESCRIPTION: Run pymol_generate_images.py script on all pdb files in a directory.
 #
 #   Args:
 #       pdbdir: directory containing .pdb files to analyze.
 #       outdir: directory to store output.
-#       outfname: name of output file to create within the output directory.
+#       alignto: PDB ID of protein to align to.
 #
-# EXAMPLE: sh run_structure_analysis.sh \
+#
+# EXAMPLE: sh run_generate_images.sh \
 #               out/structure/<KO> \
-#               out/structure_analysis/<KO> \
-#               structure_metrics_<KO>.tsv
+#               out/structure_analysis/<KO>/images \
+#               IQ16
 #=============================================================================
 
 if [ "$#" -ne 3 ]; then
@@ -24,8 +25,8 @@ if [ "$#" -ne 3 ]; then
 fi
 
 pdbdir=$1       # "out/structure/<KO>"
-outdir=$2       # "out/structure_analysis/<KO>"
-outfname=$3     # "structure_metrics_<KO>.tsv"
+outdir=$2       # "out/structure_analysis/<KO>/images"
+alignto=$3      # IQ16
 
 filenames=$(ls -l $pdbdir)
 suffix=".pdb"
@@ -39,6 +40,7 @@ for fpath in ${pdbdir}/*.pdb; do
     names+=("$filename")
 done
 
-python alphafold2/structure_analysis.py \
-    -f "${files[@]}" --names "${names[@]}" \
-    -o ${outdir} --outfname ${outfname}
+python alphafold2/pymol_generate_images.py \
+    -f "${files[@]}" --saveas_files "${names[@]}" \
+    -o ${outdir} \
+    -ai ${alignto}

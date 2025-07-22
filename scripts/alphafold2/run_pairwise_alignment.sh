@@ -1,31 +1,29 @@
 #!/usr/bin/env bash
 #=============================================================================
 #
-# FILE: run_structure_analysis.sh
+# FILE: run_pairwise_alignment.sh
 #
-# USAGE: run_structure_analysis.sh pdbdir outdir outfname
+# USAGE: run_pairwise_alignment.sh pdbdir outdir
 #
-# DESCRIPTION: Run structure_analysis.py script on all pdb files in a directory.
+# DESCRIPTION: Run pymol_pairwise_align.py script on all pdb files in a directory.
 #
 #   Args:
 #       pdbdir: directory containing .pdb files to analyze.
 #       outdir: directory to store output.
-#       outfname: name of output file to create within the output directory.
 #
-# EXAMPLE: sh run_structure_analysis.sh \
+#
+# EXAMPLE: sh run_pairwise_alignment.sh \
 #               out/structure/<KO> \
-#               out/structure_analysis/<KO> \
-#               structure_metrics_<KO>.tsv
+#               out/structure_analysis/<KO>
 #=============================================================================
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <pdbdir> <>"
     exit 1
 fi
 
 pdbdir=$1       # "out/structure/<KO>"
 outdir=$2       # "out/structure_analysis/<KO>"
-outfname=$3     # "structure_metrics_<KO>.tsv"
 
 filenames=$(ls -l $pdbdir)
 suffix=".pdb"
@@ -38,7 +36,7 @@ for fpath in ${pdbdir}/*.pdb; do
     files+=("$fpath")
     names+=("$filename")
 done
-
-python alphafold2/structure_analysis.py \
-    -f "${files[@]}" --names "${names[@]}" \
-    -o ${outdir} --outfname ${outfname}
+    
+python alphafold2/pymol_pairwise_align.py \
+    -f "${files[@]}" -n "${names[@]}" \
+    -o ${outdir}

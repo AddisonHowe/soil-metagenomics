@@ -1,4 +1,4 @@
-""" Structure analysis script
+"""Structure analysis script
 
 Usage: 
     python structure_analysis.py [-f <pdb_file1.pdb> <pdb_file2.pdb> ...] 
@@ -135,7 +135,6 @@ def main(args):
     outdir = args.outdir
     outfname = args.outfname
     verbosity = args.verbosity
-
     
     if len(pdb_files) != len(names):
         raise RuntimeError("Length of names should match length of files")
@@ -162,4 +161,3 @@ def main(args):
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     main(args)
-

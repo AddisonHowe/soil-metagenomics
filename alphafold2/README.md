@@ -113,3 +113,13 @@ This will enable access to the directory on the remote machine, and running `ls 
 This allows us to load the large .pdb files on Quest into pymol locally, so as to use the GUI capabilities.
 
 To unmount the filesystem, eject the relevant macFUSE volume through finder or use the `umount` command.
+
+## Analysis scripts
+
+### `pymol_generate_images.py`
+
+Generate images for a given protein structure.
+
+### `pymol_pairwise_align.py`
+
+### `structure_analysis.py`
