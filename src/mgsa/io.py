@@ -3,6 +3,7 @@
 """
 import pandas as pd
 import numpy as np
+from Bio.PDB import PDBParser
 
 
 def get_filepath(prefix, file_type, KO = None, DATDIR = '../data'):
@@ -120,3 +121,18 @@ def perturbed_pHs(soil, DATDIR = '../data'):
             pHs.append(metadata.loc[sample, 'pH'])
     
     return sorted(pHs)
+
+
+def load_pdb_structure(fpath, id):
+    """Load a PDB structure from a pdb file.
+    
+    Args:
+        fpath (str): path to pdb file.
+        id (str): the id for the returned structure.
+    
+    Returns:
+        structure
+    """
+    parser = PDBParser()
+    structure = parser.get_structure(id, fpath)
+    return structure
