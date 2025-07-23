@@ -19,7 +19,7 @@
 #=============================================================================
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <pdbdir> <>"
+    echo "Usage: $0 <pdbdir> <outdir> <outfname>"
     exit 1
 fi
 
@@ -41,4 +41,4 @@ done
 
 python alphafold2/structure_analysis.py \
     -f "${files[@]}" --names "${names[@]}" \
-    -o ${outdir} --outfname ${outfname}
+    -o ${outdir} --outfname ${outfname} --pbar

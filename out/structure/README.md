@@ -1,3 +1,3 @@
 # `structure`
 
-This directory contains .pdb files produced by alphafold2.
+This directory contains .pdb files produced by alphafold2, organized by KO.

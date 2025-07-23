@@ -24,11 +24,14 @@ Outputs:
 
 import sys, os
 import argparse
+import tqdm
 import pymol
 from pymol import cmd
 
-from pymol_helpers import Item, load_pymol_item
+from pymol_helpers import Item, load_pymol_item, get_printv
 
+
+FETCHED_PDBID_CACHE = "./out/pymol/fetched_pdbids"
 ALIGN_TO_COLOR = 'cyan'
 COLOR_CMD = "spectrum b, red blue,"
 
@@ -49,6 +52,8 @@ def parse_args(args):
                         default=None, help="saveas names")
     parser.add_argument("-o", "--outdir", type=str, 
                         help="output directory")
+    parser.add_argument("-v", "--verbosity", type=int, default=1)
+    parser.add_argument("--pbar", action="store_true")
     return parser.parse_args(args)
 
 
@@ -58,19 +63,22 @@ def run_pymol_generate_images(
         align_item=None,
         saveas=None,
         verbosity=1,
+        use_pbar=False,
 ):
+    printv = get_printv(verbosity)
     nitems = len(item_list)
+    os.makedirs(FETCHED_PDBID_CACHE, exist_ok=True)
 
     pymol.finish_launching(["pymol", "-cq"])  # quiet + no GUI
 
     if align_item:
-        load_pymol_item("struct0", align_item)        
+        load_pymol_item("struct0", align_item, fetch_path=FETCHED_PDBID_CACHE)
 
-    for i in range(nitems):
+    for i in tqdm.trange(nitems, desc="Item", disable=not use_pbar):
         item = item_list[i]
-        if verbosity:
-            print("Loading", item.value)
-        load_pymol_item(f"struct", item)
+        
+        printv(f"Loading {item.value}", pbar=use_pbar)
+        load_pymol_item(f"struct", item, fetch_path=FETCHED_PDBID_CACHE)
         
         cmd.spectrum("b", "red blue", "struct")
         
@@ -85,8 +93,7 @@ def run_pymol_generate_images(
         else:
             fname = f"structure_{i}"
         
-        if verbosity:
-            print(f"Saving as {outdir}/{fname}.png")
+        printv(f"Saving as {outdir}/{fname}.png", pbar=use_pbar)
 
         cmd.png(
             f"{outdir}/{fname}.png", 
@@ -96,7 +103,7 @@ def run_pymol_generate_images(
             ray=1
         )
         cmd.delete("struct")
-
+    
     # Finish PyMOL session
     cmd.quit()
     return
@@ -108,6 +115,8 @@ def main(args):
     saveas_files = args.saveas_files if args.saveas_files else []
     saveas_ids = args.saveas_ids if args.saveas_ids else []
     outdir = args.outdir
+    verbosity = args.verbosity
+    use_pbar = args.pbar
 
     if len(pdb_files) != len(saveas_files):
         raise RuntimeError("Length of saveas_files should match length of files")
@@ -125,8 +134,8 @@ def main(args):
         align_item = None
 
     
-    print("Loading files:", pdb_files)
-    print("Fetching ids:", pdb_ids)
+    print(f"Loading {len(pdb_files)} files")
+    print(f"Fetching {len(pdb_ids)} ids")
     if align_item:
         print(f"Aligning to {align_item.kind} {align_item.value}")
     print("Saving output to", outdir)
@@ -147,12 +156,14 @@ def main(args):
             saveas_names.append(saveas_ids[i])
 
     os.makedirs(outdir, exist_ok=True)
-
+    
     run_pymol_generate_images(
         loaded_structures, 
         outdir=outdir,
         align_item=align_item,
         saveas=saveas_names,
+        verbosity=verbosity,
+        use_pbar=use_pbar,
     )
 
     return

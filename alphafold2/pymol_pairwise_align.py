@@ -19,10 +19,14 @@ Outputs:
 
 import sys, os
 import argparse
+import tqdm
 import pymol
 from pymol import cmd
 
-from pymol_helpers import Item, load_pymol_item
+from pymol_helpers import Item, load_pymol_item, get_printv
+
+
+FETCHED_PDBID_CACHE = "./out/pymol/fetched_pdbids"
 
 
 def parse_args(args):
@@ -35,26 +39,42 @@ def parse_args(args):
                         help="pdb IDs to fetch from PDB database")
     parser.add_argument("-o", "--outdir", type=str, 
                         help="output directory")
+    parser.add_argument("-v", "--verbosity", type=int, default=1)
+    parser.add_argument("--pbar", action="store_true")
     return parser.parse_args(args)
 
 
-def run_pymol_align_pairwise(item_list, names):
+def run_pymol_align_pairwise(
+        item_list, 
+        names,
+        verbosity=1,
+        use_pbar=False,
+):
+    printv = get_printv(verbosity)
     nitems = len(item_list)
-    alignments = {}
+    os.makedirs(FETCHED_PDBID_CACHE, exist_ok=True)
     
     pymol.finish_launching(["pymol", "-cq"])  # quiet + no GUI
 
-    for i in range(nitems):
+    alignments = {}
+    for i in tqdm.trange(nitems-1, desc="Item i", disable=not use_pbar):
         item1 = item_list[i]
         name1 = names[i]
-        for j in range(nitems):
+        for j in tqdm.trange(i, nitems, desc="Item j", disable=not use_pbar, leave=False):
             if i == j:
                 continue
             item2 = item_list[j]
             name2 = names[j]
 
-            alignment = pymol_align_structures(item1, item2)
+            printv(f"Aligning items:", pbar=use_pbar)
+            printv(f"\t{item1.value} ({item1.kind})", pbar=use_pbar)
+            printv(f"\t{item2.value} ({item2.kind})", pbar=use_pbar)
+
+            alignment = pymol_align_structures(
+                item1, item2, 
+            )
             alignments[(name1, name2)] = alignment
+            printv((f"\tRMSD: {alignment:.3f}"), pbar=use_pbar)
 
     # Finish PyMOL session
     cmd.quit()
@@ -67,29 +87,16 @@ def pymol_align_structures(
         item1, item2, 
         extra_cmds1=[], 
         extra_cmds2=[],
-        verbosity=1,
 ):
-    
-    if verbosity:
-        print(f"Aligning items:")
-        print(f"\t{item1.value} ({item1.kind})")
-        print(f"\t{item2.value} ({item2.kind})")
-
     # Load the two structures
     for i, item in enumerate([item1, item2]):
-        load_pymol_item(f"struct{i+1}", item)
-    
+        load_pymol_item(f"struct{i+1}", item, fetch_path=FETCHED_PDBID_CACHE)
     # Align struct1 to struct2 and get RMSD
     alignment_result = cmd.align('struct1', 'struct2')
     rmsd = alignment_result[0]
-    
-    if verbosity:
-        print(f"\tRMSD: {rmsd:.3f}")
-
     # Delete the references
     cmd.delete("struct1")
     cmd.delete("struct2")
-
     return rmsd
 
 
@@ -107,6 +114,8 @@ def main(args):
     pdb_ids = args.pdb_ids if args.pdb_ids else []
     names = args.names if args.names else pdb_files
     outdir = args.outdir
+    verbosity = args.verbosity
+    use_pbar = args.pbar
 
     print("Loading files:", pdb_files)
     print("Fetching ids:", pdb_ids)
@@ -131,6 +140,8 @@ def main(args):
     alignments = run_pymol_align_pairwise(
         loaded_structures,
         names=structure_names,
+        verbosity=verbosity,
+        use_pbar=use_pbar,
     )
 
     # Save alignments

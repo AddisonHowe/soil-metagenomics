@@ -19,14 +19,17 @@ Outputs:
 
 import sys, os
 import argparse
+import tqdm
 import pymol
 from pymol import cmd
 
-from pymol_helpers import Item, load_pymol_item
+from pymol_helpers import Item, load_pymol_item, get_printv
 
 from mgsa.io import load_pdb_structure
 import mgsa.structures as mgsastruct
 
+
+FETCHED_PDBID_CACHE = "./out/pymol/fetched_pdbids"
 
 KEY_ORDER = [
     "id",
@@ -60,6 +63,7 @@ def parse_args(args):
     parser.add_argument("--outfname", type=str, default="structure_analysis",
                         help="name of output file")
     parser.add_argument("-v", "--verbosity", type=int, default=1)
+    parser.add_argument("--pbar", action="store_true")
     return parser.parse_args(args)
 
 
@@ -104,20 +108,22 @@ def run_structure_analysis(
         align_item=None,
         fname="structure_analysis.tsv",
         verbosity=1,
+        use_pbar=False,
 ):
+    printv = get_printv(verbosity)
     nitems = len(item_list)
+    os.makedirs(FETCHED_PDBID_CACHE, exist_ok=True)
 
     pymol.finish_launching(["pymol", "-cq"])  # quiet + no GUI
 
     if align_item:
-        load_pymol_item("struct0", align_item)
+        load_pymol_item("struct0", align_item, fetch_path=FETCHED_PDBID_CACHE)
 
     results = []
-    for i in range(nitems):
+    for i in tqdm.trange(nitems, desc="Item", disable=not use_pbar):
         item = item_list[i]
-        if verbosity:
-            print("Loading", item.value)
-        load_pymol_item(f"struct", item)
+        printv(f"Loading {item.value}", pbar=use_pbar)
+        load_pymol_item(f"struct", item, fetch_path=FETCHED_PDBID_CACHE)
         protein_struct = load_pdb_structure(item.value, id=item.id)
         results.append(analyze_protein(protein_struct))
         cmd.delete("struct")
@@ -135,6 +141,7 @@ def main(args):
     outdir = args.outdir
     outfname = args.outfname
     verbosity = args.verbosity
+    use_pbar = args.pbar
     
     if len(pdb_files) != len(names):
         raise RuntimeError("Length of names should match length of files")
@@ -152,7 +159,8 @@ def main(args):
         loaded_structures, 
         outdir=outdir,
         fname=outfname,
-        verbosity=verbosity
+        verbosity=verbosity,
+        use_pbar=use_pbar,
     )
 
     return

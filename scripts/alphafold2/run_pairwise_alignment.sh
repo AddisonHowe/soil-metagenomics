@@ -18,7 +18,7 @@
 #=============================================================================
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <pdbdir> <>"
+    echo "Usage: $0 <pdbdir> <outdir>"
     exit 1
 fi
 
@@ -39,4 +39,4 @@ done
     
 python alphafold2/pymol_pairwise_align.py \
     -f "${files[@]}" -n "${names[@]}" \
-    -o ${outdir}
+    -o ${outdir} --pbar
