@@ -3,6 +3,7 @@ channels:
   - defaults
 dependencies:
   - python>=3.10
+  - pymol-open-source
   - pip
   - pip:
     - -e .[dev]
