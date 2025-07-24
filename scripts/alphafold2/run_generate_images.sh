@@ -16,17 +16,17 @@
 # EXAMPLE: sh run_generate_images.sh \
 #               out/structure/<KO> \
 #               out/structure_analysis/<KO>/images \
-#               IQ16
+#               <PDBID>
 #=============================================================================
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <pdbdir> <>"
+    echo "Usage: $0 <pdbdir> <outdir> <alignto>"
     exit 1
 fi
 
 pdbdir=$1       # "out/structure/<KO>"
 outdir=$2       # "out/structure_analysis/<KO>/images"
-alignto=$3      # IQ16
+alignto=$3      # <PDBID>
 
 filenames=$(ls -l $pdbdir)
 suffix=".pdb"
@@ -43,4 +43,4 @@ done
 python alphafold2/pymol_generate_images.py \
     -f "${files[@]}" --saveas_files "${names[@]}" \
     -o ${outdir} \
-    -ai ${alignto}
+    -ai ${alignto} --pbar

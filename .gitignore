@@ -2,6 +2,7 @@ data/raw_data
 jobs/
 logs/
 out/alphafold2/
+out/pymol/fetched_pdbids
 
 **/.DS_Store
 
