@@ -150,6 +150,9 @@ def get_data(orf, DATDIR = '../out', KO = 'K00370', drug = 'None', map = '09', )
         (2) a 10-row, 11-column array with T9 data 
     """
     soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] 
+    if KO == 'K02567':
+        soils = ['Soil3', 'Soil5', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17'] 
+        
     id_list = pd.read_csv(f'{DATDIR}/orf_ids/cluster_ids_{map}_{KO}.tsv', sep = '\t', header = None)
     id_list = id_list.values
     id_list = [id[0] for id in id_list]
