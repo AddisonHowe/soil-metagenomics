@@ -4,6 +4,7 @@
 import pandas as pd
 import numpy as np
 from Bio.PDB import PDBParser
+from Bio.PDB.Structure import Structure
 
 
 def get_filepath(prefix, file_type, KO = None, DATDIR = '../data'):
@@ -64,7 +65,6 @@ def samples_from_soils(soil, drug = 'None', DATDIR = '../data'):
     sample_IDs = sample_IDs[indices]
     sample_IDs = sample_IDs.tolist()
     
-    
     return sample_IDs
 
 
@@ -77,6 +77,7 @@ def find_orfs(file_path, ko_number):
     df = pd.read_csv(file_path, sep='\t', header=None)
     matching_orfs = df[df[3] == ko_number][0].tolist()
     return matching_orfs
+
 
 def find_orfs_from_cluster(cluster, KO, DATDIR):
     """
@@ -93,6 +94,7 @@ def find_orfs_from_cluster(cluster, KO, DATDIR):
         orfs.extend(temp)
     return orfs
 
+
 def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data'):
     """
     find_cluster_from_orf
@@ -104,6 +106,7 @@ def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data'):
     df = pd.read_csv(FPATH, sep='\t', header=None)
     cluster = df[df[0] == orf][2].tolist()
     return cluster[0]
+
 
 def perturbed_pHs(soil, DATDIR = '../data'):
     """
@@ -123,7 +126,7 @@ def perturbed_pHs(soil, DATDIR = '../data'):
     return sorted(pHs)
 
 
-def load_pdb_structure(fpath, id):
+def load_pdb_structure(fpath: str, id: str) -> Structure:
     """Load a PDB structure from a pdb file.
     
     Args:
@@ -131,11 +134,12 @@ def load_pdb_structure(fpath, id):
         id (str): the id for the returned structure.
     
     Returns:
-        structure
+        (Structure) Protein structure.
     """
     parser = PDBParser()
     structure = parser.get_structure(id, fpath)
     return structure
+
 
 def get_data(orf, DATDIR = '../out', KO = 'K00370', drug = 'None', map = '09', ):
     """
@@ -170,7 +174,3 @@ def get_data(orf, DATDIR = '../out', KO = 'K00370', drug = 'None', map = '09', )
         T9data.append(data_all[idx])
         
     return T0data, T9data
-        
-
-
-    

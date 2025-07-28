@@ -6,21 +6,25 @@ import numpy as np
 import math
 from collections import defaultdict
 from Bio.PDB import PPBuilder
+from Bio.PDB.Structure import Structure
 from Bio.PDB.SASA import ShrakeRupley
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-from Bio.SeqIO.PdbIO import PdbSeqresIterator
 
 
-def rgyrate(structure, chain_id=None, atom_selector=lambda a: True):
+def rgyrate(
+        structure: Structure, 
+        chain_id=None, 
+        atom_selector=lambda a: True
+):
     """Compute the radius of gyration from a Biopython Structure object.
 
     Parameters:
-        structure (Bio.PDB.Structure.Structure): The parsed structure.
+        structure (Structure): Protein structure.
         chain_id (str or None): If specified, restrict to a single chain.
         atom_selector (function): Function to filter atoms (default: all atoms).
 
     Returns:
-        float: Radius of gyration in angstroms.
+        (float) Radius of gyration in angstroms.
     """
     x = []
     mass = []
@@ -47,8 +51,16 @@ def rgyrate(structure, chain_id=None, atom_selector=lambda a: True):
     return rg
 
 
-def classify_secondary_structure(phi, psi):
-    """Classify residue as helix, sheet, or coil based on dihedral angles"""
+def classify_secondary_structure(phi: float, psi: float) -> str:
+    """Classify residue as helix, sheet, or coil based on dihedral angles
+    
+    Args:
+        phi (float): angle in radians.
+        psi (float): angle in radians.
+
+    Returns:
+        (str) Classification. Either helix, sheet, or coil.
+    """
     if phi is None or psi is None:
         return 'coil'
     
@@ -65,11 +77,16 @@ def classify_secondary_structure(phi, psi):
         return 'coil'
     
 
-def get_secondary_structure_proportions(structure):
+def get_secondary_structure_proportions(
+        structure: Structure
+) -> dict[str: float]:
     """Calculate secondary structure proportions using dihedral angles.
     
     Args:
-        structure: Protein structure.
+        structure (Structure): Protein structure.
+    
+    Returns:
+        (dict[str: float]) Map from key (helix, sheet, coil) to proportion.
     """
     ppb = PPBuilder()
     
@@ -94,35 +111,43 @@ def get_secondary_structure_proportions(structure):
     return {'helix': 0., 'sheet': 0., 'coil': 0.}
 
 
-def compute_sasa(structure, level="S"):
+def compute_sasa(structure: Structure, level: str = "S") -> float:
     """Compute surface accessibility surface area (SASA) using Shrake-Rupley.
     
     Args:
-        structure: Protein structure.
-        level (str): level at which to compute the SASA
+        structure (Structure): Protein structure.
+        level (str): level at which to compute the SASA. Defaults to "S".
 
     Returns:
-        Average SASA value at the indicated level.
+        (float) Average SASA value at the indicated level.
     """
     sr = ShrakeRupley()
     sr.compute(structure, level=level)
     return structure.sasa
 
 
-def analyze_sequence(structure):
+def analyze_sequence(structure: Structure) -> ProteinAnalysis:
     """Wrapper for ProteinAnalysis to perform analysis given structure.
 
     Args:
-        structure: Protein structure.
+        structure (Structure): Protein structure.
 
     Returns:
-        Analyzed sequence object.
+        (ProteinAnalysis) Analyzed sequence object.
     """
-    analyzed_seq = ProteinAnalysis(_struct2seq(structure))
+    analyzed_seq = ProteinAnalysis(struct2seq(structure))
     return analyzed_seq
 
 
-def _struct2seq(structure):
+def struct2seq(structure: Structure) -> str:
+    """Convert a protein structure into its amino acid sequence.
+    
+    Args:
+        structure (Structure): Protein structure.
+
+    Returns:
+        (str) amino acid sequence of the protein structure.
+    """
     ppb = PPBuilder()
     for pp in ppb.build_peptides(structure):
         protein_seq = pp.get_sequence()  # returns a Bio.Seq.Seq object
