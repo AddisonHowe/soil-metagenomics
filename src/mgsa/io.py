@@ -174,3 +174,41 @@ def get_data(orf, DATDIR = '../out', KO = 'K00370', drug = 'None', map = '09', )
         T9data.append(data_all[idx])
         
     return T0data, T9data
+
+def get_function(sample, DATDIR = '../data', drug = 'None'):
+    """
+    Args:
+        sample (string): a string name of a sample
+    Outputs:
+        an array of floats, 6 rows by 10 columns
+        The first three rows are for replicates 1 through 3, NO3 concentraiton in mM
+        The last three rows are for replicates 1 through 3, NO2 concentration in mM
+    """
+    
+    data= pd.read_csv(f'{DATDIR}/function_interp.tsv', keep_default_na=False, sep='\t')
+    output = np.zeros((6, 10))
+
+    parts = sample.split('_')
+
+    soil = parts[0]
+
+    if 'N' in parts[3]:
+        unit = int(parts[4]) 
+    else:
+        unit = int(parts[3])
+
+    for i in [1,2,3]:
+        temp1 = data[(data['Chloramphenicol'] == drug) & (data['Unit'] == unit) & (data['Soil'] == soil) & (data['Replicate'] == i)]
+        temp2 = temp1['NO3_mM']
+        temp2 = temp2.tolist()
+        if len(temp2) == 20:
+            temp2 = temp2[-10:]
+        output[i-1] = temp2
+        temp2 = temp1['NO2_mM']
+        temp2 = temp2.tolist()
+        if len(temp2) == 20:
+            temp2 = temp2[-10:]
+        output[i+2] = temp2
+        
+    return output
+
