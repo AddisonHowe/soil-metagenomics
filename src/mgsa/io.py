@@ -198,9 +198,6 @@ def get_function(sample, DATDIR = '../data'):
         unit = int(parts[3])
 
     drug = parts[-2]
-    print('drug', drug)
-    print('unit', unit)
-    print('soil', soil)
 
 
     for i in [1,2,3]:
