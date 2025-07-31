@@ -4,11 +4,14 @@
 
 import numpy as np
 import math
+import warnings
 from collections import defaultdict
-from Bio.PDB import PPBuilder
+from Bio.PDB import PDBParser, PPBuilder, Superimposer, is_aa
 from Bio.PDB.Structure import Structure
 from Bio.PDB.SASA import ShrakeRupley
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
+from Bio.PDB.Residue import Residue
+from Bio.Data.PDBData import protein_letters_3to1
 
 
 def rgyrate(
@@ -153,3 +156,89 @@ def struct2seq(structure: Structure) -> str:
         protein_seq = pp.get_sequence()  # returns a Bio.Seq.Seq object
         break
     return str(protein_seq)
+
+
+def get_ca_atoms(structure):
+    """Return the C-alpha atoms in the given protein structure.
+
+    TODO: Test
+
+    Args:
+        structure (Structure): Protein structure.
+
+    Returns:
+        (list[Residue]) List of C-alpha residues of the given structure.
+    """
+    warnings.warn("This function isn't tested and may be buggy!")
+    ca_atoms = []
+    for model in structure:
+        for chain in model:
+            for residue in chain:
+                if is_aa(residue) and "CA" in residue:
+                    ca_atoms.append(residue["CA"])
+        break  # only use first model
+    
+    return ca_atoms
+
+
+def align_atoms_in_structures(
+        structure1, 
+        structure2, 
+        atoms1,
+        atoms2,
+):
+    """Align structure1 to structure2.
+
+    TODO: Test
+
+    Args:
+        structure1 (Structure): Protein structure 1.
+        structure2 (Structure): Protein structure 2.
+
+    Returns:
+        (float): rmsd
+    """
+    warnings.warn("This function isn't tested and may be buggy!")
+    sup = Superimposer()
+    sup.set_atoms(atoms2, atoms1)
+    sup.apply(structure1.get_atoms())
+    return sup.rms
+    
+
+def extract_residue_sequence(structure: Structure) -> tuple[list[Residue], str]:
+    """Get amino acid sequence and corresponding residues from a PDB structure.
+
+    This function iterates over the first model and all chains in a Biopython 
+    structure, collects all standard amino acid residues that contain a C-alpha 
+    atom, converts their three-letter residue names to one-letter codes, and 
+    returns both the residue list and the concatenated sequence string.
+
+    TODO: Test
+
+    Args:
+        structure (Bio.PDB.Structure.Structure): A Biopython Structure object
+            parsed from a PDB file.
+
+    Returns:
+        residues (list[Residue]): List of amino acid residues with C-alpha atoms.
+        seq (str): The corresponding one-letter amino acid sequence.
+
+    Notes:
+        - Non-standard residues are skipped.
+        - Only the first model of the structure is used.
+        - Residues without a C-alpha atom are ignored.
+    """
+    warnings.warn("This function isn't tested and may be buggy!")
+    seq = ""
+    residues = []
+    for model in structure:
+        for chain in model:
+            for residue in chain:
+                if is_aa(residue) and "CA" in residue:
+                    try:
+                        seq += protein_letters_3to1[residue.get_resname()]
+                        residues.append(residue)
+                    except KeyError:
+                        pass  # Skip non-standard residues
+        break
+    return residues, seq
