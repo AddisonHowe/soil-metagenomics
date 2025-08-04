@@ -3,6 +3,7 @@ jobs/
 logs/
 out/alphafold2/
 out/pymol/fetched_pdbids
+tmp/
 
 **/.DS_Store
 

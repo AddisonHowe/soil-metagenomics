@@ -1,5 +1,11 @@
 """Pymol pairwise alignment script
 
+Warning: See https://https://pymol.org/dokuwiki/doku.php?id=command:align
+https://www.researchgate.net/post/The_mathematics_or_details_underlying_align_for_a_Click-button_way_in_GUI_interface_of_PyMOL
+
+Reference: https://www.rcsb.org/docs/tools/pairwise-structure-alignment
+
+
 Usage: 
     python pymol_pairwise_align.py [-f <pdb_file1.pdb> <pdb_file2.pdb> ...] 
                                    [-n <name1> <name2> ...]
@@ -19,7 +25,7 @@ Outputs:
 
 import sys, os
 import argparse
-import tqdm
+# import tqdm
 import pymol
 from pymol import cmd
 
@@ -57,10 +63,10 @@ def run_pymol_align_pairwise(
     pymol.finish_launching(["pymol", "-cq"])  # quiet + no GUI
 
     alignments = {}
-    for i in tqdm.trange(nitems-1, desc="Item i", disable=not use_pbar):
+    for i in range(nitems-1):#tqdm.trange(nitems-1, desc="Item i", disable=not use_pbar):
         item1 = item_list[i]
         name1 = names[i]
-        for j in tqdm.trange(i, nitems, desc="Item j", disable=not use_pbar, leave=False):
+        for j in range(i, nitems):#tqdm.trange(i, nitems, desc="Item j", disable=not use_pbar, leave=False):
             if i == j:
                 continue
             item2 = item_list[j]
@@ -74,10 +80,11 @@ def run_pymol_align_pairwise(
                 item1, item2, 
             )
             alignments[(name1, name2)] = alignment
-            printv((f"\tRMSD: {alignment:.3f}"), pbar=use_pbar)
+            rmsd = alignment[0]
+            printv((f"\tRMSD: {rmsd:.3f}"), pbar=use_pbar)
 
     # Finish PyMOL session
-    cmd.quit()
+    # cmd.quit()
     
     return alignments
 
@@ -93,18 +100,30 @@ def pymol_align_structures(
         load_pymol_item(f"struct{i+1}", item, fetch_path=FETCHED_PDBID_CACHE)
     # Align struct1 to struct2 and get RMSD
     alignment_result = cmd.align('struct1', 'struct2')
-    rmsd = alignment_result[0]
     # Delete the references
     cmd.delete("struct1")
     cmd.delete("struct2")
-    return rmsd
+    return alignment_result
 
 
 def save_alignment_data(alignments, outdir):
     print(f"Saving alignment results to {outdir}")
+    header = [
+        "orfid1",
+        "orfid2",
+        "rmsd",
+        "num_aligned_atoms",
+        "num_cycles",
+        "rmsd_prerefine",
+        "num_aligned_atoms_prerefine",
+        "raw_alignment_score",
+        "num_aligned_residues",
+    ]
     with open(f"{outdir}/pairwise_alignments.tsv", "w") as f:
+        f.write("\t".join(header) + "\n")
         for pair, alignment in alignments.items():
-            f.write(f"{pair[0]}\t{pair[1]}\t{alignment}\n")   
+            vals = [str(x) for x in alignment]
+            f.write(f"{pair[0]}\t{pair[1]}\t{"\t".join(vals)}\n")   
     return
 
 

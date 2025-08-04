@@ -23,10 +23,10 @@ sh scripts/alphafold2/run_generate_images.sh out/structure/K02567 \
 #~~~ run_pairwise_alignment
 
 sh scripts/alphafold2/run_pairwise_alignment.sh \
-    out/structure/K00370 out/structure_analysis/K00370
+    out/structure/K02567 out/structure_analysis/K02567
 
 sh scripts/alphafold2/run_pairwise_alignment.sh \
-    out/structure/K02567 out/structure_analysis/K02567
+    out/structure/K00370 out/structure_analysis/K00370
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~ run_structure_analysis
