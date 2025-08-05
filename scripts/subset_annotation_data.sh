@@ -3,21 +3,21 @@
 #
 # FILE: subset_annotation_data.sh
 #
-# USAGE: subset_annotation_data.sh ko rawdatapath outdir
+# USAGE: subset_annotation_data.sh ko annotation_dir outdir
 #
-# DESCRIPTION: Subset annotation data in the raw data directory by KO value, and 
-#   store results in the output directory.
+# DESCRIPTION: Subset annotation data by KO value, and store results in the 
+#   output directory.
 #
-# EXAMPLE: sh subset_annotation_data.sh <ko> <rawdatapath> <outdir>
+# EXAMPLE: sh subset_annotation_data.sh <ko> <annotation_dir> <outdir>
 #=============================================================================
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 ko rawdatapath outdir"
+    echo "Usage: $0 ko annotation_dir outdir"
     exit 1
 fi
 
 koval="$1"          # <KO>
-rawdatapath="$2"    # /scratch/aie7773
+annotation_dir="$2" # data/raw_data/coassembly
 outdir="$3"         # data/KO_subsets/subset_<KO>
 
 # Annotation files
@@ -40,7 +40,7 @@ newsuffix=.coassembly_annotations_${koval}.tsv
 
 for f in ${filelist[@]}; do 
     echo $f
-    cat ${rawdatapath}/${f} | awk -F'\t' -v koval="$koval" \
+    cat ${annotation_dir}/${f} | awk -F'\t' -v koval="$koval" \
         '$4 == koval { 
             print $1, $2, $3, $4, $5
         }' \
