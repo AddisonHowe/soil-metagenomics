@@ -39,6 +39,24 @@ def pH_sample(sample, DATDIR = '../data'):
     return metadata.loc[sample, 'pH']
 
 
+def pH_soil(soil, DATDIR = '../data'):
+    """
+    pH_soil
+    given a soil id in the list Soil3, 5, 6, 9, 11, 12, 14, 15, 16, 17
+    output: an array containing the perturbed pHs from that soil
+    """
+    pHs = []
+    metadata = pd.read_csv(f'{DATDIR}/metadata.tsv', sep='\t')
+    metadata = metadata.set_index('sample')
+    
+    soil_ = soil + '_'
+    for sample in metadata.index:
+        if 'None' in sample and 'T9' in sample and soil_ in sample and 'Nitrate' not in sample:
+            pHs.append(metadata.loc[sample, 'pH'])
+    
+    return sorted(pHs)
+
+
 def samples_from_soils(soil, drug = 'None', DATDIR = '../data'):
     """
     samples
