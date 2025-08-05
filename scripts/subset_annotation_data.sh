@@ -1,9 +1,26 @@
 #!/bin/bash
+#=============================================================================
+#
+# FILE: subset_annotation_data.sh
+#
+# USAGE: subset_annotation_data.sh ko rawdatapath outdir
+#
+# DESCRIPTION: Subset annotation data in the raw data directory by KO value, and 
+#   store results in the output directory.
+#
+# EXAMPLE: sh subset_annotation_data.sh <ko> <rawdatapath> <outdir>
+#=============================================================================
 
-rawdatapath=../data/raw_data
-koval=K00371
-outdir=../data/subset_${koval}
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 ko rawdatapath outdir"
+    exit 1
+fi
 
+koval="$1"          # <KO>
+rawdatapath="$2"    # /scratch/aie7773
+outdir="$3"         # data/KO_subsets/subset_<KO>
+
+# Annotation files
 filelist=(
     T0.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
     Soil3.coassembly_ORFid_1stClusterDB_2ndClusterDB_KO_annotations_250316.tsv
