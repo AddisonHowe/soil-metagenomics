@@ -1,9 +1,26 @@
 #!/bin/bash
+#=============================================================================
+#
+# FILE: subset_bed_files.sh
+#
+# USAGE: subset_bed_files.sh ko rawdatapath outdir
+#
+# DESCRIPTION: Subset bed files in the raw data directory by KO value, and 
+#   store results in the output directory.
+#
+# EXAMPLE: sh subset_bed_files.sh <ko> <rawdatapath> <outdir>
+#=============================================================================
 
-rawdatapath=../data/raw_data
-koval=K02567
-outdir=../data/subset_${koval}
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 ko rawdatapath outdir"
+    exit 1
+fi
 
+koval="$1"          # <KO>
+rawdatapath="$2"    # /scratch/aie7773
+outdir="$3"         # data/KO_subsets/subset_<KO>
+
+# bed files
 filelist=(
     T0_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed
     Soil3_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed
