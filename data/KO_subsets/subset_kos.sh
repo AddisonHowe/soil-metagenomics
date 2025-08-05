@@ -6,6 +6,7 @@ bedfiledir=/scratch/aie7773
 while IFS= read -r koval; do
     echo "${koval}"
     outdir=data/KO_subsets/subset_${koval}
+    mkdir -p $outdir
     echo Subsetting annotation data...
     sh scripts/subset_annotation_data.sh $koval $annotation_dir $outdir
     echo Subsetting bed files...
