@@ -56,4 +56,4 @@ KO search: [nitrous oxide reductase](https://www.genome.jp/dbget-bin/www_bfind_s
 
 Miscellaneous:
 
-- K05601 hcp;
+- K05601 hcp; hydroxylamine reductase [EC:1.7.99.1]
