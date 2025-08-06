@@ -18,9 +18,9 @@ def get_filepath(prefix, file_type, KO = None, DATDIR = '../data'):
     elif file_type == 'abundance' and KO is None:
         filename = f"raw_data/{prefix}_all_samples_ORF_count_regions_rm0_ORF_ID_changed.bed"
     elif file_type == 'annotation':
-        filename = f"subset_{KO}/{prefix}.coassembly_annotations_{KO}.tsv"
+        filename = f"KO_subsets/subset_{KO}/{prefix}.coassembly_annotations_{KO}.tsv"
     elif file_type == f'abundance':
-        filename = f"subset_{KO}/{prefix}_all_samples_{KO}.bed"
+        filename = f"KO_subsets/subset_{KO}/{prefix}_all_samples_{KO}.bed"
     else:
         raise ValueError("file_type must be either 'annotation' or 'abundance'")
     
@@ -113,7 +113,7 @@ def find_orfs_from_cluster(cluster, KO, DATDIR):
     return orfs
 
 
-def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data'):
+def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data', FPATH = None):
     """
     find_cluster_from_orf
     input: a cluster ID

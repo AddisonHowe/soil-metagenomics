@@ -1,7 +1,7 @@
 '''
 Assembly using a new clustering, from a cluster map 
 The cluster map can be assembled by build_new_map, using an output from MMSeq
-Input: a KO number (eg usage: python assembly08.py --ko 'K00370')
+Input: a KO number (eg usage: python assembly.py --ko 'K00370')
 Creates files for T0 and T9 data containing the abundances of each cluster in each soil assembly
 '''
 
@@ -44,7 +44,7 @@ def main():
     if args.map == '09':
         def find_cluster(orf, prefix = None):
             prefix = orf.split('.')[0]
-            FPATH = f"../data/subset_{args.ko}/{prefix}.coassembly_annotations_{args.ko}.tsv"
+            FPATH = f"../data/KO_subsets/subset_{args.ko}/{prefix}.coassembly_annotations_{args.ko}.tsv"
             df = pd.read_csv(FPATH, sep='\t', header=None)
             cluster = df[df[0] == orf][2].tolist()
             return cluster[0]
@@ -53,12 +53,12 @@ def main():
 
     #narG: K00370
     #napA: K02567
-    ORFs = find_orfs(f"../data/subset_{args.ko}/T0.coassembly_annotations_{args.ko}.tsv", args.ko)
+    ORFs = find_orfs(f"../data/KO_subsets/subset_{args.ko}/T0.coassembly_annotations_{args.ko}.tsv", args.ko)
 
 
     data = np.zeros((len(cluster_IDs), 20)) #data for plot stored here, each row is a dinstinct cluster
 
-    abundance_data = pd.read_csv(f"../data/subset_{args.ko}/T0_all_samples_{args.ko}.bed", sep='\s+', header=None)
+    abundance_data = pd.read_csv(f"../data/KO_subsets/subset_{args.ko}/T0_all_samples_{args.ko}.bed", sep='\s+', header=None)
     filtered_data = abundance_data[abundance_data.iloc[:, 1].isin(ORFs)]
     for i in range(len(filtered_data)):
         sample_id = filtered_data.iloc[i, 0]
@@ -82,7 +82,7 @@ def main():
 
         #narG: K00370
         #napA: K02567
-        ORFs = find_orfs(f"../data/subset_{args.ko}/{soil}.coassembly_annotations_{args.ko}.tsv", args.ko)
+        ORFs = find_orfs(f"../data/KO_subsets/subset_{args.ko}/{soil}.coassembly_annotations_{args.ko}.tsv", args.ko)
 
         #Unique_IDs is the array, defined earlier, containing the list of cluster IDs
 
@@ -91,7 +91,7 @@ def main():
 
         data = np.zeros((len(cluster_IDs), 11)) #data for plot stored here, each row is a dinstinct cluster
 
-        abundance_data = pd.read_csv(f"../data/subset_{args.ko}/{soil}_all_samples_{args.ko}.bed", sep='\s+', header=None)
+        abundance_data = pd.read_csv(f"../data/KO_subsets/subset_{args.ko}/{soil}_all_samples_{args.ko}.bed", sep='\s+', header=None)
         filtered_data = abundance_data[abundance_data.iloc[:, 1].isin(ORFs)]
         for i in range(len(filtered_data)):
             sample_id = filtered_data.iloc[i, 0]

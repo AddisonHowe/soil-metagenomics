@@ -2,7 +2,7 @@ from Bio import SeqIO
 import pandas as pd
 
 # Load cluster IDs
-cluster_IDs = pd.read_csv('../out/orf_ids/cluster_ids_09_nap.tsv', sep='\t', header=None)
+cluster_IDs = pd.read_csv('../out/orf_ids/cluster_ids_09_K00362.tsv', sep='\t', header=None)
 cluster_IDs = set(cluster_IDs[0].values)  # Using a set for faster lookups
 
 orf_sequence_pairs = []
@@ -16,4 +16,4 @@ with open("../data/raw_data/all.coassembly_proteins_1st_ClusterDB_repseq.fasta",
 
 # Save to TSV
 df = pd.DataFrame(orf_sequence_pairs)
-df.to_csv('../out/aaseqs/orf_sequences_09_nap.tsv', sep='\t', index=False)
+df.to_csv('../out/aaseqs/orf_sequences_09_K00362.tsv', sep='\t', index=False)
