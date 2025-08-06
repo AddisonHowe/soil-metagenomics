@@ -113,7 +113,7 @@ def find_orfs_from_cluster(cluster, KO, DATDIR):
     return orfs
 
 
-def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data', FPATH = None):
+def find_cluster_from_orf(orf, KO = 'K00370', DATDIR = '../data'):
     """
     find_cluster_from_orf
     input: a cluster ID
