@@ -5,7 +5,7 @@ We have 57 full length variants. The phenotypic data for each of the partial-len
 
 ## v1 assignments
 
-saved in `assignments_v1.tsv`
+saved in `assignments_K00370_v1.tsv`
 
 These were produced without structural information; genotypic and phenotypic information were weighted equally. Seven clusters were created. 
 
