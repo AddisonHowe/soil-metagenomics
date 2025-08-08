@@ -62,14 +62,8 @@ def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helv
 
     cmap = get_cmap(cmap)
 
-    norm = Normalize(vmin=np.min(data), vmax=np.max(data))
-
-    
-    if vmin == None:
-        vmin = np.min(data)
-    if vmax == None:
-        vmax = np.max(data)
-        
+    vmin = vmin if vmin is not None else np.min(data)
+    vmax = vmax if vmax is not None else np.max(data)
     norm = Normalize(vmin=vmin, vmax=vmax)
 
 
@@ -79,7 +73,7 @@ def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helv
 
 
     cbar = plt.colorbar(scatter, ticks=[vmin, vmax])
-    cbar.ax.set_yticklabels([f'{vmin:.0f}', f'{vmax:.0f}'])
+    cbar.ax.set_yticklabels([f'{vmin:.1f}', f'{vmax:.1f}'])
 
     ax.set_xlabel('Perturbed pH', fontname='Helvetica', fontsize = 'x-large')
     ax.set_ylabel('Native pH', fontname='Helvetica', fontsize = 'x-large')
