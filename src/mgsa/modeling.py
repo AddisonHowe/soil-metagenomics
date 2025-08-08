@@ -85,6 +85,12 @@ class Model:
         infer_params = {k for k in self.param_names if k not in fixed_params}
         self._set_infer_screen(infer_params, quiet=quiet)
         self._set_fixed_params(fixed_params, quiet=quiet)
+
+    def get_inferred_param_names(self) -> list[str]:
+        return list(self.param_names[self.infer_screen])
+
+    def get_fixed_param_names(self) -> list[str]:
+        return list(self.param_names[~self.infer_screen])
     
     def _set_infer_screen(self, infer_screen, quiet=False):
         # Initialize the screen to infer no parameters.
