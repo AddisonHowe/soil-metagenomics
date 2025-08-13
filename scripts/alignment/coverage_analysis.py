@@ -22,9 +22,9 @@ INCLUDE_SCAFFOLDS = [
 
 def parse_args(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--seqdir", type=str, required=True,
-                        help="sequencing data directory "
-                        "(e.g. data/raw_data/sequencing/)")
+    parser.add_argument("--mapping_file", type=str, required=True,
+                        help="path to file mapping sample ids to soil names "
+                        "(e.g. data/raw_data/sequencing/raw_data_name_mapping.tsv)")
     parser.add_argument("--datdir", type=str, required=True,
                         help="raw data alignments directory "
                         "(e.g. data/raw_data/sequencing/raw_data_alignment).")
@@ -40,8 +40,8 @@ def parse_args(args):
 
 
 def main(args):    
+    MAP_FILE = args.mapping_file
     DISABLE_PBAR = not args.pbar
-    SEQDIR = args.seqdir
     DATDIRBASE = args.datdir
     sam_header_fname = args.sam_header_fname
     INCLUDE_SCAFFOLDS = args.scaffolds
@@ -52,7 +52,7 @@ def main(args):
 
     RAWNAME_TO_SAMPLE = {}
     SAMPLE_TO_RAWNAME = {}
-    with open(f"{SEQDIR}/raw_data_name_mapping.tsv", "r") as f:
+    with open(MAP_FILE, "r") as f:
         csvreader = csv.reader(f, delimiter="\t")
         for row in csvreader:  # process each row
             RAWNAME_TO_SAMPLE[row[0]] = row[1]
