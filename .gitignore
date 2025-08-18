@@ -4,6 +4,7 @@ logs/
 out/alphafold2/
 out/pymol/fetched_pdbids
 tmp/
+out/coverage/
 
 **/.DS_Store
 
