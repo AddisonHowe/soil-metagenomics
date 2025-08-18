@@ -59,8 +59,8 @@ with open(f"{SEQDIR}/raw_data_name_mapping.tsv", "r") as f:
 
 REGION_MAPPING = {}  # Map name to gene to interval
 
-for d in os.listdir("../igv/out/search_results"):
-    search_file = f"../igv/out/search_results/{d}"
+for d in os.listdir("out/gene_search_results"):
+    search_file = f"out/gene_search_results/{d}"
     with open(search_file, "r") as f:
         for line in f:
             # Skip comment lines (optional)
