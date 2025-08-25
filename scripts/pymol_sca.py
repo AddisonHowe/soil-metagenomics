@@ -35,6 +35,8 @@ def main(args):
     group_idxs = args.groups
     outdir = args.outdir
 
+    ref_scaffold = "1Q16"
+
     gdir = f"{groups_basedir}/{scaffold}"
 
     if outdir:
@@ -43,11 +45,16 @@ def main(args):
     print("Scaffold:", scaffold)
     pdbfile = f"{pdb_dir}/{scaffold}.pdb"
     cmd.load(pdbfile, "struct")
+
+    reffile = f"{pdb_dir}/{ref_scaffold}.pdb"
+    cmd.load(reffile, "ref_struct")
     
     struct_color = "gray70"
     struct_style = "sticks"
     group_color = "red"
     group_style = "spheres"
+
+    cmd.hide("everything", "ref_struct")
 
     cmd.hide("everything", "struct")
     cmd.show(struct_style, "struct")
@@ -69,7 +76,13 @@ def main(args):
             group = None
             print(f"Group {gidx} file not found: {group_fpath}")
 
+        cmd.align("struct", "ref_struct")
+        
         cmd.png(f"{outdir}/{scaffold}_group{gidx}.png", dpi=300)
+
+        # for ri in range(4):
+        #     cmd.rotate("y", 90 * ri, "struct")
+        #     cmd.png(f"{outdir}/{scaffold}_group{gidx}_view{ri}.png", dpi=300)
         
         # reset
         if group_selection:
