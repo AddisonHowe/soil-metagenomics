@@ -47,6 +47,8 @@ def simulate(rhs, y0, params, dt, T):
     y = ys[:,0]
     for i in range(N-1):
         y_new = timestep(rhs, y, params, dt)
+        for x in y_new:
+            x = max(x, 1e-5)
         ys[:, i + 1] = y_new
         y = y_new
     return ys
