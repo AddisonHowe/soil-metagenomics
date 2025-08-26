@@ -73,7 +73,7 @@ def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helv
 
 
     cbar = plt.colorbar(scatter, ticks=[vmin, vmax])
-    cbar.ax.set_yticklabels([f'{vmin:.1f}', f'{vmax:.1f}'])
+    cbar.ax.set_yticklabels([f'{vmin:.2f}', f'{vmax:.2f}'])
 
     ax.set_xlabel('Perturbed pH', fontname='Helvetica', fontsize = 'x-large')
     ax.set_ylabel('Native pH', fontname='Helvetica', fontsize = 'x-large')
