@@ -230,3 +230,33 @@ def get_function(sample, DATDIR = '../data', drug = 'None'):
         
     return output
 
+def get_ammonia(sample, DATDIR = '../data', drug = 'None'):
+    """
+    Args:
+        sample (string): a string name of a sample
+    Outputs:
+        an array of floats, 3 rows by 10 columns
+        For replicates 1 through 3, NH3 and NH4 concentraiton in mM
+    """
+    
+    data= pd.read_csv(f'{DATDIR}/ammonia.tsv', keep_default_na=False, sep='\t')
+    output = np.zeros((3, 10))
+
+    parts = sample.split('_')
+
+    soil = parts[0]
+
+    if 'N' in parts[3]:
+        unit = int(parts[4]) 
+    else:
+        unit = int(parts[3])
+
+    for i in [1,2,3]:
+        temp1 = data[(data['Chloramphenicol'] == drug) & (data['Unit'] == unit) & (data['Soil'] == soil) & (data['Replicate'] == i)]
+        temp2 = temp1['NH4_mM']# + temp1['Ammonia_mM']
+        temp2 = temp2.tolist()
+        if len(temp2) == 20:
+            temp2 = temp2[-10:]
+        output[i-1] = temp2
+        
+    return output

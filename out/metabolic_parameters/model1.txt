@@ -1,0 +1,3 @@
+Model 1 fits only rA and rI (for both drug and no drug seperately)
+
+It fixes gammaA = gammaI = 5, x0 = 0.1, c0 = 0.1. 
