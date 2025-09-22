@@ -28,3 +28,6 @@ pytest tests
 - [InterPro entry nitrate reductase, alpha subunit](https://www.ebi.ac.uk/interpro/entry/InterPro/IPR006468/)
 - [Pfam entry PF00384 (Molybdopterin oxidoreductase)](https://www.ebi.ac.uk/interpro/entry/pfam/PF00384/)
 - [Pfam entry PF01568 (Molydopterin dinucleotide binding domain)](https://www.ebi.ac.uk/interpro/entry/pfam/PF01568/)
+- [Nitrate reduction Ortholog Table](https://www.google.com/url?q=https://www.kegg.jp/kegg-bin/view_ortholog_table?md%3DM00529&source=gmail&ust=1756589228072000&usg=AOvVaw2vaH8k1EgoPI7un7sTLuIu)
+- [Nitrite reduction Ortholog Table](https://www.kegg.jp/kegg-bin/view_ortholog_table?md=M00530)
+- [Read this regarding enzymes](https://pmc.ncbi.nlm.nih.gov/articles/PMC4453514/)
