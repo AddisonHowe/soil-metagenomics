@@ -734,6 +734,6 @@ T0.scaffold_293529939_c1_1 sequence found MPAQGPHLVVVGYGMVGHRLVEALLTRDHEAEWTVTVI
 T0.scaffold_103351570_c1_2 sequence found FSELIAAHGTGHGCDLCKPAVASILASLGTGHILDGERASLQDTNDHALANLQKDGSYSVVPRIPGGEITPDKLIVIGEVARDFGLYTKITGGQRIDLFGARLDQLPAVWRRLVDAGFESGHAYGKALRTVKSCVGDSWCRYGVQDSVTLAINLELRYRGLRAPHKIKSAVSGCARECAEARSKDFGIIATENGWNLYLGGNGGFRPRHADLFATDLDTETLITYIDRYLMFYIRTADRLQRTASWLESLDGGLDYLRSVIVDDALGICPELDAAMAAHVASYSDEWAAVLDDPVQLQRFVPFVNAPDATDPSIVLVRERGQHRPARSGEATLVAGPTLKVGTR*
 success, storing at ../out/aaseqs/orf_sequences_09_K00362.tsv
 Traceback (most recent call last):
-  File "aa_sequence.py", line 22, in <module>
-    df.to_csv('../out/aaseqs/orf_sequences_K00362_90.tsv', sep='\t', index=False)
-NameError: name 'found_ids' is not defined
+  File "aa_sequence.py", line 24, in <module>
+    missing_ids = cluster_IDs - found_ids
+TypeError: unsupported operand type(s) for -: 'set' and 'list'
