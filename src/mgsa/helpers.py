@@ -127,9 +127,11 @@ def plot10(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'He
     ax.set_xlabel('Perturbed pH', fontname='Helvetica', fontsize = 'x-large')
     ax.set_ylabel('Native pH', fontname='Helvetica', fontsize = 'x-large')
 
-    x = np.linspace(3.8, 8, 10)
-    ax.set_xticks(ticks=x, labels=[f"{val:.1f}" for val in x], rotation=45, fontname=fontname, fontsize = 'x-large')
-    ax.set_yticks(ticks=native, labels=[f"{val:.1f}" for val in native], rotation=45, fontname=fontname, fontsize = 'x-large')
+    # x = np.linspace(3.8, 8, 10)
+    x = np.linspace(3.8, 8, 3)
+    y = np.linspace(5, 7, 3)
+    ax.set_xticks(ticks=x, labels=[f"{val:.0f}" for val in x], rotation=45, fontname=fontname, fontsize = 'x-large')
+    ax.set_yticks(ticks=y, labels=[f"{val:.0f}" for val in y], rotation=45, fontname=fontname, fontsize = 'x-large')
 
 
     ax.set_title(title, fontname='Helvetica', fontsize = 'x-large')
