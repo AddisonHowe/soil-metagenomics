@@ -88,11 +88,25 @@ def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helv
 
     plt.show()
     
-def plot10(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helvetica'):
+def plot10(
+        data, title, 
+        cmap="Blues", 
+        vmin=None, 
+        vmax=None, 
+        fontname="Helvetica", 
+        fontsize="x-large", 
+        show=True,
+        figsize=(8, 6),
+        circ_size=200,
+        edge_colors="black",
+        linewidths=1,
+):
     
-    soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
+    soils = ["Soil3", "Soil5", "Soil6", "Soil9", "Soil11", "Soil12", "Soil14", "Soil15", "Soil16", "Soil17"]
+    
     #native = [4.987, 5.324, 5.405, 5.822, 6.186, 6.255, 6.545, 6.789, 6.86,  7.052]
-    native = [5.0, 5.3, 5.41, 5.8, 6.15, 6.3, 6.5, 6.75, 6.9,  7.1] #some rounding done intentionally so ticklabels can be large and not overlap
+    # Some rounding done intentionally so ticklabels can be large and not overlap
+    native = [5.0, 5.3, 5.41, 5.8, 6.15, 6.3, 6.5, 6.75, 6.9,  7.1] 
 
 
         
@@ -116,28 +130,35 @@ def plot10(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'He
     norm = Normalize(vmin=vmin, vmax=vmax)
 
 
-    fig, ax = plt.subplots(figsize=(8, 6))
-    scatter = ax.scatter(x, y, c=data, cmap=cmap, norm=norm, 
-                        edgecolors='black', linewidths=1, s = 200)
+    fig, ax = plt.subplots(figsize=figsize)
+    scatter = ax.scatter(
+        x, y, c=data, cmap=cmap, norm=norm, 
+        linewidths=linewidths, 
+        edgecolors=edge_colors, 
+        s=circ_size,
+    )
 
 
     cbar = plt.colorbar(scatter, ticks=[vmin, vmax])
     cbar.ax.set_yticklabels([f'{vmin:.2f}', f'{vmax:.2f}'])
 
-    ax.set_xlabel('Perturbed pH', fontname='Helvetica', fontsize = 'x-large')
-    ax.set_ylabel('Native pH', fontname='Helvetica', fontsize = 'x-large')
+    ax.set_xlabel('Perturbed pH', fontname=fontname, fontsize = fontsize)
+    ax.set_ylabel('Native pH', fontname=fontname, fontsize = fontsize)
 
     # x = np.linspace(3.8, 8, 10)
     x = np.linspace(3.8, 8, 3)
     y = np.linspace(5, 7, 3)
-    ax.set_xticks(ticks=x, labels=[f"{val:.0f}" for val in x], rotation=45, fontname=fontname, fontsize = 'x-large')
-    ax.set_yticks(ticks=y, labels=[f"{val:.0f}" for val in y], rotation=45, fontname=fontname, fontsize = 'x-large')
+    ax.set_xticks(ticks=x, labels=[f"{val:.0f}" for val in x], rotation=45, fontname=fontname, fontsize = fontsize)
+    ax.set_yticks(ticks=y, labels=[f"{val:.0f}" for val in y], rotation=45, fontname=fontname, fontsize = fontsize)
 
 
-    ax.set_title(title, fontname='Helvetica', fontsize = 'x-large')
+    ax.set_title(title, fontname=fontname, fontsize = fontsize)
 
 
-    plt.show()
+    if show:
+        plt.show()
+
+    return ax
         
         
         
