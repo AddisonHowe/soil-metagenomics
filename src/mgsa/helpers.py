@@ -100,6 +100,7 @@ def plot10(
         circ_size=200,
         edge_colors="black",
         linewidths=1,
+        include_line=False,
 ):
     
     soils = ["Soil3", "Soil5", "Soil6", "Soil9", "Soil11", "Soil12", "Soil14", "Soil15", "Soil16", "Soil17"]
@@ -150,7 +151,14 @@ def plot10(
     y = np.linspace(5, 7, 3)
     ax.set_xticks(ticks=x, labels=[f"{val:.0f}" for val in x], rotation=45, fontname=fontname, fontsize = fontsize)
     ax.set_yticks(ticks=y, labels=[f"{val:.0f}" for val in y], rotation=45, fontname=fontname, fontsize = fontsize)
-
+    
+    # Add y=x line
+    if include_line:
+        xlims, ylims = ax.get_xlim(), ax.get_ylim()
+        xs = np.linspace(max(xlims[0], ylims[0]), min(xlims[1], ylims[1]), 10)
+        ax.plot(xs, xs, "k--", zorder=0)
+        ax.set_xlim(xlims)
+        ax.set_ylim(ylims)
 
     ax.set_title(title, fontname=fontname, fontsize = fontsize)
 
