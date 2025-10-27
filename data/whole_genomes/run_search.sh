@@ -30,7 +30,7 @@ diamond makedb --in extracted_genes.fasta -d extracted_genes_db
 
 # Step 5: Second DIAMOND search
 echo "Searching samples against extracted genes..."
-diamond blastx --query $SAMPLES \
+diamond blastp --query $SAMPLES \
                --db extracted_genes_db.dmnd \
                --out samples_vs_extracted.tsv \
                --outfmt 6 \
