@@ -39,7 +39,7 @@ def plot_old(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname='He
     plt.tight_layout()
     plt.show()
     
-def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helvetica'):
+def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helvetica', show_zero = True):
     
     soils = ['Soil3', 'Soil5', 'Soil6', 'Soil9', 'Soil11', 'Soil12', 'Soil14', 'Soil15', 'Soil16', 'Soil17']
     #native = [4.987, 5.324, 5.405, 5.822, 6.186, 6.255, 6.545, 6.789, 6.86,  7.052]
@@ -58,6 +58,12 @@ def plot(data, title, cmap = 'Blues', vmin = None, vmax = None, fontname = 'Helv
     x = np.concatenate(x)
     y = np.concatenate(y)
     data = data.flatten()
+    
+    if not show_zero:
+        mask = data != 0
+        x = x[mask]
+        y = y[mask]
+        data = data[mask]
         
 
     cmap = get_cmap(cmap)
