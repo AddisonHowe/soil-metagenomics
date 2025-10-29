@@ -1,0 +1,106 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_40olfbxf
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K21/configs/config.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K21/configs/mda_mode.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K21/configs/meta_mode.info
+  config_dir: K21
+  del_after: []
+  output_files: []
+  path: /gpfs/software/spades/3.15.0/bin/spades-core
+  short_name: k21
+- STAGE: K33
+  args:
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K33/configs/config.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K33/configs/mda_mode.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K33/configs/meta_mode.info
+  config_dir: K33
+  del_after: []
+  output_files: []
+  path: /gpfs/software/spades/3.15.0/bin/spades-core
+  short_name: k33
+- STAGE: K55
+  args:
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/configs/config.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/configs/mda_mode.info
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/configs/meta_mode.info
+  config_dir: K55
+  del_after: []
+  output_files: []
+  path: /gpfs/software/spades/3.15.0/bin/spades-core
+  short_name: k55
+- STAGE: Copy files
+  args:
+  - /gpfs/software/spades/3.15.0/share/spades/spades_pipeline/scripts/copy_files.py
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/before_rr.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/before_rr.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/assembly_graph_after_simplification.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/assembly_graph_after_simplification.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/final_contigs.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/contigs.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/first_pe_contigs.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/first_pe_contigs.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/strain_graph.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/strain_graph.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/scaffolds.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/scaffolds.fasta
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/scaffolds.paths
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/scaffolds.paths
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/assembly_graph_with_scaffolds.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/assembly_graph_with_scaffolds.gfa
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/assembly_graph.fastg
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/assembly_graph.fastg
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/K55/final_contigs.paths
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_0om7mhhk
+  output_files: []
+  path: /home/aie7773/.conda/envs/mybase/bin/python
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /gpfs/software/spades/3.15.0/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/scaffolds.fasta
+  - --misc_dir
+  - /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /home/aie7773/.conda/envs/mybase/bin/python
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: terminate

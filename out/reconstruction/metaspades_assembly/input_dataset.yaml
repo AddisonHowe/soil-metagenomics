@@ -1,0 +1,7 @@
+- "left reads":
+  - "/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R1.fasta"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R2.fasta"
+  "type": "paired-end"

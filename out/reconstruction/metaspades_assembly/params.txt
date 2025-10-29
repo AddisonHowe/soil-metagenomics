@@ -1,0 +1,32 @@
+Command line: /software/spades/3.15.0/bin/metaspades.py	-1	/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R1.fasta	-2	/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R2.fasta	-o	/gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly	-t	8	-m	64	--only-assembler	
+
+System information:
+  SPAdes version: 3.15.0
+  Python version: 3.12.4
+  OS: Linux-4.18.0-553.64.1.el8_10.x86_64-x86_64-with-glibc2.28
+
+Output dir: /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly
+Mode: ONLY assembling (without read error correction)
+Debug mode is turned OFF
+
+Dataset parameters:
+  Metagenomic mode
+  Reads:
+    Library number: 1, library type: paired-end
+      orientation: fr
+      left reads: ['/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R1.fasta']
+      right reads: ['/gpfs/projects/p32818/metagenomic_data/out/reconstruction/spikein_R2.fasta']
+      interlaced reads: not specified
+      single reads: not specified
+      merged reads: not specified
+Assembly parameters:
+  k: [21, 33, 55]
+  Repeat resolution is enabled
+  Mismatch careful mode is turned OFF
+  MismatchCorrector will be SKIPPED
+  Coverage cutoff is turned OFF
+Other parameters:
+  Dir for temp files: /gpfs/projects/p32818/metagenomic_data/out/reconstruction/metaspades_assembly/tmp
+  Threads: 8
+  Memory limit (in Gb): 64
+
