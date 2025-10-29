@@ -1,0 +1,778 @@
+=== DIAMOND GENE VARIANT ANALYSIS ===
+Reference: K00370_rep.faa
+Contigs: JW70609_contigs.fasta
+Samples: complete.fasta
+
+Step 1: Creating reference database...
+diamond v0.9.22.123 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 52
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Database file: K00370_rep.faa
+Opening the database file...  [0.022399s]
+Loading sequences...  [0.013563s]
+Masking sequences...  [0.045749s]
+Writing sequences...  [0.001556s]
+Hashing sequences...  [0.000303s]
+Loading sequences...  [1.5e-05s]
+Writing trailer...  [1.5e-05s]
+Closing the input file...  [1.4e-05s]
+Closing the database file...  [0.000449s]
+Database hash = 82426b780d5cbcf7c8d808396aed74f4
+Processed 906 sequences, 1100880 letters.
+Total time = 0.084281s
+Step 2: Searching contigs against reference...
+diamond v0.9.22.123 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 4
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Temporary directory: 
+Opening the database...  [0.000209s]
+#Target sequences to report alignments for: 1
+Opening the input file...  [0.025242s]
+Opening the output file...  [0.001662s]
+Loading query sequences...  [0.068725s]
+Masking queries...  [0.760656s]
+Building query seed set...  [0.00081s]
+Algorithm: Double-indexed
+Building query histograms...  [0.312434s]
+Allocating buffers...  [0.000413s]
+Loading reference sequences...  [0.007033s]
+Building reference histograms...  [0.041225s]
+Allocating buffers...  [0.000319s]
+Initializing temporary storage...  [0.036668s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [0.010404s]
+Building query index...  [0.071879s]
+Building seed filter...  [0.007992s]
+Searching alignments...  [0.007965s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 1.
+Building reference index...  [0.008655s]
+Building query index...  [0.076831s]
+Building seed filter...  [0.007594s]
+Searching alignments...  [0.007981s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 2.
+Building reference index...  [0.009677s]
+Building query index...  [0.080082s]
+Building seed filter...  [0.008309s]
+Searching alignments...  [0.007726s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 3.
+Building reference index...  [0.008002s]
+Building query index...  [0.067879s]
+Building seed filter...  [0.00766s]
+Searching alignments...  [0.006871s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 0.
+Building reference index...  [0.009809s]
+Building query index...  [0.070918s]
+Building seed filter...  [0.008046s]
+Searching alignments...  [0.007147s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 1.
+Building reference index...  [0.009643s]
+Building query index...  [0.078164s]
+Building seed filter...  [0.008303s]
+Searching alignments...  [0.007601s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 2.
+Building reference index...  [0.009311s]
+Building query index...  [0.084152s]
+Building seed filter...  [0.008153s]
+Searching alignments...  [0.006059s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 3.
+Building reference index...  [0.008179s]
+Building query index...  [0.068355s]
+Building seed filter...  [0.008048s]
+Searching alignments...  [0.006786s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 0.
+Building reference index...  [0.008578s]
+Building query index...  [0.065034s]
+Building seed filter...  [0.010003s]
+Searching alignments...  [0.006778s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 1.
+Building reference index...  [0.009228s]
+Building query index...  [0.075388s]
+Building seed filter...  [0.00825s]
+Searching alignments...  [0.00726s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 2.
+Building reference index...  [0.011392s]
+Building query index...  [0.082114s]
+Building seed filter...  [0.007011s]
+Searching alignments...  [0.006039s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 3.
+Building reference index...  [0.007576s]
+Building query index...  [0.067278s]
+Building seed filter...  [0.008943s]
+Searching alignments...  [0.007524s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 0.
+Building reference index...  [0.00677s]
+Building query index...  [0.066833s]
+Building seed filter...  [0.007992s]
+Searching alignments...  [0.008252s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 1.
+Building reference index...  [0.010102s]
+Building query index...  [0.072444s]
+Building seed filter...  [0.007847s]
+Searching alignments...  [0.006673s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 2.
+Building reference index...  [0.016343s]
+Building query index...  [0.080735s]
+Building seed filter...  [0.007239s]
+Searching alignments...  [0.007695s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 3.
+Building reference index...  [0.007479s]
+Building query index...  [0.069664s]
+Building seed filter...  [0.008086s]
+Searching alignments...  [0.007028s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 0.
+Building reference index...  [0.008847s]
+Building query index...  [0.070426s]
+Building seed filter...  [0.009797s]
+Searching alignments...  [0.007223s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 1.
+Building reference index...  [0.009279s]
+Building query index...  [0.079112s]
+Building seed filter...  [0.007239s]
+Searching alignments...  [0.006799s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 2.
+Building reference index...  [0.016249s]
+Building query index...  [0.077996s]
+Building seed filter...  [0.00735s]
+Searching alignments...  [0.006223s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 3.
+Building reference index...  [0.009294s]
+Building query index...  [0.069468s]
+Building seed filter...  [0.008189s]
+Searching alignments...  [0.006433s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 0.
+Building reference index...  [0.007735s]
+Building query index...  [0.071572s]
+Building seed filter...  [0.007429s]
+Searching alignments...  [0.006449s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 1.
+Building reference index...  [0.012159s]
+Building query index...  [0.077933s]
+Building seed filter...  [0.008598s]
+Searching alignments...  [0.006382s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 2.
+Building reference index...  [0.014059s]
+Building query index...  [0.080739s]
+Building seed filter...  [0.007614s]
+Searching alignments...  [0.006406s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 3.
+Building reference index...  [0.007574s]
+Building query index...  [0.079545s]
+Building seed filter...  [0.008352s]
+Searching alignments...  [0.006957s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 0.
+Building reference index...  [0.007805s]
+Building query index...  [0.068721s]
+Building seed filter...  [0.007321s]
+Searching alignments...  [0.008678s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 1.
+Building reference index...  [0.009209s]
+Building query index...  [0.079153s]
+Building seed filter...  [0.01024s]
+Searching alignments...  [0.006413s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 2.
+Building reference index...  [0.011084s]
+Building query index...  [0.0778s]
+Building seed filter...  [0.008427s]
+Searching alignments...  [0.006913s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 3.
+Building reference index...  [0.008613s]
+Building query index...  [0.066254s]
+Building seed filter...  [0.008s]
+Searching alignments...  [0.006636s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 0.
+Building reference index...  [0.008179s]
+Building query index...  [0.070694s]
+Building seed filter...  [0.007757s]
+Searching alignments...  [0.006544s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 1.
+Building reference index...  [0.014257s]
+Building query index...  [0.074304s]
+Building seed filter...  [0.00837s]
+Searching alignments...  [0.00733s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 2.
+Building reference index...  [0.009477s]
+Building query index...  [0.077424s]
+Building seed filter...  [0.007967s]
+Searching alignments...  [0.007659s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 3.
+Building reference index...  [0.007817s]
+Building query index...  [0.067719s]
+Building seed filter...  [0.008958s]
+Searching alignments...  [0.007398s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 0.
+Building reference index...  [0.008911s]
+Building query index...  [0.064452s]
+Building seed filter...  [0.008431s]
+Searching alignments...  [0.008173s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 1.
+Building reference index...  [0.009158s]
+Building query index...  [0.074572s]
+Building seed filter...  [0.007551s]
+Searching alignments...  [0.008951s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 2.
+Building reference index...  [0.00941s]
+Building query index...  [0.077416s]
+Building seed filter...  [0.007763s]
+Searching alignments...  [0.008032s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 3.
+Building reference index...  [0.007628s]
+Building query index...  [0.065709s]
+Building seed filter...  [0.008811s]
+Searching alignments...  [0.007863s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 0.
+Building reference index...  [0.007521s]
+Building query index...  [0.06521s]
+Building seed filter...  [0.008s]
+Searching alignments...  [0.007033s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 1.
+Building reference index...  [0.009488s]
+Building query index...  [0.078734s]
+Building seed filter...  [0.007618s]
+Searching alignments...  [0.007033s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 2.
+Building reference index...  [0.01004s]
+Building query index...  [0.079657s]
+Building seed filter...  [0.007938s]
+Searching alignments...  [0.007952s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 3.
+Building reference index...  [0.011811s]
+Building query index...  [0.070913s]
+Building seed filter...  [0.007092s]
+Searching alignments...  [0.006205s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 0.
+Building reference index...  [0.009185s]
+Building query index...  [0.069763s]
+Building seed filter...  [0.0073s]
+Searching alignments...  [0.007054s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 1.
+Building reference index...  [0.014504s]
+Building query index...  [0.078895s]
+Building seed filter...  [0.00727s]
+Searching alignments...  [0.006558s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 2.
+Building reference index...  [0.011693s]
+Building query index...  [0.076965s]
+Building seed filter...  [0.006919s]
+Searching alignments...  [0.007314s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 3.
+Building reference index...  [0.008883s]
+Building query index...  [0.071266s]
+Building seed filter...  [0.00699s]
+Searching alignments...  [0.006568s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 0.
+Building reference index...  [0.01057s]
+Building query index...  [0.073092s]
+Building seed filter...  [0.006748s]
+Searching alignments...  [0.006612s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 1.
+Building reference index...  [0.009149s]
+Building query index...  [0.075456s]
+Building seed filter...  [0.007677s]
+Searching alignments...  [0.006747s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 2.
+Building reference index...  [0.012281s]
+Building query index...  [0.080674s]
+Building seed filter...  [0.007384s]
+Searching alignments...  [0.008377s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 3.
+Building reference index...  [0.007494s]
+Building query index...  [0.068143s]
+Building seed filter...  [0.007313s]
+Searching alignments...  [0.007477s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 0.
+Building reference index...  [0.007092s]
+Building query index...  [0.069961s]
+Building seed filter...  [0.007457s]
+Searching alignments...  [0.008236s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 1.
+Building reference index...  [0.008784s]
+Building query index...  [0.080088s]
+Building seed filter...  [0.008985s]
+Searching alignments...  [0.008692s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 2.
+Building reference index...  [0.010749s]
+Building query index...  [0.076428s]
+Building seed filter...  [0.007682s]
+Searching alignments...  [0.007705s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 3.
+Building reference index...  [0.008161s]
+Building query index...  [0.071651s]
+Building seed filter...  [0.00725s]
+Searching alignments...  [0.008093s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 0.
+Building reference index...  [0.007816s]
+Building query index...  [0.078096s]
+Building seed filter...  [0.007241s]
+Searching alignments...  [0.008253s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 1.
+Building reference index...  [0.013587s]
+Building query index...  [0.079829s]
+Building seed filter...  [0.006996s]
+Searching alignments...  [0.00637s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 2.
+Building reference index...  [0.012593s]
+Building query index...  [0.082735s]
+Building seed filter...  [0.007506s]
+Searching alignments...  [0.006574s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 3.
+Building reference index...  [0.006877s]
+Building query index...  [0.072439s]
+Building seed filter...  [0.007636s]
+Searching alignments...  [0.007434s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 0.
+Building reference index...  [0.008054s]
+Building query index...  [0.067479s]
+Building seed filter...  [0.008004s]
+Searching alignments...  [0.007464s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 1.
+Building reference index...  [0.008349s]
+Building query index...  [0.074061s]
+Building seed filter...  [0.007588s]
+Searching alignments...  [0.007829s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 2.
+Building reference index...  [0.008991s]
+Building query index...  [0.079074s]
+Building seed filter...  [0.007713s]
+Searching alignments...  [0.007757s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 3.
+Building reference index...  [0.012112s]
+Building query index...  [0.075248s]
+Building seed filter...  [0.007319s]
+Searching alignments...  [0.007378s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 0.
+Building reference index...  [0.011313s]
+Building query index...  [0.070386s]
+Building seed filter...  [0.009152s]
+Searching alignments...  [0.008486s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 1.
+Building reference index...  [0.009527s]
+Building query index...  [0.079247s]
+Building seed filter...  [0.008457s]
+Searching alignments...  [0.010787s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 2.
+Building reference index...  [0.012166s]
+Building query index...  [0.077781s]
+Building seed filter...  [0.007252s]
+Searching alignments...  [0.007116s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 3.
+Building reference index...  [0.007753s]
+Building query index...  [0.072233s]
+Building seed filter...  [0.00802s]
+Searching alignments...  [0.007158s]
+Deallocating buffers...  [1.4e-05s]
+Computing alignments...  [0.163179s]
+Deallocating reference...  [2.5e-05s]
+Loading reference sequences...  [5.2e-05s]
+Deallocating buffers...  [0.000343s]
+Deallocating queries...  [0.000415s]
+Loading query sequences...  [4.4e-05s]
+Closing the input file...  [3e-05s]
+Closing the output file...  [0.000192s]
+Closing the database file...  [1.9e-05s]
+Deallocating taxonomy...  [1.1e-05s]
+Total time = 7.78745s
+Reported 2 pairwise alignments, 2 HSPs.
+2 queries aligned.
+Step 3: Filtering for BEST hit only...
+Best hit found in contigs:
+NODE_27_length_76064_cov_15.562057	nnv:QNH39_14340	95.3	1227	58	0	69413	73093	1	1227	0.0e+00	2495.3
+Step 4: Extracting ONLY the best contig...
+Extracting contig: NODE_27_length_76064_cov_15.562057
+Step 5: Translating best contig to protein...
+Step 6: Creating protein database from best contig...
+diamond v0.9.22.123 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 52
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Database file: best_contig_protein.fasta
+Opening the database file...  [0.002262s]
+Loading sequences...  [0.002058s]
+Masking sequences...  [0.017285s]
+Writing sequences...  [0.001359s]
+Hashing sequences...  [0.00014s]
+Loading sequences...  [3e-05s]
+Writing trailer...  [1.1e-05s]
+Closing the input file...  [2.8e-05s]
+Closing the database file...  [0.000398s]
+Database hash = 3f005028943da88f0e06505b074f30b1
+Processed 6 sequences, 152128 letters.
+Total time = 0.02383s
+Step 7: Searching samples against BEST contig...
+diamond v0.9.22.123 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 4
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Temporary directory: 
+Opening the database...  [0.00035s]
+#Target sequences to report alignments for: 1
+Opening the input file...  [0.0108s]
+Opening the output file...  [0.00117s]
+Loading query sequences...  [0.000397s]
+Masking queries...  [0.007019s]
+Building query seed set...  [0.000575s]
+Algorithm: Double-indexed
+Building query histograms...  [0.006966s]
+Allocating buffers...  [0.000178s]
+Loading reference sequences...  [0.000552s]
+Building reference histograms...  [0.011314s]
+Allocating buffers...  [0.000306s]
+Initializing temporary storage...  [0.014729s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [0.002592s]
+Building query index...  [0.001651s]
+Building seed filter...  [0.000612s]
+Searching alignments...  [0.001002s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 1.
+Building reference index...  [0.002749s]
+Building query index...  [0.001757s]
+Building seed filter...  [0.000579s]
+Searching alignments...  [0.000979s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 2.
+Building reference index...  [0.003707s]
+Building query index...  [0.002011s]
+Building seed filter...  [0.000583s]
+Searching alignments...  [0.00106s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 3.
+Building reference index...  [0.003222s]
+Building query index...  [0.002068s]
+Building seed filter...  [0.000577s]
+Searching alignments...  [0.001092s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 0.
+Building reference index...  [0.003288s]
+Building query index...  [0.002057s]
+Building seed filter...  [0.000665s]
+Searching alignments...  [0.001102s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 1.
+Building reference index...  [0.00386s]
+Building query index...  [0.001889s]
+Building seed filter...  [0.000566s]
+Searching alignments...  [0.000829s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 2.
+Building reference index...  [0.003048s]
+Building query index...  [0.002226s]
+Building seed filter...  [0.000581s]
+Searching alignments...  [0.000886s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 3.
+Building reference index...  [0.00229s]
+Building query index...  [0.00198s]
+Building seed filter...  [0.000521s]
+Searching alignments...  [0.000876s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 0.
+Building reference index...  [0.003241s]
+Building query index...  [0.001998s]
+Building seed filter...  [0.000618s]
+Searching alignments...  [0.001072s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 1.
+Building reference index...  [0.003526s]
+Building query index...  [0.002119s]
+Building seed filter...  [0.000569s]
+Searching alignments...  [0.000945s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 2.
+Building reference index...  [0.003508s]
+Building query index...  [0.002102s]
+Building seed filter...  [0.000552s]
+Searching alignments...  [0.000928s]
+Processing query chunk 0, reference chunk 0, shape 2, index chunk 3.
+Building reference index...  [0.00303s]
+Building query index...  [0.001845s]
+Building seed filter...  [0.000487s]
+Searching alignments...  [0.000827s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 0.
+Building reference index...  [0.00283s]
+Building query index...  [0.001882s]
+Building seed filter...  [0.000579s]
+Searching alignments...  [0.000904s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 1.
+Building reference index...  [0.003351s]
+Building query index...  [0.001904s]
+Building seed filter...  [0.000536s]
+Searching alignments...  [0.000856s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 2.
+Building reference index...  [0.002697s]
+Building query index...  [0.001589s]
+Building seed filter...  [0.000437s]
+Searching alignments...  [0.00083s]
+Processing query chunk 0, reference chunk 0, shape 3, index chunk 3.
+Building reference index...  [0.00224s]
+Building query index...  [0.001449s]
+Building seed filter...  [0.000407s]
+Searching alignments...  [0.000708s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 0.
+Building reference index...  [0.002522s]
+Building query index...  [0.001714s]
+Building seed filter...  [0.000549s]
+Searching alignments...  [0.000732s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 1.
+Building reference index...  [0.002843s]
+Building query index...  [0.001843s]
+Building seed filter...  [0.000443s]
+Searching alignments...  [0.000709s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 2.
+Building reference index...  [0.002588s]
+Building query index...  [0.002086s]
+Building seed filter...  [0.000399s]
+Searching alignments...  [0.000629s]
+Processing query chunk 0, reference chunk 0, shape 4, index chunk 3.
+Building reference index...  [0.00173s]
+Building query index...  [0.001397s]
+Building seed filter...  [0.000418s]
+Searching alignments...  [0.000727s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 0.
+Building reference index...  [0.00296s]
+Building query index...  [0.001772s]
+Building seed filter...  [0.000501s]
+Searching alignments...  [0.000821s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 1.
+Building reference index...  [0.003595s]
+Building query index...  [0.002007s]
+Building seed filter...  [0.000538s]
+Searching alignments...  [0.00081s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 2.
+Building reference index...  [0.003389s]
+Building query index...  [0.002127s]
+Building seed filter...  [0.000498s]
+Searching alignments...  [0.000839s]
+Processing query chunk 0, reference chunk 0, shape 5, index chunk 3.
+Building reference index...  [0.00276s]
+Building query index...  [0.001313s]
+Building seed filter...  [0.000458s]
+Searching alignments...  [0.000961s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 0.
+Building reference index...  [0.002844s]
+Building query index...  [0.001556s]
+Building seed filter...  [0.000529s]
+Searching alignments...  [0.000822s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 1.
+Building reference index...  [0.002375s]
+Building query index...  [0.00161s]
+Building seed filter...  [0.000555s]
+Searching alignments...  [0.001073s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 2.
+Building reference index...  [0.003366s]
+Building query index...  [0.001933s]
+Building seed filter...  [0.000401s]
+Searching alignments...  [0.000799s]
+Processing query chunk 0, reference chunk 0, shape 6, index chunk 3.
+Building reference index...  [0.002345s]
+Building query index...  [0.001672s]
+Building seed filter...  [0.000376s]
+Searching alignments...  [0.000733s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 0.
+Building reference index...  [0.002882s]
+Building query index...  [0.001621s]
+Building seed filter...  [0.000485s]
+Searching alignments...  [0.000758s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 1.
+Building reference index...  [0.003316s]
+Building query index...  [0.001794s]
+Building seed filter...  [0.000405s]
+Searching alignments...  [0.000847s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 2.
+Building reference index...  [0.003614s]
+Building query index...  [0.002023s]
+Building seed filter...  [0.000423s]
+Searching alignments...  [0.000892s]
+Processing query chunk 0, reference chunk 0, shape 7, index chunk 3.
+Building reference index...  [0.00299s]
+Building query index...  [0.001591s]
+Building seed filter...  [0.000447s]
+Searching alignments...  [0.000966s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 0.
+Building reference index...  [0.002204s]
+Building query index...  [0.001669s]
+Building seed filter...  [0.000562s]
+Searching alignments...  [0.000949s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 1.
+Building reference index...  [0.003102s]
+Building query index...  [0.00136s]
+Building seed filter...  [0.000424s]
+Searching alignments...  [0.000752s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 2.
+Building reference index...  [0.003455s]
+Building query index...  [0.001627s]
+Building seed filter...  [0.000423s]
+Searching alignments...  [0.00074s]
+Processing query chunk 0, reference chunk 0, shape 8, index chunk 3.
+Building reference index...  [0.002707s]
+Building query index...  [0.001553s]
+Building seed filter...  [0.000402s]
+Searching alignments...  [0.000707s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 0.
+Building reference index...  [0.002599s]
+Building query index...  [0.001884s]
+Building seed filter...  [0.000579s]
+Searching alignments...  [0.000856s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 1.
+Building reference index...  [0.003698s]
+Building query index...  [0.002119s]
+Building seed filter...  [0.000475s]
+Searching alignments...  [0.000889s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 2.
+Building reference index...  [0.003147s]
+Building query index...  [0.001765s]
+Building seed filter...  [0.000461s]
+Searching alignments...  [0.000837s]
+Processing query chunk 0, reference chunk 0, shape 9, index chunk 3.
+Building reference index...  [0.002578s]
+Building query index...  [0.001857s]
+Building seed filter...  [0.000535s]
+Searching alignments...  [0.000898s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 0.
+Building reference index...  [0.003234s]
+Building query index...  [0.002003s]
+Building seed filter...  [0.00069s]
+Searching alignments...  [0.001083s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 1.
+Building reference index...  [0.003196s]
+Building query index...  [0.002043s]
+Building seed filter...  [0.000586s]
+Searching alignments...  [0.001038s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 2.
+Building reference index...  [0.003374s]
+Building query index...  [0.002069s]
+Building seed filter...  [0.000526s]
+Searching alignments...  [0.001046s]
+Processing query chunk 0, reference chunk 0, shape 10, index chunk 3.
+Building reference index...  [0.002195s]
+Building query index...  [0.001682s]
+Building seed filter...  [0.000519s]
+Searching alignments...  [0.000975s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 0.
+Building reference index...  [0.003038s]
+Building query index...  [0.001522s]
+Building seed filter...  [0.000554s]
+Searching alignments...  [0.000778s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 1.
+Building reference index...  [0.002691s]
+Building query index...  [0.002159s]
+Building seed filter...  [0.000504s]
+Searching alignments...  [0.000874s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 2.
+Building reference index...  [0.0039s]
+Building query index...  [0.002088s]
+Building seed filter...  [0.000426s]
+Searching alignments...  [0.000748s]
+Processing query chunk 0, reference chunk 0, shape 11, index chunk 3.
+Building reference index...  [0.003252s]
+Building query index...  [0.001555s]
+Building seed filter...  [0.000452s]
+Searching alignments...  [0.00089s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 0.
+Building reference index...  [0.00239s]
+Building query index...  [0.002051s]
+Building seed filter...  [0.000581s]
+Searching alignments...  [0.000942s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 1.
+Building reference index...  [0.003314s]
+Building query index...  [0.001845s]
+Building seed filter...  [0.000463s]
+Searching alignments...  [0.000786s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 2.
+Building reference index...  [0.003531s]
+Building query index...  [0.001925s]
+Building seed filter...  [0.000448s]
+Searching alignments...  [0.000672s]
+Processing query chunk 0, reference chunk 0, shape 12, index chunk 3.
+Building reference index...  [0.001964s]
+Building query index...  [0.001864s]
+Building seed filter...  [0.000543s]
+Searching alignments...  [0.001047s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 0.
+Building reference index...  [0.003377s]
+Building query index...  [0.002043s]
+Building seed filter...  [0.000572s]
+Searching alignments...  [0.000922s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 1.
+Building reference index...  [0.003992s]
+Building query index...  [0.002324s]
+Building seed filter...  [0.0005s]
+Searching alignments...  [0.000821s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 2.
+Building reference index...  [0.002846s]
+Building query index...  [0.002207s]
+Building seed filter...  [0.000502s]
+Searching alignments...  [0.00078s]
+Processing query chunk 0, reference chunk 0, shape 13, index chunk 3.
+Building reference index...  [0.00329s]
+Building query index...  [0.001427s]
+Building seed filter...  [0.000445s]
+Searching alignments...  [0.000921s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 0.
+Building reference index...  [0.002012s]
+Building query index...  [0.001933s]
+Building seed filter...  [0.000532s]
+Searching alignments...  [0.000827s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 1.
+Building reference index...  [0.003587s]
+Building query index...  [0.00192s]
+Building seed filter...  [0.000479s]
+Searching alignments...  [0.000751s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 2.
+Building reference index...  [0.003316s]
+Building query index...  [0.001544s]
+Building seed filter...  [0.000411s]
+Searching alignments...  [0.000769s]
+Processing query chunk 0, reference chunk 0, shape 14, index chunk 3.
+Building reference index...  [0.003168s]
+Building query index...  [0.001878s]
+Building seed filter...  [0.000429s]
+Searching alignments...  [0.000829s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 0.
+Building reference index...  [0.00224s]
+Building query index...  [0.001845s]
+Building seed filter...  [0.000558s]
+Searching alignments...  [0.000973s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 1.
+Building reference index...  [0.003751s]
+Building query index...  [0.0021s]
+Building seed filter...  [0.000505s]
+Searching alignments...  [0.000815s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 2.
+Building reference index...  [0.002848s]
+Building query index...  [0.002161s]
+Building seed filter...  [0.000519s]
+Searching alignments...  [0.00088s]
+Processing query chunk 0, reference chunk 0, shape 15, index chunk 3.
+Building reference index...  [0.003288s]
+Building query index...  [0.00172s]
+Building seed filter...  [0.000437s]
+Searching alignments...  [0.000759s]
+Deallocating buffers...  [4.3e-05s]
+Computing alignments...  [0.033596s]
+Deallocating reference...  [7.4e-05s]
+Loading reference sequences...  [5.8e-05s]
+Deallocating buffers...  [4.5e-05s]
+Deallocating queries...  [2.8e-05s]
+Loading query sequences...  [3.4e-05s]
+Closing the input file...  [3.1e-05s]
+Closing the output file...  [0.001061s]
+Closing the database file...  [2e-05s]
+Deallocating taxonomy...  [1.1e-05s]
+Total time = 0.495333s
+Reported 57 pairwise alignments, 57 HSPs.
+57 queries aligned.
+Step 8: Checking if search produced results...
+Step 9: Basic filtering and sorting...
+Top 10 closest matches in complete.fasta:
+Soil5.scaffold_120605214_c1_7            NODE_27_length_76064_cov_15.562057_2      75.3% identity   2034.2 bitscore
+Soil17.scaffold_1045002370_c1_23         NODE_27_length_76064_cov_15.562057_2      75.2% identity   2019.2 bitscore
+Soil5.scaffold_434220697_c1_2            NODE_27_length_76064_cov_15.562057_2      74.0% identity   2008.8 bitscore
+Soil15.scaffold_1255266399_c1_142        NODE_27_length_76064_cov_15.562057_2      73.7% identity   2000.7 bitscore
+Soil14.scaffold_596019752_c1_119         NODE_27_length_76064_cov_15.562057_2      73.8% identity   1997.2 bitscore
+Soil5.scaffold_489407153_c1_201          NODE_27_length_76064_cov_15.562057_2      64.6% identity   1766.9 bitscore
+Soil5.scaffold_384418492_c1_161          NODE_27_length_76064_cov_15.562057_2      58.7% identity   1551.2 bitscore
+Soil5.scaffold_82918708_c1_12            NODE_27_length_76064_cov_15.562057_2      56.4% identity   1518.4 bitscore
+Soil5.scaffold_87619515_c1_114           NODE_27_length_76064_cov_15.562057_2      56.4% identity   1479.2 bitscore
+Soil17.scaffold_274056314_c1_61          NODE_27_length_76064_cov_15.562057_2      56.2% identity   1476.5 bitscore
+Total filtered matches: 39
+Analysis complete!
