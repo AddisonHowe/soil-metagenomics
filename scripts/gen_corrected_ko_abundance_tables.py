@@ -20,6 +20,10 @@ spike-in sum. Note that we have not adjusted the spike-in sums in any way.
 The input files for this script are the accepted and rejected tables produced
 in the KO-wrangling pipeline, and which are found in data/tables.
 
+T0 abundance levels reflect the values that are found in the Soil batches, not
+the T0 batch. That is, the values here should match those found in the KO tables
+located in data/KO_table/Soil<N>.KO_absolute_average_depth.tsv.
+
 """
 
 import os
