@@ -11,9 +11,9 @@
 # Load required modules (adjust for your cluster)
 module load spades
 
-# Run metaSPAdes
 metaspades.py \
-    -s ../out/reconstruction/spikein_reads.fasta \
+    -1 ../out/reconstruction/spikein_R1.fasta \
+    -2 ../out/reconstruction/spikein_R2.fasta \
     -o ../out/reconstruction/metaspades_assembly \
     -t 8 \
     -m 64 \
