@@ -13,7 +13,7 @@ module load spades
 module load prodigal
 
 # Define coverage and error rate combinations
-coverages=(5 16 26 37 47 58 68 79 89 100)
+coverages=(1 2 3 5 8 13 22 36 60 100)
 error_rates=(0.000 0.001 0.005)
 
 # Create output directory for ORFs only
@@ -42,11 +42,9 @@ for cov in "${coverages[@]}"; do
         # Step 2: ORF prediction with Prodigal directly from assembly output
         echo "Running Prodigal..."
         prodigal -i $ASSEMBLY_DIR/contigs.fasta \
-                 -o ${ORFS_PREFIX}.gff \
                  -a ${ORFS_PREFIX}.faa \
-                 -d ${ORFS_PREFIX}.fna \
                  -p meta \
-                 -f gff
+                 -q
         
         # Clean up temporary assembly directory (removes contigs too)
         rm -rf $ASSEMBLY_DIR
