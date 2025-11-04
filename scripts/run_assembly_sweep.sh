@@ -12,22 +12,25 @@
 module load spades
 module load prodigal
 
+# Accept KO number as input
+KO=$1
+
 # Define coverage and error rate combinations
 coverages=(1 2 3 5 8 13 22 36 60 100)
-error_rates=(0.000 0.001 0.005)
+error_rates=(0.001)
 
-# Create output directory for ORFs only
-mkdir -p ../out/reconstruction/orfs
+# Create output directory for ORFs
+mkdir -p ../out/reconstruction/orfs/${KO}
 
 for cov in "${coverages[@]}"; do
     for err in "${error_rates[@]}"; do
-        echo "Processing coverage ${cov}, error rate ${err}"
+        echo "Processing KO ${KO}, coverage ${cov}, error rate ${err}"
         
-        # Define file paths
-        R1="../out/reconstruction/raw_reads/spikein_R1_${cov}_${err}.fasta"
-        R2="../out/reconstruction/raw_reads/spikein_R2_${cov}_${err}.fasta"
-        ASSEMBLY_DIR="../out/reconstruction/temp_assembly_${cov}_${err}"
-        ORFS_PREFIX="../out/reconstruction/orfs/orfs_${cov}_${err}"
+        # Define file paths with KO subdirectory
+        R1="../out/reconstruction/raw_reads/${KO}/spikein_R1_${cov}_${err}.fasta"
+        R2="../out/reconstruction/raw_reads/${KO}/spikein_R2_${cov}_${err}.fasta"
+        ASSEMBLY_DIR="../out/reconstruction/temp_assembly_${KO}_${cov}_${err}"
+        ORFS_PREFIX="../out/reconstruction/orfs/${KO}/orfs_${cov}_${err}"
         
         # Step 1: Assembly with metaSPAdes
         echo "Running metaSPAdes..."
@@ -49,10 +52,8 @@ for cov in "${coverages[@]}"; do
         # Clean up temporary assembly directory (removes contigs too)
         rm -rf $ASSEMBLY_DIR
         
-        echo "Completed coverage ${cov}, error rate ${err}"
+        echo "Completed KO ${KO}, coverage ${cov}, error rate ${err}"
         echo "ORFs: ${ORFS_PREFIX}.faa"
         echo "----------------------------------------"
     done
 done
-
-echo "All assemblies and ORF predictions completed!"
