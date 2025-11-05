@@ -16,7 +16,7 @@ module load prodigal
 KO=$1
 
 # Define coverage and error rate combinations
-coverages=(1 2 3 5 8 13 22 36 60 100)
+coverages=(4 5 6 7 8 9 11 13 15 18 22 26 30 36 43 51 60 71 84 100)
 error_rates=(0.001)
 
 # Create output directory for ORFs
