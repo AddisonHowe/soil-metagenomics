@@ -56,6 +56,7 @@ def plot(
         linewidths=1,
         include_line=False,
         datdir="../data",
+        c_bar=True
 ):
     
     soils = [
@@ -94,21 +95,23 @@ def plot(
         s=circ_size,
     )
 
-    cbar = plt.colorbar(scatter, ticks=[vmin, vmax])
-    cbar.ax.set_yticklabels([f"{vmin:.2f}", f"{vmax:.2f}"], fontsize=cbarfontsize)
+    if c_bar:
+        cbar = plt.colorbar(scatter, ticks=[vmin, vmax])
+        cbar.ax.set_yticklabels([f"{vmin:.2f}", f"{vmax:.2f}"], fontsize=cbarfontsize)
 
     ax.set_xlabel("Perturbed pH", fontname=fontname, fontsize=fontsize)
     ax.set_ylabel("Native pH", fontname=fontname, fontsize=fontsize)
 
-    x = np.linspace(3.8, 8.4, 11)
+    x = np.linspace(3.8, 8.4, 3)
+    y = np.linspace(5, 7, 3)
     ax.set_xticks(
         ticks=x, 
-        labels=[f"{val:.1f}" for val in x], 
+        labels=[f"{val:.0f}" for val in x], 
         rotation=45, fontname=fontname, fontsize=fontsize,
     )
     ax.set_yticks(
-        ticks=native, 
-        labels=[f"{val:.1f}" for val in native], 
+        ticks=y, 
+        labels=[f"{val:.0f}" for val in y], 
         rotation=45, fontname=fontname, fontsize=fontsize,
     )
 
@@ -229,15 +232,16 @@ def plot_lfc(
     ax.set_xlabel("Perturbed pH", fontname=fontname, fontsize=fontsize)
     ax.set_ylabel("Native pH", fontname=fontname, fontsize=fontsize)
 
-    x = np.linspace(3.8, 8.4, 11)
+    x = np.linspace(3.8, 8.4, 3)
+    y = np.linspace(5, 7, 3)
     ax.set_xticks(
         ticks=x, 
-        labels=[f"{val:.1f}" for val in x], 
+        labels=[f"{val:.0f}" for val in x], 
         rotation=45, fontname=fontname, fontsize=fontsize,
     )
     ax.set_yticks(
-        ticks=native, 
-        labels=[f"{val:.1f}" for val in native], 
+        ticks=y, 
+        labels=[f"{val:.0f}" for val in y], 
         rotation=45, fontname=fontname, fontsize=fontsize,
     )
 
