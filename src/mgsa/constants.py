@@ -68,4 +68,5 @@ KO_ID_TO_NAME = {
     "K04747": "norF",
     "K04748": "norQ",
     "K05601": "hcp",
+    "K15864": "nirS",
 }

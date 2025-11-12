@@ -31,3 +31,4 @@ pytest tests
 - [Nitrate reduction Ortholog Table](https://www.google.com/url?q=https://www.kegg.jp/kegg-bin/view_ortholog_table?md%3DM00529&source=gmail&ust=1756589228072000&usg=AOvVaw2vaH8k1EgoPI7un7sTLuIu)
 - [Nitrite reduction Ortholog Table](https://www.kegg.jp/kegg-bin/view_ortholog_table?md=M00530)
 - [Read this regarding enzymes](https://pmc.ncbi.nlm.nih.gov/articles/PMC4453514/)
+- [KEGG listings](https://www.kegg.jp/kegg-bin/get_htext?ko00001+K02591)
