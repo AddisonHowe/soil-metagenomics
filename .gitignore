@@ -5,6 +5,7 @@ out/alphafold2/
 out/pymol/fetched_pdbids
 tmp/
 out/coverage/
+genome_explore/
 
 **/.DS_Store
 
